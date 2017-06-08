@@ -1,0 +1,11 @@
+
+<ul class="list">
+<% @sneakers.each do |sneak| %>
+<li>
+<%= cl_image_tag(sneak.photo) %> <%= link_to sneak.name, sneak %>
+<%= sneak.style_code %> <%= link_to 'new vendor', new_sneaker_vendor_path(sneak) %>
+</li>
+<% end %>
+</ul>
+
+<%= will_paginate @sneakers %>

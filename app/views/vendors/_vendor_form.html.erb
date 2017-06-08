@@ -1,0 +1,7 @@
+<%= simple_form_for([@sneaker, @vendor]) do |f| %>
+  <%= f.input :name, collection: @logos, prompt: "select image" %>
+  <%= f.input :current_price %>
+  <%= f.input :url %>
+  <%= f.input :previous_price %>
+  <%= f.submit %>
+<% end %>

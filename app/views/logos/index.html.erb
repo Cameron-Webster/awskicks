@@ -1,0 +1,9 @@
+
+
+
+
+<% @logos.each do |logo| %>
+
+<%= cl_image_tag(logo.photo) %> <%= logo.name %>
+<% end %>
+<%= link_to 'new logo', new_logo_path %>

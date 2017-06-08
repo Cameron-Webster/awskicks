@@ -1,0 +1,14 @@
+this the show page honky
+
+current buckets:
+
+<% @user.buckets.each do |buck| %>
+<p>
+<%= buck.name %> <%= link_to 'delete', buck, method: :delete %>
+</p>
+<% end %>
+
+
+
+
+<%= render 'modal' %>

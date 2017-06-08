@@ -1,0 +1,10 @@
+<%= simple_form_for(@sneaker) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :style_code %>
+  <%= f.input :average_price %>
+  <%= f.input :rrp %>
+  <%= f.input :color %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>
