@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'accounts'
 
-  resources :users, shallow: true do
-    resources :buckets
-    resources :pins
+  resources :users do
+     resources :buckets, except: [:show]
+    resources :buckets, path: "", as: "bucket_show", only: [:show]
   end
+
+   resources :pins
 
   resources :sneakers do
     resources :vendors

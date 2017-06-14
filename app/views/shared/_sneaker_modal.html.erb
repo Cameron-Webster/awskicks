@@ -1,19 +1,19 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModalTwo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="sneakerModal-<%= locals[:sneak].id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <!-- HEADER OF MODAL -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="project_new">Name your Bucket</h4>
+        <h4 class="modal-title" id="project_new">Check Ou This shizzle</h4>
       </div>
       <!-- END OF HEADER -->
       <!-- BODY OF MODAL -->
       <div class="modal-body">
 
-           <%= render 'form' %>
+           <%= render 'shared/sneaker_show', locals: {sneak: locals[:sneak]} %>
       </div>
     </div>
   </div>

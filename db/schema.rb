@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612140413) do
+ActiveRecord::Schema.define(version: 20170613173631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,19 @@ ActiveRecord::Schema.define(version: 20170612140413) do
     t.string   "home_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "scraper"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "pin_id"
+    t.boolean  "read"
+    t.string   "action"
+    t.integer  "price_change"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["pin_id"], name: "index_notifications_on_pin_id", using: :btree
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "pins", force: :cascade do |t|
@@ -38,6 +51,8 @@ ActiveRecord::Schema.define(version: 20170612140413) do
     t.integer  "user_id"
     t.integer  "bucket_id"
     t.integer  "sneaker_id"
+    t.integer  "price_watch"
+    t.float    "stock_watch"
     t.index ["bucket_id"], name: "index_pins_on_bucket_id", using: :btree
     t.index ["sneaker_id"], name: "index_pins_on_sneaker_id", using: :btree
     t.index ["user_id"], name: "index_pins_on_user_id", using: :btree
@@ -63,6 +78,7 @@ ActiveRecord::Schema.define(version: 20170612140413) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "photo"
+    t.string   "gender"
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +116,8 @@ ActiveRecord::Schema.define(version: 20170612140413) do
   end
 
   add_foreign_key "buckets", "users"
+  add_foreign_key "notifications", "pins"
+  add_foreign_key "notifications", "users"
   add_foreign_key "pins", "buckets"
   add_foreign_key "pins", "sneakers"
   add_foreign_key "pins", "users"

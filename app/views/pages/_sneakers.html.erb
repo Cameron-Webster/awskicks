@@ -1,0 +1,22 @@
+
+<ul class="list">
+<% @sneakers.each do |sneak| %>
+<li>
+<%= cl_image_tag(sneak.photo) %> <%= link_to sneak.name, sneak %>
+<%= sneak.style_code %>
+<a data-target="#sneakerModal-<%= sneak.id %>" data-toggle="modal" data-rails="<%= sneak.id %>" class="secondnavbar thin-link" id="MainNavHelp" href="#sneakerModal">
+
+<span class= "thin-link">Show Sneaker</span>
+</a>
+
+</li>
+<%= render 'shared/sneaker_modal', collection: @sneakers, locals: {sneak: sneak} %>
+<% end %>
+</ul>
+
+<%= will_paginate @sneakers %>
+
+
+
+
+

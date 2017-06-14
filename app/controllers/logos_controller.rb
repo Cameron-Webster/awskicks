@@ -29,7 +29,7 @@ class LogosController < ApplicationController
   private
 
   def logo_params
-    params.require(:logo).permit(:name, :photo, :photo_cache, :home_url)
+    params.require(:logo).permit(:name, :photo, :photo_cache, :home_url, :scraper)
   end
 
 end

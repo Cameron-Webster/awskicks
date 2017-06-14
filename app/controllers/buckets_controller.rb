@@ -14,6 +14,8 @@ class BucketsController < ApplicationController
   # GET /pins/1.json
   def show
 
+    @pins = @bucket.pins
+
   end
 
   # GET /pins/new

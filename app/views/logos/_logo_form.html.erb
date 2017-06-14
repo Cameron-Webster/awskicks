@@ -3,5 +3,6 @@
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
   <%= f.input :home_url %>
+  <%= f.input :scraper, collection: ["dynamic", "static"] %>
   <%= f.submit %>
 <% end %>

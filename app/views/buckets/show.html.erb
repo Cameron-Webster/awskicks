@@ -1,1 +1,11 @@
 <%= @bucket.name %>
+
+<% if @bucket.pins.any? %>
+<% @bucket.pins each do |pin| %>
+
+  <%= pin.sneaker.name %>
+  <%= pin.sneaker.style_code %>
+  <%= pin.sneaker.rrp %>
+  <%= cl_image_tag(pin.sneaker.photo, height: 100, width: 100, crop: :fill) %>
+  <% end %>
+<% end %>

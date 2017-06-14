@@ -4,11 +4,14 @@ current buckets:
 
 <% @user.buckets.each do |buck| %>
 <p>
-<%= buck.name %> <%= link_to 'delete', buck, method: :delete %>
+<%= link_to buck.name, user_bucket_show_path(@user,buck) %> <%= link_to 'delete', user_bucket_path(@user,buck), method: :delete %>
 </p>
 <% end %>
 
 
+<a data-target="#myModalTwo" data-toggle="modal" class="secondnavbar thin-link" id="MainNavHelp" href="#myModalTwo">
 
+<span class= "thin-link">Create new Bucket</span>
+</a>
 
 <%= render 'modal' %>
