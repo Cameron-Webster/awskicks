@@ -1,22 +1,44 @@
 
-<ul class="list">
-<% @sneakers.each do |sneak| %>
-<li>
-<%= cl_image_tag(sneak.photo) %> <%= link_to sneak.name, sneak %>
-<%= sneak.style_code %>
+<div class="row pin-grid">
+<% @sneakers.each_with_index do |sneak, i| %>
+<% if i % 4 == 0 %>
+</div>
+<div class="row">
+<% end %>
+<div class="col-md-3 cl-sm-6 pin-item">
+<div class="pin">
+  <div class="pin-body">
+  <%= cl_image_tag(sneak.photo) %>
+  </div>
+  <div class="pin-footer">
+    <p><%= link_to sneak.name, sneak %></p>
+<p><%= sneak.style_code %></p>
+<p>
 <a data-target="#sneakerModal-<%= sneak.id %>" data-toggle="modal" data-rails="<%= sneak.id %>" class="secondnavbar thin-link" id="MainNavHelp" href="#sneakerModal">
 
 <span class= "thin-link">Show Sneaker</span>
 </a>
+</p>
 
-</li>
+  </div>
+</div>
+
+
+
+
 <%= render 'shared/sneaker_modal', collection: @sneakers, locals: {sneak: sneak} %>
+
+</div>
 <% end %>
-</ul>
-
-<%= will_paginate @sneakers %>
 
 
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div>
+    <p><%= will_paginate @sneakers %></p>
 
-
+</div>
+  </div>
+</div>
 

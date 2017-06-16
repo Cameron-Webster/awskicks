@@ -1,0 +1,10 @@
+  <ul>
+    <% current_user.buckets.each do |bucket| %>
+    <li><%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
+            <%= f.input :bucket, as: :hidden, input_html: {value: bucket.id} %>
+            <%= f.input :sneaker, as: :hidden, input_html: {value: locals[:sneaker].id} %>
+            <%= f.input :price_watch %>
+            <%= f.submit %>
+        <% end %></li>
+    <% end %>
+    </ul>

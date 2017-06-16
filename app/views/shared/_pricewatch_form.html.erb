@@ -1,0 +1,11 @@
+<%= simple_form_for(@pin = locals[:pin], remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :price_watch %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

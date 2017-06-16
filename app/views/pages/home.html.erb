@@ -1,10 +1,17 @@
 <div class="container-fluid">
 
+<div class="row">
+  <div class="col-md-12 jumbotron">
+    <div class="search_bar">
+      <%= form_tag root_path, method: 'get', remote: true do %>
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
+      <%= submit_tag "search", :name => nil, hidden: true %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_tag root_path, method: 'get', remote: true do %>
-<%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
-<%= submit_tag "search", :name => nil, hidden: true %>
-<% end %>
+
 <div id="products">
 
 
@@ -15,4 +22,7 @@
 
 </div>
 <div id="pagin"></div>
-</div>
+
+</div></div>
+
+

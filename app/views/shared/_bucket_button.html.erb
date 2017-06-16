@@ -1,0 +1,18 @@
+<div class="bucketButton-<%= @sneaker.id %>">
+    <!-- work out a better way to do this -->
+  <% if @current_pin = pin_exist?(@sneaker) %>
+      <p>View in <%= link_to @current_pin.bucket.name, user_bucket_show_path(current_user, @current_pin.bucket) %></p>
+<% else %>
+  <div class="addBucket">
+    Add to Bucket
+  </div>
+  <div class="bucketList nodisplay">
+  <ul>
+    <% current_user.buckets.each do |bucket| %>
+    <li><%= link_to bucket.name, pins_path(pin: {sneaker: @sneaker, bucket: bucket}), method: :post %></li>
+    <% end %>
+    </ul>
+  </div>
+  <%= render 'shared/bucket_list' %>
+  <% end %>
+  </div>

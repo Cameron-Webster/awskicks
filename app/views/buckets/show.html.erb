@@ -1,7 +1,7 @@
 <%= @bucket.name %>
 
 <% if @bucket.pins.any? %>
-<% @bucket.pins each do |pin| %>
+<% @bucket.pins.each do |pin| %>
 
   <%= pin.sneaker.name %>
   <%= pin.sneaker.style_code %>

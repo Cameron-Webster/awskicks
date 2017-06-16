@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
    resources :pins
 
+    post  "/pins/:id/stockwatch", to: 'pins#create_stock_watch', as: "stockwatch"
+
+
+
   resources :sneakers do
     resources :vendors
   end
