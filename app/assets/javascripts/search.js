@@ -9,7 +9,15 @@ $('#srch').keyup(function(e){
   $('#srch').parent('form').submit();
 }
 })
-// $('#srch').parent('form').submit(function(){
-//   console.log("submitted");
-// })
+
+$(".mod2").on('click',function(){
+  var sneak = $(this).data('rails');
+  $.ajax({
+    type: "GET",
+    url: "/modal/" + sneak,
+    success: function(data){
+      console.log(data);
+    }
+  })
+})
 });

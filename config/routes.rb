@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'accounts'
 
+
+
   resources :users do
      resources :buckets, except: [:show]
     resources :buckets, path: "", as: "bucket_show", only: [:show]
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
 
     post  "/pins/:id/stockwatch", to: 'pins#create_stock_watch', as: "stockwatch"
 
-
+get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
 
   resources :sneakers do
     resources :vendors

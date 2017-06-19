@@ -16,6 +16,9 @@ class PagesController < ApplicationController
     else
       Sneaker.search "*", where: conditions, per_page: 12, aggs: [:brand, :gender, :lowest_price]
     end
+  end
 
+  def show_modal
+     @sneak = Sneaker.find(params[:sneaker_id]) || "nooooo"
   end
 end
