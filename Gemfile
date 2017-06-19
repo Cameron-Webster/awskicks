@@ -25,6 +25,8 @@ gem 'sidekiq'
 gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'
+gem 'oj'
+gem 'typhoeus'
 
 group :development, :test do
   gem 'binding_of_caller'

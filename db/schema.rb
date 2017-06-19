@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616162400) do
+ActiveRecord::Schema.define(version: 20170619102143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20170616162400) do
     t.string   "gender"
     t.string   "brand"
     t.integer  "lowest_price"
+    t.index ["brand"], name: "index_sneakers_on_brand", using: :btree
+    t.index ["color"], name: "index_sneakers_on_color", using: :btree
+    t.index ["gender"], name: "index_sneakers_on_gender", using: :btree
+    t.index ["lowest_price"], name: "index_sneakers_on_lowest_price", using: :btree
+    t.index ["name"], name: "index_sneakers_on_name", using: :btree
+    t.index ["style_code"], name: "index_sneakers_on_style_code", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
