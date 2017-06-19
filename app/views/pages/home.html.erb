@@ -1,10 +1,28 @@
 <div class="container-fluid">
 
+<div class="row">
+  <div class="col-md-12 jumbotron">
+    <div class="search_bar">
+      <%= form_tag root_path, method: 'get', remote: true do %>
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
+      <%= submit_tag "search", :name => nil %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_tag root_path, method: 'get', remote: true do %>
-<%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
-<%= submit_tag "search", :name => nil, hidden: true %>
-<% end %>
+<div class="row">
+  <div class="col-md-1">
+   <ul>
+   <% if @sneakers.aggs %>
+<% @sneakers.aggs["gender"]["buckets"].each do |gender| %>
+
+  <li><%= link_to gender["key"], "/?search=#{@search}&gender=#{gender['key']}", class: gender['key'] %></li><li class="count_<%= gender['key'] %>"> <%= gender["doc_count"] %></li>
+  <% end %>
+  <% end %>
+</ul>
+  </div>
+<div class="col-md-11">
 <div id="products">
 
 
@@ -16,3 +34,6 @@
 </div>
 <div id="pagin"></div>
 </div>
+</div></div>
+
+

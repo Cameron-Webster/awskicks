@@ -1,0 +1,4 @@
+<%= simple_form_for([@pin = Pin.new, @sneaker.id]) do |f| %>
+  <%= f.input :bucket, collection: current_user.buckets %>
+  <%= f.submit %>
+<% end %>

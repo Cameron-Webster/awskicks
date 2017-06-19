@@ -3,6 +3,12 @@ class Vendor < ApplicationRecord
   belongs_to :logo
   has_many :sizes
 
+  def uk_available
+    list = self.sizes.map {|size| size.size_uk}
+
+    list.empty? ? ["out of stock"] : list
+  end
+
   def update_price_and_stock
 
     if self.logo.scraper == "static"

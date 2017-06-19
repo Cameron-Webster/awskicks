@@ -3,36 +3,49 @@ class PinsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  # GET /pins
-  # GET /pins.json
+
   def index
     @pins = Pin.all
   end
 
-  # GET /pins/1
-  # GET /pins/1.json
+
   def show
 
   end
 
-  # GET /pins/new
+
   def new
     @pin = Pin.new
   end
 
-  # GET /pins/1/edit
+
   def edit
   end
 
-  # POST /pins
-  # POST /pins.json
+  def create_stock_watch
+    # raise
+      @sneaker_id = params[:id]
+      @pin = current_user.pins.where('sneaker_id = ?', @sneaker_id).last
+      respond_to do |format|
+      if @pin.update(stock_watch: 500)
+        format.js
+      else
+        format.js { render json: @pin.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   def create
-    @pin = current_user.pins.build(pin_params)
+    @pin = current_user.pins.new(bucket: Bucket.find(pin_params[:bucket]),
+                                price_watch: pin_params[:price_watch],
+                                sneaker: Sneaker.find(pin_params[:sneaker]))
+
 
     respond_to do |format|
       if @pin.save
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-        format.json { render :show, status: :created, location: @pin }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @pin.errors, status: :unprocessable_entity }
@@ -40,13 +53,13 @@ class PinsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pins/1
-  # PATCH/PUT /pins/1.json
+
+
   def update
     respond_to do |format|
       if @pin.update(pin_params)
         format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pin }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @pin.errors, status: :unprocessable_entity }
@@ -54,8 +67,7 @@ class PinsController < ApplicationController
     end
   end
 
-  # DELETE /pins/1
-  # DELETE /pins/1.json
+
   def destroy
     @pin.destroy
     respond_to do |format|
@@ -72,7 +84,7 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:bucket, :sneaker, :stock_watch, :price_watch)
     end
 
     def correct_user
