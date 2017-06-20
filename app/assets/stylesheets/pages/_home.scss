@@ -2,3 +2,10 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.facet_list li {
+  list-style: none;
+}
+
+li.filters {
+  border: 1px solid black;
+}

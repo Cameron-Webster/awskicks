@@ -1,0 +1,65 @@
+
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Gender
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+    <li>Gender</li>
+
+      <% if @conditions.key?(:gender) %>
+
+       <li class="genderbucket filters" data-val="">remove Gender filter </li>
+
+      <% else %>
+
+    <% @sneakers.aggs["gender"]["buckets"].each do |bucket| %>
+
+    <li class="genderbucket filters" data-val="<%= bucket["key"]%>">yeow <%= bucket["key"] %></li>
+
+    <li><%= bucket["doc_count"] %></li>
+
+    <% end %>
+
+    <% end %>
+
+
+  </ul>
+</div>
+
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Brand
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+    <li>Brand</li>
+
+      <% if @conditions.key?(:brand) %>
+
+       <li class="brandbucket filters" data-val="">remove Brand filter </li>
+
+      <% else %>
+
+    <% @sneakers.aggs["brand"]["buckets"].each do |bucket| %>
+
+    <li class="brandbucket filters" data-val="<%= bucket["key"]%>">yeow <%= bucket["key"] %></li>
+
+    <li><%= bucket["doc_count"] %></li>
+
+    <% end %>
+
+    <% end %>
+
+
+  </ul>
+</div>
+
+
+
+
+
+
+
