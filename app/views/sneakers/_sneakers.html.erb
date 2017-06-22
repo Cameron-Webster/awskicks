@@ -1,12 +1,20 @@
-
-<ul class="list">
+<div class="row">
+<div class="col-md12">
+<div id="grid" data-columns>
+<% sizes = [200, 300, 400] %>
+<% count = 0 %>
 <% @sneakers.each do |sneak| %>
-<li>
+<% count += 1 %>
+  <div style="height: <%= sizes.sample %>px;" class="orange">
+
 <%= cl_image_tag(sneak.photo) %> <%= link_to sneak.name, sneak %>
 <%= sneak.style_code %> <%= link_to 'new vendor', new_sneaker_vendor_path(sneak) %>
-
-</li>
+<p>the count is <%= count %></p>
+</div>
 <% end %>
-</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md12"><%= will_paginate @sneakers %></div></div>
 
-<%= will_paginate @sneakers %>

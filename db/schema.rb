@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619102143) do
+ActiveRecord::Schema.define(version: 20170622113152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blogs", force: :cascade do |t|
+    t.text     "title"
+    t.text     "subtitle"
+    t.text     "content"
+    t.string   "photo"
+    t.string   "photo_two"
+    t.string   "photo_three"
+    t.string   "author"
+    t.boolean  "highlight"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["highlight"], name: "index_blogs_on_highlight", where: "(highlight = true)", using: :btree
+  end
 
   create_table "buckets", force: :cascade do |t|
     t.string   "name"
@@ -78,6 +92,8 @@ ActiveRecord::Schema.define(version: 20170619102143) do
     t.string   "gender"
     t.string   "brand"
     t.integer  "lowest_price"
+    t.integer  "photo_height"
+    t.string   "alt_photo"
     t.index ["brand"], name: "index_sneakers_on_brand", using: :btree
     t.index ["color"], name: "index_sneakers_on_color", using: :btree
     t.index ["gender"], name: "index_sneakers_on_gender", using: :btree
