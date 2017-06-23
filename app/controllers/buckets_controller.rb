@@ -20,10 +20,14 @@ class BucketsController < ApplicationController
 
   # GET /pins/new
   def new
+    @bucket = Bucket.new
+    @bucket.pins.build
+    @sneaker = params[:sneaker_id]
      respond_to do |format|
         format.html
         format.js
     end
+
   end
 
   # GET /pins/1/edit
@@ -33,15 +37,21 @@ class BucketsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    @bucket = current_user.buckets.build(bucket_params)
+    @bucket = current_user.buckets.new(bucket_params)
+    # @bucket.pins.first.sneaker = Sneaker.find(5014)
+    # @bucket.pins.build(bucket_params)
+    if @bucket.save
+      # @pin = Pin.new
+      # @bucket.pins.build(pin_params)
 
     respond_to do |format|
       if @bucket.save
         format.js
-        format.html { redirect_to @user, notice: 'bucket created - time to add some kicks'}
+        format.html { redirect_to root_path, notice: "bucket created #{@bucket.pins.count}- time to add some kicks"}
       else
         format.json { render json: @bucket.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 
@@ -79,9 +89,13 @@ class BucketsController < ApplicationController
       @user = current_user
     end
 
+    def pin_params
+      params.require(:pin).permit(:sneaker_id, :price_watch)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def bucket_params
-      params.require(:bucket).permit(:name)
+      params.require(:bucket).permit(:name, pins_attributes: [:id, :sneaker_id, :price_watch])
     end
 
     def correct_user

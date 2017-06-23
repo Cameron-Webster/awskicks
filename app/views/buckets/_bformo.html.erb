@@ -1,0 +1,15 @@
+
+        <%= simple_form_for(@bucket, remote: true, input_html: {class: "bformo"}) do |f| %>
+        <%= f.input :name %>
+        <% @bucket.pins.each do |pin| %>
+        <%= field_set_tag 'Pin' do %>
+        <%= f.simple_fields_for :pins, pin do |pn| %>
+
+          <%= pn.input :sneaker_id, as: :hidden, input_html: {value: @sneaker} %>
+           <%= pn.input :price_watch %>
+        <% end %>
+        <% end %>
+        <% end %>
+        <%= f.submit %>
+        <% end %>
+

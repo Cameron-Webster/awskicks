@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @bucket = Bucket.new
+    @bucket.pins.build
       # @url = request.fullpath
       # @url = @url.insert(1,"?") if @url[1] != "?"
       @search = params[:search].present? ? params[:search] : nil
@@ -23,4 +25,8 @@ class PagesController < ApplicationController
   def show_modal
      @sneak = Sneaker.find(params[:sneaker_id]) || "nooooo"
   end
+
+
+
 end
+

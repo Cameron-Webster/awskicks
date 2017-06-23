@@ -1,0 +1,36 @@
+        <p>simple form</p>
+  <div>
+        <%= simple_form_for(@bucket) do |f| %>
+        <%= f.input :name %>
+        <% @bucket.pins.each do |pin| %>
+        <%= field_set_tag 'Pin' do %>
+        <%= f.simple_fields_for :pins, pin do |pn| %>
+
+          <%= pn.input :sneaker_id, input_html: {value: 5014} %>
+           <%= pn.input :price_watch %>
+        <% end %>
+        <% end %>
+        <% end %>
+        <%= f.submit %>
+        <% end %>
+  </div>
+  <p>Normal form</p>
+
+<% @sneaker = 5015 %>
+
+<%= form_for @bucket do |f| %>
+  buckets:
+  <%= f.text_field :name %>
+  <ul>
+    <%= f.fields_for :pins do |pins_form| %>
+      <li>
+        <%= pins_form.label :price_watch %>
+        <%= pins_form.text_field :price_watch %>
+        <%= pins_form.label :sneaker_id %>
+        <%= pins_form.hidden_field :sneaker_id, value: @sneaker %>
+
+      </li>
+    <% end %>
+  </ul>
+  <%= f.submit %>
+<% end %>

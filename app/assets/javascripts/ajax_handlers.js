@@ -1,26 +1,24 @@
 $(document).ready(function() {
 
-$(".addBucket").on('click', function(){
 
-  $(".bucketList").toggleClass("nodisplay");
-      });
+// modal -------------------------------------------------------
 
-// $(".addBucket").on('click', function(){
+// Top left + add to bucket
 
-//   var pin_data =
-//         method: "Post",
-//         url: "<%= pins_path %>",
-//         data:
-//         success: function (data) {
+  $(document).on('click', ".bucketListButton", function(){
+    // disappear button
+    $(".bucketListButton").addClass("noDisplay");
+    // remove picture show bucket list
+    $(".bucketList").removeClass("noDisplay");
+    $(".image_large").addClass("noDisplay");
 
+  });
 
-
-//         },
-//           error: function(jqXHR) {
-
-//         }
-//       });
-
+  $(document).on('click', ".bucketList select option", function(){
+console.log($(this).parent('form'));
+    $(this).closest('form').submit();
+     $(".image_large").removeClass("noDisplay");
+  });
 
 
 });

@@ -1,4 +1,4 @@
-$(".bucketButton-<%= @pin.sneaker.id %>").html("<p style='color: red;'>view in <%= j link_to @pin.bucket.name, user_bucket_show_path(current_user, @pin.bucket) %> </p>");
+$(".bucketButton-<%= @pin.sneaker.id %>").html("<p style='color: red;'>view in <%= j link_to @pin.bucket.name, bucket_path(@pin.bucket) %> </p>");
 <% if @pin.price_watch? %>
 $('.addPriceWatch-<%= @pin.id %>').html('<p>Price watch Added!</p>');
 $(".addPriceWatchNoPin-<%= @pin.sneaker.id %>").html('<p>Price watch Added!</p>');

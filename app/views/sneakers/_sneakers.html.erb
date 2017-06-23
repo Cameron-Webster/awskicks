@@ -6,8 +6,12 @@
 <% @sneakers.each do |sneak| %>
 <% count += 1 %>
   <div style="height: <%= sizes.sample %>px;" class="orange">
-
-<%= cl_image_tag(sneak.photo) %> <%= link_to sneak.name, sneak %>
+<% if sneak.alt_photo.thumb %>
+<%= cl_image_tag(sneak.alt_photo.thumb) %>
+<% else %>
+<%= cl_image_tag(sneak.photo) %>
+<% end %>
+<%= link_to sneak.name, sneak %>
 <%= sneak.style_code %> <%= link_to 'new vendor', new_sneaker_vendor_path(sneak) %>
 <p>the count is <%= count %></p>
 </div>

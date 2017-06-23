@@ -1,10 +1,36 @@
-  <ul>
-    <% current_user.buckets.each do |bucket| %>
-    <li><%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
-            <%= f.input :bucket, as: :hidden, input_html: {value: bucket.id} %>
+
+
+
+
+
+
+
+  <% if current_user.buckets.any? %>
+  <div class="bucketListPricewatch noDisplay">
+  <%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
+            <%= f.input :bucket, collection: current_user.buckets %>
             <%= f.input :sneaker, as: :hidden, input_html: {value: locals[:sneaker].id} %>
             <%= f.input :price_watch %>
             <%= f.submit %>
-        <% end %></li>
+        <% end %>
+        </div>
+        <div>-------------------------------------hahah------------------------</div>
+       <div>
+    <%= link_to "Create Bucket and add pricewatch", new_bucket_path(@sneaker), remote: true, class: "displayNewBucket" %>
+</div>
+    <div class="form_area">
+
+  </div>
+    <% else %>
+    <div>
+      <div>
+    <%= link_to "Create Pricewatch", new_bucket_path, remote: true, class: "displayNewBucket" %>
+</div>
+    <div class="form_area">
+
+  </div>
+
+    </div>
+
     <% end %>
-    </ul>
+
