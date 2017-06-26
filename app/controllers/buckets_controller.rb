@@ -38,11 +38,7 @@ class BucketsController < ApplicationController
   # POST /pins.json
   def create
     @bucket = current_user.buckets.new(bucket_params)
-    # @bucket.pins.first.sneaker = Sneaker.find(5014)
-    # @bucket.pins.build(bucket_params)
-    if @bucket.save
-      # @pin = Pin.new
-      # @bucket.pins.build(pin_params)
+    @bucket.pins.first.user_id = current_user.id
 
     respond_to do |format|
       if @bucket.save
@@ -52,7 +48,7 @@ class BucketsController < ApplicationController
         format.json { render json: @bucket.errors, status: :unprocessable_entity }
       end
     end
-    end
+    # end
   end
 
   # PATCH/PUT /pins/1

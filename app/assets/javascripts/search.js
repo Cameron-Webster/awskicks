@@ -49,8 +49,9 @@ $(document).on("click", "li.brandbucket", function(){
 
 // launch modal
 
-$(document).on('click', ".mod2",function(){
+$(document).on('click', ".mod2, .cancelBucket",function(){
   var sneak = $(this).data('rails');
+
   $.ajax({
     type: "GET",
     url: "/modal/" + sneak,

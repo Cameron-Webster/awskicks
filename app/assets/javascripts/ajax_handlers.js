@@ -5,21 +5,60 @@ $(document).ready(function() {
 
 // Top left + add to bucket
 
-  $(document).on('click', ".bucketListButton", function(){
+//---------------------
+
+  $(document).on('click', ".bucketListButton, .addPriceWatchLow", function(){
     // disappear button
-    $(".bucketListButton").addClass("noDisplay");
-    // remove picture show bucket list
-    $(".bucketList").removeClass("noDisplay");
-    $(".image_large").addClass("noDisplay");
+    // $(".card").velocity({ translateX: ['100%', '200%'] });
+    $(this).addClass("bucketListButtonGrey").removeClass("bucketListButton");
+    $(".bucketListForm select").show();
+    $(".noButton, .newBucket").show()
+     $(".bucketListForm .priceWatchButton").hide();
+    $('.card2')
+      .velocity({ translateX: ['0%', '-100%'] });
 
   });
 
-  $(document).on('click', ".bucketList select option", function(){
-console.log($(this).parent('form'));
-    $(this).closest('form').submit();
-     $(".image_large").removeClass("noDisplay");
+  $(document).on('click', ".cancelPin", function(){
+    $(".card2, .card3, .card4").velocity({ translateX: ['-120%', '0%'] });
+    $('#pin_price_watch').addClass("noDisplay");
+    $(".bucketListButtonGrey").addClass("bucketListButton").removeClass("bucketListButtonGrey");
+    $(".bucketListForm .noButton input[type=submit]").css('display', "none");
+  });
+    $(document).on('click', ".displayNewBucket", function(){
+    $(".card2").velocity({ translateX: ['-120%', '0%'] });
+    $(".card3").velocity({ translateX: ['0%', '-100%'] });
   });
 
+
+
+   $(document).on('click', ".bucketListForm select option", function(){
+
+
+    $(".card4").velocity({ translateX: ['0%', '-100%'] });
+     $(".card2").velocity({ translateX: ['-120%', '0%'] });
+
+  });
+
+  $(document).on('click', ".addPriceWatch", function(){
+     $(".bucketListForm select").addClass("noDisplay");
+     $(".newBucket").addClass("noDisplay");
+     $('#pin_price_watch').removeClass("noDisplay");
+     $(".bucketListForm .noButton input[type=submit]").css('display', "block");
+     $(".card4").velocity({ translateX: ['-120%', '0%'] });
+     $('.card2').velocity({ translateX: ['0%', '-100%'] });
+
+
+  });
+
+  $(document).on('click', ".noPriceWatch", function(){
+        $(".pinSubmit").closest('form').submit();
+  });
+
+
+  $(document).on('click',".modal-backdrop", function(){
+      $(".modal-backdrop").hide();
+  });
 
 });
 

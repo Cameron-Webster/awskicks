@@ -1,14 +1,20 @@
-<div class="bucketList noDisplay">
+<div class="bucketList">
 <div class="bucketListForm">
+  <div class="">Add Price Watchoo?</div>
+  <div class="noButton">
 <% if current_user.buckets.any? %>
 <%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
             <%= f.input :bucket, collection: current_user.buckets, label: false, input_html: {size: 8} %>
+            <%= f.input :price_watch, input_html: {class: "noDisplay"} %>
             <%= f.input :sneaker, as: :hidden, input_html: {value: @sneaker.id} %>
             <%= f.submit %>
         <% end %>
 
+</div>
+
     </div>
 <% end %>
+
     <div class="newBucket">
           <p>OR</p>
         <%= link_to " + Create Bucket", new_bucket_path(@sneaker), remote: true, class: "displayNewBucket" %>

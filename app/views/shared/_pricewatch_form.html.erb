@@ -1,4 +1,6 @@
-<%= simple_form_for(@pin = locals[:pin], remote: true) do |f| %>
+<% @pin = locals[:pin] || Pin.new %>
+
+<%= simple_form_for(@pin, remote: true) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
