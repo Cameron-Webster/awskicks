@@ -10,7 +10,7 @@ $(document).ready(function() {
   $(document).on('click', ".bucketListButton, .addPriceWatchLow", function(){
     // disappear button
     // $(".card").velocity({ translateX: ['100%', '200%'] });
-    $(this).addClass("bucketListButtonGrey").removeClass("bucketListButton");
+    $(this).addClass("working cancelPin").removeClass("bucketListButton").html("X");
     $(".bucketListForm select").show();
     $(".noButton, .newBucket").show()
      $(".bucketListForm .priceWatchButton").hide();
@@ -20,9 +20,11 @@ $(document).ready(function() {
   });
 
   $(document).on('click', ".cancelPin", function(){
+    $(this).addClass("bucketListButton").removeClass("working cancelPin").html(" <i class='fa fa-thumb-tack' aria-hidden='true'></i> Save");
     $(".card2, .card3, .card4").velocity({ translateX: ['-120%', '0%'] });
     $('#pin_price_watch').addClass("noDisplay");
-    $(".bucketListButtonGrey").addClass("bucketListButton").removeClass("bucketListButtonGrey");
+    $(".working").addClass("bucketListButton").removeClass("working");
+    // $(".bucketListButtonGrey").addClass("bucketListButton").removeClass("bucketListButtonGrey");
     $(".bucketListForm .noButton input[type=submit]").css('display', "none");
   });
     $(document).on('click', ".displayNewBucket", function(){

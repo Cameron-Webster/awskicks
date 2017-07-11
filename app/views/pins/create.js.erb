@@ -2,7 +2,7 @@
 $(".card2").velocity({ translateX: ['-120%', '0%'] });
 $(".card4").velocity({ translateX: ['-120%', '0%'] });
  $('.card').velocity({ translateX: ['0%', '-100%'] });
-$(".bucketButton-<%= @pin.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= j link_to @pin.bucket.name, user_path(current_user) %>").addClass("bucketListButtonGrey");
+$(".bucketButton-<%= @pin.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= j link_to @pin.bucket.name, user_path(current_user) %>").addClass("bucketListButtonGrey").removeClass("working");
 <% if @pin.price_watch? %>
 $('.addPriceWatch-<%= @pin.id %>').html('<p>Price watch Added!</p>');
 $(".addPriceWatchNoPin-<%= @pin.sneaker.id %>").html('<p>Price watch Added!</p>');

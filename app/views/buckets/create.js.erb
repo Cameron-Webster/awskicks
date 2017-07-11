@@ -1,4 +1,5 @@
 $(".card3").velocity({ translateX: ['-120%', '0%'] });
-$(".card .bucketListButton").html("Saved").removeClass(".bucketListButton");
+$(".bucketButton-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= j link_to @bucket.name, user_path(current_user) %>").addClass("bucketListButtonGrey").removeClass("working");
+
 $(".card").velocity({ translateX: ['0%', '-100%'] });
 // $(".bucketListButtonGrey").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved");

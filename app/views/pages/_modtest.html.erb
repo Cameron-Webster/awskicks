@@ -6,91 +6,109 @@
       <!-- HEADER OF MODAL -->
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-           <div class="">
-              <!-- work out a better way to do this -->
-              <% if @current_pin = pin_exist?(@sneaker) %>
+        <div class="">
+          <!-- work out a better way to do this -->
+          <% if @current_pin = pin_exist?(@sneaker) %>
 
-              <div class="bucketListButtonGrey">
-              <i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= link_to @current_pin.bucket.name, user_path(current_user) %></div>
-              <% else %>
-
-              <div class="bucketListButton bucketButton-<%= @sneaker.id %>">
-                <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save
-              </div>
-              <% end %>
-            </div>
-
-      </div>
-      <!-- END OF HEADER -->
-      <!-- BODY OF MODAL -->
-      <div class="modal-body">
-
-
-
-       <div class="row">
-
- <!-- left column -->
-
-        <div class="col-md-6">
-        <div class="fullCard">
-  <!-- render the save button and image-->
-          <div class="card">
-            <div class="row">
-            <div class="col-md-12">
-
-
-          </div>
-          </div>
-
-          <div class="row">
-          <div class="col-md-12">
-          <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
-          <% if !@current_pin %>
-
-                     <div class="addPriceWatchLow">
-                          <i class="fa fa-bell-o" aria-hidden="true"></i> Add Price Watch
-                     </div>
-            <% elsif @current_pin.price_watch.nil? %>
-
-                <div class="addPriceWatchNone">
-                          <i class="fa fa-bell-o" aria-hidden="true"></i> Add Price Watch
-                     </div>
-
+          <div class="bucketListButtonGrey">
+            <i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= link_to @current_pin.bucket.name, user_path(current_user) %></div>
             <% else %>
 
-              <div class="bucketListButtonGrey">
-                          <i class="fa fa-bell-o" aria-hidden="true"></i> Price watch: <%= @current_pin.price_watch %>
-                     </div>
+            <div class="bucketListButton bucketButton-<%= @sneaker.id %>">
+              <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save
+            </div>
+            <% end %>
+            <% if !@current_pin %>
 
-          <% end %>
-          <div class="social">
-          <ul class="list-inline">
-          <li><%= image_tag("fb.png", height: '40', width: '40') %></li>
-          <li><%= image_tag("twitter.png", height: '40', width: '40') %></li>
-          <li><%= image_tag("pinterest.jpeg", height: '40', width: '40') %></li>
-             <li><%= image_tag("google_plus.png", height: '40', width: '40') %></li>
-          </ul>
-          </div>
-          </div>
-           </div>
-          </div>
-  <!-- after button save button click -->
-          <div class="card2">
-            <div class="row">
-              <div class="col-md-12">
+                      <div class="addPriceWatchLow">
+                        <i class="fa fa-bell-o" aria-hidden="true"></i> Add Price Watch
+                      </div>
+                      <% elsif @current_pin.price_watch.nil? %>
 
-                  <div class="cancelPin">X</div>
+                      <div class="addPriceWatchNone">
+                        <i class="fa fa-bell-o" aria-hidden="true"></i> Add Price Watch
+                      </div>
+
+                      <% else %>
+
+                      <div class="bucketListButtonGrey">
+                        <i class="fa fa-bell-o" aria-hidden="true"></i> Price watch: <%= @current_pin.price_watch %>
+                      </div>
+
+                      <% end %>
+                    <button id="myBtn">Open mod</button>
+          </div>
+
+
+        </div>
+        <!-- END OF HEADER -->
+        <!-- BODY OF MODAL -->
+        <div class="modal-body">
+
+
+
+         <div class="row">
+
+           <!-- left column -->
+
+           <div class="col-md-6">
+            <div class="fullCard">
+              <!-- render the save button and image-->
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-12">
+
+
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="modal-main-image">
+                    <ul class="slides">
+                      <li class="active">
+                      <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+                      </li>
+                      <li>
+                        <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+                      </li>
+                    </ul>
+                    </div>
+                    <div class="leftside-modal-footero">
+
+                      <div class="social">
+                      <h5>Share</h5>
+                        <ul class="list-inline">
+                          <li><%= image_tag("fb.png", height: '35', width: '35') %></li>
+                          <li><%= image_tag("twitter.png", height: '35', width: '35') %></li>
+                          <li><%= image_tag("pinterest.jpeg", height: '35', width: '35') %></li>
+                          <li><%= image_tag("google_plus.png", height: '35', width: '35') %></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!-- card 2 -->
+          <div class="miniMod">
+            <div class="miniMod-content">
+               <span class="close">&times;</span>
+              <div class="card2">
+                <div class="row">
+                  <div class="col-md-12">
+
+                    <div class="cancelPin">X</div>
                     <div class="bucketListForm">
-                    <div class="noButton">
+                      <div class="noButton">
                         <% if current_user.buckets.any? %>
 
                         <%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
-                        <%= f.input :bucket, collection: current_user.buckets, label: "set Price watch", input_html: {size: 5} %>
+                        <%= f.input :bucket, collection: current_user.buckets, label: "set Price watch", input_html: {size: current_user.buckets.count} %>
                         <%= f.input :price_watch, label: false, input_html: {class: "noDisplay"} %>
                         <%= f.input :sneaker, as: :hidden, input_html: {value: @sneaker.id} %>
                         <%= f.submit "do it!", class: "pinSubmit" %>
                         <% end %>
-                         <% end %>
+                        <% end %>
                       </div>
 
                     </div>
@@ -104,58 +122,76 @@
 
 
 
+                  </div>
+                </div>
               </div>
-            </div>
+              </div>
           </div>
-
           <!-- card 3 -->
-           <div class="card3">
+              <div class="card3">
 
               </div>
               <div class="card4">
-                    <div class="cancelPin">X</div>
-                    <h3>Add Price Watch?</h3>
-                  <ul class="list-inline">
+                <div class="cancelPin">X</div>
+                <h3>Add Price Watch?</h3>
+                <ul class="list-inline">
                   <li class="addPriceWatch">
-                      Yes
+                    Yes
                   </li>
                   <li class="noPriceWatch">No</li></ul>
+                </div>
               </div>
-        </div>
-        </div>
+            </div>
 
- <!-- right column -->
+            <!-- right column -->
 
-        <div class="col-md-6" style="background-color: black; color: white;">
-          <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-9">
 
-              <h4><%= @sneaker.name %></h4>
-              <ul class="list-inline">
-                <li><%= @sneaker.style_code %></li>
-                <li>Lowest Price: £<%= @sneaker.lowest_price %></li>
-                <li><%= @sneaker.gender %></li>
-              </ul>
+                  <h4><%= @sneaker.name %></h4>
+                  <div class="row">
+                    <div class="col-md-6">Style <%= @sneaker.style_code %></div>
+                    <div class="col-md-6">Lowest Price: £<%= @sneaker.lowest_price %></div>
+                  </div>
+                </div>
+                <div class="col-md-3"><h4>LOGO</h4></div>
+              </div>
+               <div class="row">
+                <div class="col-md-12">
+                  <hr class="break">
+                  <h2>Stocked in the following shops:</h2>
+                  <hr class="break">
+                  <div class="">
+                  <% @sneaker.vendors.each do |vend| %>
+                  <div class="row vendor_card">
+                    <div class="col-md-12">
+                      <div class="">
+                        <div class="col-md-5"><%= cl_image_tag(vend.logo.photo, class: "vendor_logo") %></div>
+                        <div class="col-md-3"><p>£<%= vend.current_price %></p></div>
+                        <div class="col-md-4"><div class="shop_link">Go To Shop</div></div>
+                      </div>
+                      <div class="row lower_vendrow">
+                        <div class="col-md-3 sizes_title">
+                         <h5> Available sizes:</h5>
+                        </div>
+                        <div class="col-md-9">
+                         <ul class="list-inline ul_size_list">
+                          <% vend.uk_available.each do |ob| %>
+                          <li class="size_list"><%= ob %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              <% end %>
+              </div>
+            </div>
             </div>
           </div>
-          <% @sneaker.vendors.each do |vend| %>
-          <div class="row">
-            <div class="col-md-10">
-              <ul class="list-inline">
-                <li><%= vend.name %></li>
-                <li>£<%= vend.current_price %></li>
-              </ul>
-              <ul class="list-inline">
-                <% vend.uk_available.each do |ob| %>
-                <li>Available sizes: <%= ob %></li>
-                <% end %>
-              </ul>
-
-            </div>
-            <div class="col-md-2"></div>
-          </div>
-          <% end %>
-
 
 
         </div>

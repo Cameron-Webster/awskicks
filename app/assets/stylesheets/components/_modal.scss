@@ -1,4 +1,6 @@
-
+.flexslider .slides > li .active {
+  display: block;
+}
 
 .noDisplay {
   display: none;
@@ -48,6 +50,15 @@
   border-radius: 5px;
 }
 
+.working {
+   padding: 10px;
+  border: 1px solid $kickRed;
+  color: $kickRed;
+  background-color: white;
+  border-radius: 5px;
+  display: inline-block;
+}
+
 select option {
  font-size: 16px;
   text-align: center;
@@ -58,6 +69,14 @@ select option {
   background-color: #EFEFEF;
 
 }
+}
+
+.noButton .form-control {
+  width: 98%;
+}
+
+select {
+  overflow: auto;
 }
 
 
@@ -91,21 +110,52 @@ a {
 .card2 {
     // min-height: 50vh;
     height: 100%;
-    width: 90%;
+    width: 100%;
     vertical-align: bottom;
     margin: 0 auto;
-   transform: translateX(-200%);
-  -webkit-transform: translateX(-200%);
-  position: absolute;
+  //  transform: translateX(-200%);
+  // -webkit-transform: translateX(-200%);
+  // position: absolute;
   z-index: 10;
   top: 0;
   background-color: white;
 
 }
+
+
+
+// modal experiments
+
+.miniMod {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border-radius: 5px;
+}
+
+.miniMod-content {
+  background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%;
+    border-radius: 5px;
+}
+
+
+
+
 .card3 {
     // min-height: 50vh;
     height: 100%;
-    width: 90%;
+    width: 100%;
     vertical-align: bottom;
     margin: 0 auto;
    transform: translateX(-200%);
@@ -120,7 +170,7 @@ a {
 .card4 {
     // min-height: 50vh;
     height: 100%;
-    width: 90%;
+    width: 100%;
     vertical-align: bottom;
     margin: 0 auto;
    transform: translateX(-200%);
@@ -149,6 +199,10 @@ a {
   position: relative;
 }
 
+.modal-body {
+  padding: 0 15px 15px;
+}
+
 .noButton {
   // margin: 50% auto;
 }
@@ -167,9 +221,123 @@ a {
     padding: 15px;
 }
 
+.vend_scroll {
+  max-height: 700px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
 .fullCard {
   position: relative;
+  border-right: 1px solid #EDEDED;
 }
+
+.modal-main-image {
+   border-bottom: 1px solid #EDEDED;
+}
+
+.leftside-modal-footero {
+  padding-top: 10px;
+}
+
+hr .break {
+   border-bottom: 1px solid #EDEDED;
+}
+
+.social {
+    h5 {
+      margin-bottom: 2px;
+    }
+
+  .list-inline {
+    display: inline-block;
+    border-top: 3px solid #EDEDED;
+    padding-top: 7px;
+}
+}
+
+.image_large {
+  max-width: 100%;
+}
+
+.size_list {
+  margin-right: 5px;
+  padding: 3px;
+  background-color: #4d4d4d;
+  color: white;
+  font-size: 0.8em;
+}
+
+.ul_size_list {
+  margin-left: 10px;
+}
+
+.shop_link {
+  background-color: $kickRed;
+  color: white;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 1em;
+  // margin-top: 50%;
+  // -webkit-transform: translateY(-50%);
+  // transform: translateY(-50%);
+  text-align: center;
+}
+
+.vendor_card {
+  border: 1px solid #EDEDED;
+  margin-bottom: 5px;
+  margin-right: -12px;
+  max-width: 103%;
+}
+
+.vendor_logo {
+  max-width: 70%;
+}
+
+.vendor_price {
+  // margin-top: 50%;
+  //   -webkit-transform: translateY(-50%);
+  // transform: translateY(-50%);
+
+}
+
+.vendrow {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  padding-top: 10px;
+}
+
+.lower_vendrow {
+  padding: 10px 0;
+
+  h5 {
+
+    padding: 0;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  .sizes_title {
+    padding-right: 0;
+  }
+}
+
+.vendrow > [class*='col-'] {
+   display: flex;
+   flex-direction: column;
+     justify-content: center;
+
+  p {
+    margin: 0;
+    text-align: right;
+  }
+
+}
+
+
 
 .modal-content {
   overflow: hidden;
