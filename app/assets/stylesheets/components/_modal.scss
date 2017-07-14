@@ -10,6 +10,50 @@
   display: none;
 }
 
+.overflow-rigid {
+  overflow: visible;
+}
+
+.bucket_added {
+  color: $kickDarkGrey;
+  background-color: $kickGrey;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.noPriceWatch {
+  padding-left: 12px;
+
+}
+
+.noPriceWatchBucket {
+  padding-left: 20px;
+  &:hover{
+  background-color: #EFEFEF;
+
+  }
+}
+
+.form-group#pin_price_watch {
+  margin-bottom: 0;
+}
+
+#new_bucket {
+  margin-bottom: 10px;
+}
+
+#pin_price_watch, .bucket_pins_price_watch {
+  width: 171px;
+  margin-bottom: 0;
+
+  option {
+    border: 4px solid $kickRed;
+    margin-bottom: 5px;
+
+    border-radius: 5px;
+}
+}
+
 .bucketListButton {
   padding: 10px;
   border: 1px solid $kickRed;
@@ -17,19 +61,22 @@
   display: inline-block;
   color: white;
   border-radius: 5px;
+   border: 3px solid white;
+
+  &:hover {
+    border: 3px solid $kickGrey;
+  }
 }
 
 .social {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.addPriceWatchLow {
+.addPriceWatchLow, .priceWatchSet {
   padding: 10px;
-  border: 1px solid $kickRed;
-  background-color: $kickRed;
   display: inline-block;
-  color: white;
-  border-radius: 5px;
+
+
 }
 
 .addPriceWatchNone {
@@ -48,6 +95,15 @@
   display: inline-block;
   color: $kickDarkGrey;
   border-radius: 5px;
+
+  &:hover {
+     background-color: #eeeeef;
+     cursor: pointer;
+
+     i {
+      color: $kickRed;
+     }
+  }
 }
 
 .working {
@@ -59,9 +115,20 @@
   display: inline-block;
 }
 
+input:focus, select:focus {
+  outline: none!important;
+}
+
+*:focus {
+    outline: none!important;
+
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 select option {
  font-size: 16px;
-  text-align: center;
+  text-align: left;
   line-height: 24px;
   padding: 4px;
 
@@ -71,8 +138,27 @@ select option {
 }
 }
 
-.noButton .form-control {
+.noButton .form-control, .bucket_pins_price_watch .form-control {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border:none;
   width: 98%;
+  &:focus {
+  outline: none;
+  }
+      option {
+
+
+        &:hover {
+          cursor: pointer;
+    }
+  }
+}
+
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: white;
 }
 
 select {
@@ -80,12 +166,13 @@ select {
 }
 
 
-.bucketListForm .noButton input[type=submit] {
+.bucketListForm .noButton input[type=submit], #new_bucket input[type=submit] {
   display: none;
 }
 
 .newBucket {
   text-align: center;
+  margin-top: 30px;
 }
 
 .displayNewBucket {
@@ -94,11 +181,10 @@ select {
   width: 100%;
   background-color: $kickRed;
   color: white;
+  border-radius: 5px;
 }
 
-a {
-  color: white;
-}
+
 
 .card {
     min-height: 50vh;
@@ -147,7 +233,9 @@ a {
     border: 1px solid #888;
     width: 55%;
     border-radius: 5px;
+    overflow: hidden;
 }
+
 
 
 
@@ -155,11 +243,11 @@ a {
 .card3 {
     // min-height: 50vh;
     height: 100%;
-    width: 100%;
+    width: 90%;
     vertical-align: bottom;
     margin: 0 auto;
-   transform: translateX(-200%);
-  -webkit-transform: translateX(-200%);
+   transform: translateX(110%);
+  -webkit-transform: translateX(110%);
   position: absolute;
   z-index: 10;
   top: 0;
@@ -268,8 +356,32 @@ hr .break {
   font-size: 0.8em;
 }
 
+.price, .previous_price {
+  padding-right: 0;
+  p {
+text-align: right;
+line-height: 1.2;
+}
+
+}
+
 .ul_size_list {
   margin-left: 10px;
+}
+
+.myrow {
+    font-size: 0;
+}
+.myrow > * {
+    float: none;
+    display: inline-block;
+    font-size: 14px; /* if using LESS it's quicker to just use @font-size-base */
+}
+.myrow > *:last-child {
+    vertical-align: bottom;
+}
+.myrow p:last-child {
+    margin-bottom: 0; /* optional */
 }
 
 .shop_link {
@@ -289,10 +401,11 @@ hr .break {
   margin-bottom: 5px;
   margin-right: -12px;
   max-width: 103%;
+  padding-top: 10px;
 }
 
 .vendor_logo {
-  max-width: 70%;
+  max-width: 100%;
 }
 
 .vendor_price {
@@ -310,6 +423,11 @@ hr .break {
   padding-top: 10px;
 }
 
+.no-right-padding {
+
+  padding-right: 0;
+}
+
 .lower_vendrow {
   padding: 10px 0;
 
@@ -319,11 +437,15 @@ hr .break {
     font-size: 0.8em;
     text-align: right;
   }
+}
 
   .sizes_title {
     padding-right: 0;
+
+      p {
+        font-size: 0.8em;
+      }
   }
-}
 
 .vendrow > [class*='col-'] {
    display: flex;
@@ -340,6 +462,10 @@ hr .break {
 
 
 .modal-content {
+      max-width: 1100px;
+
+    margin-left: auto;
+    margin-right: auto;
   overflow: hidden;
   // height: 80vh;
 }

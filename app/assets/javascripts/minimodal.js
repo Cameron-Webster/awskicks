@@ -1,25 +1,31 @@
 $(document).ready(function(){
 
-alert("transmitting");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
+
+
+
+
 
 // When the user clicks on the button, open the modal
 $(document).on('click', "#myBtn", function(){
     var miniMod = $(".miniMod")
   miniMod.css("display", "block");
+  $(".bucketListForm select").focus();
+
+  //closing the modal
   $(document).on("click", ".close", function(){
-     miniMod.css("display", "none");
+    var simple_form = $("form.simple_form.new_pin")[0];
+    if (simple_form) {
+      simple_form.reset();
+    }
+      $(".bucketListForm .pin_bucket, .newBucket, .card2").removeClass("noDisplay");
+      $(".bucketListForm .pin_price_watch, .noPriceWatch").addClass("noDisplay");
+      $(".card3").velocity({ translateX: ['100%', '0%'] });
+      $(".card3").css("display", "none");
+      miniMod.css("display", "none");
+
   })
-//   window.onclick = function(event) {
-//     console.log(event.target == miniMod);
-//     if (event.target == miniMod) {
-//         miniMod.
-//     }
-// }
+
 })
 $(document).on("click", document, function(event){
       if (event.target == $(".miniMod")) {
@@ -27,15 +33,34 @@ $(document).on("click", document, function(event){
       }
 });
 
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
+// select bucket to add pin to and display add pricewatch screen
+$(document).on('click', ".bucketListForm select option", function(){
+  $(".bucketListForm .pin_bucket").addClass("noDisplay");
+  $(".bucketListForm .pin_price_watch, #pin_price_watch").removeClass("noDisplay");
+  $(".noPriceWatch").removeClass("noDisplay");
+  $(".newBucket").addClass("noDisplay");
 
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
+
+});
+
+// display create new bucket screen
+$(document).on('click', ".displayNewBucket", function(){
+   $(".card3").css("display", "block");
+    $(".card2").addClass("noDisplay");
+    $(".card3").velocity({ translateX: ['0%', '100%'] });
+});
+
+  $(document).on('click', ".noPriceWatch, #pin_price_watch option", function(){
+        $(".pinSubmit").closest('form').submit();
+  });
+
+ $(document).on('click', ".noPriceWatchBucket, #bucket_pins_attributes_0_price_watch option", function(){
+        $(".bucketSubmit").closest('form').submit();
+  });
+
+  $(document).on('click',".modal-backdrop", function(){
+      $(".modal-backdrop").hide();
+  });
+
+
 })

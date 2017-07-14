@@ -1,5 +1,8 @@
-$(".card3").velocity({ translateX: ['-120%', '0%'] });
-$(".bucketButton-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved in <%= j link_to @bucket.name, user_path(current_user) %>").addClass("bucketListButtonGrey").removeClass("working");
+$(".card3").velocity({ translateX: ['120%', '0%'] });
+$(".card2").removeClass("noDisplay");
+$(".bucketListForm").prepend("<h5 class='bucket_added'>Added to <%= j @bucket.name %></h5>");
+$(".miniMod").css("display", "none");
+$(".bucketButton-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved %>").addClass("bucketListButtonGrey").removeClass("working");
 
-$(".card").velocity({ translateX: ['0%', '-100%'] });
+// $(".card").velocity({ translateX: ['0%', '-100%'] });
 // $(".bucketListButtonGrey").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved");

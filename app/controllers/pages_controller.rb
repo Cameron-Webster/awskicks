@@ -24,6 +24,11 @@ class PagesController < ApplicationController
 
   def show_modal
      @sneak = Sneaker.find(params[:sneaker_id]) || "nooooo"
+      @existing_buckets = current_user.pins.where("sneaker_id = ?", @sneak.id).map{|p|p.bucket}.uniq
+     @buckets = current_user.buckets - @existing_buckets
+
+
+
   end
 
 
