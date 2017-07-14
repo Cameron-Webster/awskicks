@@ -27,6 +27,7 @@ gem 'capybara'
 gem 'poltergeist'
 gem 'oj'
 gem 'typhoeus'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'binding_of_caller'

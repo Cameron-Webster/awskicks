@@ -1,8 +1,2 @@
 $('#products').html("<%= j render 'sneakers' %>");
-// $('.female').attr('href', "/?search=<%= @search %>&gender=female");
-// $('.male').attr('href', "/?search=<%= @search %>&gender=male");
-
-
-// <% @sneakers.aggs["gender"]["buckets"].each do |gender| %>
-// $(".count_<%= gender %>").text("BOoooooo");
-// <% end %>
+$('.facets').html("<%= j render 'facets' %>");

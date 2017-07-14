@@ -20,6 +20,7 @@ class PinsController < ApplicationController
 
 
   def edit
+
   end
 
   def create_stock_watch

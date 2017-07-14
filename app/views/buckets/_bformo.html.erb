@@ -1,0 +1,22 @@
+  <div class="row">
+              <div class="col-md-12">
+
+
+
+        <%= simple_form_for(@bucket, remote: true, input_html: {class: "bformo"}) do |f| %>
+        <%= f.input :name, label: "Bucket Name" %>
+        <% @bucket.pins.each do |pin| %>
+
+        <%= f.simple_fields_for :pins, pin do |pn| %>
+
+          <%= pn.input :sneaker_id, as: :hidden, input_html: {value: @sneaker} %>
+            <%= pn.input :price_watch, label: "Add Price watch?", priority: ["Any Price Drop", 1], collection: [["Any Price Drop", 1], ["10% Or More Off", 10], ["20% Or More Off", 20]], include_blank: false, input_html: {class: "overflow-rigid", size: 3} %>
+        <% end %>
+
+        <% end %>
+        <%= f.submit "buck submit", class: "bucketSubmit" %>
+        <% end %>
+        <div class="noPriceWatchBucket">No Price Watch</div>
+
+  </div>
+              </div>

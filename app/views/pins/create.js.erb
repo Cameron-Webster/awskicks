@@ -1,4 +1,13 @@
-$(".bucketButton-<%= @pin.sneaker.id %>").html("<p style='color: red;'>view in <%= j link_to @pin.bucket.name, user_bucket_show_path(current_user, @pin.bucket) %> </p>");
+   var miniMod = $(".miniMod")
+  miniMod.css("display", "none");
+  $("form.simple_form.new_pin")[0].reset();
+   $(".bucketListForm .pin_bucket").removeClass("noDisplay");
+  $(".bucketListForm .pin_price_watch").addClass("noDisplay");
+  $(".newBucket").removeClass("noDisplay");
+  $(".noPriceWatch").addClass("noDisplay");
+  $(".bucketListForm").prepend("<h5 class='bucket_added'>Added to <%= j @pin.bucket.name %></h5>");
+
+$(".bucketButton-<%= @pin.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved ").addClass("bucketListButtonGrey").removeClass("working");
 <% if @pin.price_watch? %>
 $('.addPriceWatch-<%= @pin.id %>').html('<p>Price watch Added!</p>');
 $(".addPriceWatchNoPin-<%= @pin.sneaker.id %>").html('<p>Price watch Added!</p>');

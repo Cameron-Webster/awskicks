@@ -10,7 +10,7 @@
   <a class="card-link" href="#" ></a>
 </div>
  <%= cl_image_tag(@sneaker.photo, height: 100, width: 100, crop: :fill) %>
- <%= @sneaker.rrp %>
+
  <%= @sneaker.name %>
  <%= link_to 'edit', edit_sneaker_path(@sneaker) %> <%= link_to 'back', sneakers_path %>
 <% @sneaker.vendors.each do |vend| %>
@@ -18,3 +18,6 @@
   <p>current price: <%= vend.current_price %> pound</p>
   <% end %>
 <p><%= link_to 'new vendor', new_sneaker_vendor_path(@sneaker) %></p>
+<%= cl_image_tag(@sneaker.photo) %>
+<%= cl_image_tag(@sneaker.alt_photo.thumb) %>
+

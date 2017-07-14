@@ -5,10 +5,13 @@ Rails.application.routes.draw do
 
 
 
-  resources :users do
-     resources :buckets, except: [:show]
-    resources :buckets, path: "", as: "bucket_show", only: [:show]
-  end
+  resources :users, only: [:show]
+  #    resources :buckets, except: [:show]
+  #   resources :buckets, path: "", as: "bucket_show", only: [:show]
+  # end
+
+  resources :buckets, except: [:new]
+  get "buckets/new/:sneaker_id", to: "buckets#new", as: 'new_bucket'
 
    resources :pins
 

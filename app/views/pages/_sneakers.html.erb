@@ -1,12 +1,12 @@
 
-<div class="row pin-grid">
+<div class="row">
 <% @sneakers.each_with_index do |sneak, i| %>
 <% if i % 4 == 0 %>
 </div>
 <div class="row">
 <% end %>
-<div class="col-md-3 cl-sm-6 pin-item">
-<div class="pin">
+<div class="col-md-3 cl-sm-6 pin-grid">
+<div class="pin pin-item">
   <div class="pin-body">
   <%= cl_image_tag(sneak.photo) %>
   </div>
@@ -14,13 +14,10 @@
     <p><%= link_to sneak.name, sneak %></p>
 <p><%= sneak.style_code %></p>
 <p>
-<a data-target="#sneakerModal-<%= sneak.id %>" data-toggle="modal" data-rails="<%= sneak.id %>" class="secondnavbar thin-link" id="MainNavHelp" href="#sneakerModal">
 
-<span class= "thin-link">Show Sneaker</span>
-</a>
 
 </p>
-<div class="mod2" data-rails="<%= sneak.id %>">MOdaaalalallalall</div>
+<button class="mod2" data-rails="<%= sneak.id %>" onclick="">MOdaaalalallalall</button>
   </div>
 </div>
 
@@ -42,4 +39,5 @@
 </div>
   </div>
 </div>
-<%= javascript_include_tag 'search' %>
+
+
