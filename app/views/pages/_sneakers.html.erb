@@ -1,43 +1,45 @@
+<div class="row">
+<div class="col-md12">
+<div class="grid">
 
-<div class="row">
-<% @sneakers.each_with_index do |sneak, i| %>
-<% if i % 4 == 0 %>
-</div>
-<div class="row">
+<% count = 0 %>
+<% @sneakers.each do |sneak| %>
+<% count += 1 %>
+<div class="grid-item">
+  <div class="orange mod2" data-rails="<%= sneak.id %>">
+ <div class="share"> </div>
+<% if sneak.alt_photo.file    %>
+<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+
+<% else %>
+<%= cl_image_tag(sneak.photo) %>
 <% end %>
-<div class="col-md-3 cl-sm-6 pin-grid">
-<div class="pin pin-item">
-  <div class="pin-body">
-  <%= cl_image_tag(sneak.photo) %>
-  </div>
-  <div class="pin-footer">
-    <p><%= link_to sneak.name, sneak %></p>
-<p><%= sneak.style_code %></p>
-<p>
-
-
+<div class="sneak_info">
+<p class="brand_title sneaker_title"><b><%= sneak.brand %></b></p>
+<p class="sneaker_title">
+<%=  sneak.name %></p>
+<hr>
+<p class="style_code">
+<%= sneak.style_code %>
 </p>
-<button class="mod2" data-rails="<%= sneak.id %>" onclick="">MOdaaalalallalall</button>
+<hr>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="purple_button"><%= sneak.vendors.count %> Stores</p>
+    </div>
+     <div class="col-md-6">
+      <p class="align-right purple_button">from £<%= sneak.lowest_price %></p>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
+</div>
 </div>
 <% end %>
 <div class="mooo"></div>
-
+</div>
+</div>
 </div>
 <div class="row">
-  <div class="col-md-12">
-    <div>
-    <p><%= will_paginate @sneakers %></p>
-
-</div>
-  </div>
-</div>
+<div class="col-md12"><%= will_paginate @sneakers %></div></div>
 
 

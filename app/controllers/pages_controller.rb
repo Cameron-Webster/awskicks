@@ -18,7 +18,7 @@ class PagesController < ApplicationController
         Sneaker.search(@search, where: @conditions, misspellings: {below: 1}, fields: [{style_code: :exact}, {name: :word_start}], page: params[:page], per_page: 24, aggs: [:brand, :gender])
       end
     else
-      Sneaker.search "*", where: @conditions, page: params[:page], per_page: 12, aggs: [:brand, :gender]
+      Sneaker.search "*", where: @conditions, page: params[:page], per_page: 24, aggs: [:brand, :gender]
     end
   end
 

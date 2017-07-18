@@ -1,3 +1,121 @@
+
+.container {
+  width: 90vw;
+  color: $kickDarkGrey;
+}
+
+.purple_button {
+  color: white;
+  background-color: $kickPurple;
+  display: inline-block;
+      border-radius: 5px;
+    padding: 2px 10px;
+    margin-top: 2px;
+
+}
+.sneak_info {
+
+    font-size: 0.8em;
+
+    .brand_title {
+        font-size: 0.95em;
+    }
+
+    .style_code {
+      color: #b1b1b1;
+      margin: 0 0 3px;
+    }
+
+  .sneaker_title {
+  &:hover {
+    color: $kickPurple;
+  }
+}
+}
+.mod2 {
+  &:hover {
+   cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+    background-color: $kickGreyLight;
+
+   .share {
+      display: block;
+    }
+
+    .brand_title, .sneaker_title {
+      color: $kickPurple;
+    }
+  }
+  border-radius: 10px;
+}
+
+.align-right {
+  text-align: right;
+
+}
+
+.grid-item {
+  width: 248px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid white;
+
+   .sneak_info {
+                background-color: white;
+                border-radius: 10px;
+                padding-top: 10px;
+
+              }
+
+    .orange {
+         padding: 10px;
+          text-align: center;
+          position: relative;
+
+          .share {
+            position: absolute;
+            left: 30px;
+            top: 20px;
+            font-size: 0.8em;
+            background-color: $kickPurple;
+            color: white;
+            border-radius: 5px;
+            padding: 4px;
+            display: none;
+          }
+          hr {
+            margin: 2px 0;
+          }
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          margin-bottom: 10px;
+        }
+      }
+
+   &:hover {
+
+            .share {
+              display: block;
+            }
+
+
+          }
+
+
+}
+
+.grid-sizer {
+  width: 200px;
+}
+.grid-item--width2 { width: 400px; }
+
+.grid {
+  margin: 0 auto;
+}
+
 .pin {
   border: 1px solid grey;
   margin-bottom: 20px;

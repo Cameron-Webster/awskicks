@@ -1,13 +1,5 @@
-$('#products').html("<%= j render 'sneakers' %>");
-$('.facets').html("<%= j render 'facets' %>");
 
 
-
-var fw = true;
-
-if ("<%= @sneakers.count %>" < 5){
-    fw = false;
-}
 
 var grid = document.querySelector('.grid');
 
@@ -16,7 +8,7 @@ var msnry = new Masonry( grid, {
   columnWidth: '.grid-item',
   percentPosition: true,
   gutter: 10,
-  fitWidth: fw
+  fitWidth: true
 });
 
 imagesLoaded( grid ).on( 'progress', function() {
@@ -26,14 +18,12 @@ imagesLoaded( grid ).on( 'progress', function() {
 
 
 
-
 var infScroll = new InfiniteScroll( grid, {
   // options
   path: '.pagination .next_page',
   append: '.grid-item',
   outlayer: msnry,
-  history: false
-
+  history: false,
 
 });
 
@@ -42,4 +32,7 @@ $(window).resize(function () {
       msnry.layout();
       msnry.layout();
 });
+
+
+//for hovering over pin
 
