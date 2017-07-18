@@ -8,7 +8,4 @@ class CreateBrands < ActiveRecord::Migration[5.0]
     end
   end
 
-  def change
-    add_reference :sneakers, :brand, foreign_key: true
-  end
 end

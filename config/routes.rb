@@ -24,6 +24,7 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
   end
 
   resources :logos, only: [:new, :create, :index]
+  resources :brands, only: [:new, :create, :index]
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

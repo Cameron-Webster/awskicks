@@ -10,12 +10,11 @@
  <div class="share"> </div>
 <% if sneak.alt_photo.file    %>
 <%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
-
 <% else %>
 <%= cl_image_tag(sneak.photo) %>
 <% end %>
 <div class="sneak_info">
-<p class="brand_title sneaker_title"><b><%= sneak.brand %></b></p>
+<p class="brand_title sneaker_title"><b><%= sneak.brand.name unless sneak.brand.nil? %></b></p>
 <p class="sneaker_title">
 <%=  sneak.name %></p>
 <hr>
