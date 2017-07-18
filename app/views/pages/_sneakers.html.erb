@@ -1,20 +1,38 @@
 <div class="row">
 <div class="col-md12">
-<div id="grid" data-columns>
-<% sizes = [200, 300, 400] %>
+<div class="grid">
+
 <% count = 0 %>
 <% @sneakers.each do |sneak| %>
 <% count += 1 %>
-  <div style="height: <%= sizes.sample %>px;" class="orange">
-<% if sneak.alt_photo.thumb %>
-<%= cl_image_tag(sneak.alt_photo.thumb) %>
+<div class="grid-item">
+  <div class="orange mod2" data-rails="<%= sneak.id %>">
+ <div class="share"> </div>
+<% if sneak.alt_photo.file    %>
+<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+
 <% else %>
 <%= cl_image_tag(sneak.photo) %>
 <% end %>
-<%= link_to sneak.name, sneak %>
-<%= sneak.style_code %> <%= link_to 'new vendor', new_sneaker_vendor_path(sneak) %>
-<p>the count is <%= count %></p>
-<button class="mod2" data-rails="<%= sneak.id %>" onclick="">MOdaaalalallalall</button>
+<div class="sneak_info">
+<p class="brand_title sneaker_title"><b><%= sneak.brand %></b></p>
+<p class="sneaker_title">
+<%=  sneak.name %></p>
+<hr>
+<p class="style_code">
+<%= sneak.style_code %>
+</p>
+<hr>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="purple_button"><%= sneak.vendors.count %> Stores</p>
+    </div>
+     <div class="col-md-6">
+      <p class="align-right purple_button">from £<%= sneak.lowest_price %></p>
+    </div>
+  </div>
+</div>
+</div>
 </div>
 <% end %>
 <div class="mooo"></div>

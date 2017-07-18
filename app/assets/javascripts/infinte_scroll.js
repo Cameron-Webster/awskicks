@@ -1,19 +1,23 @@
 $(document).ready(function() {
 
-$(window).scroll(function(){
-  if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-      // $.getScript($('.pagination .next_page').attr('href'));
-              // var grid = document.querySelector('#grid');
-              // var item = document.createElement("div");
-      // $.getScript($('.pagination .next_page').attr('href'));
+$(".pagination").css("display", "none");
 
+// $(document).on("mouseenter", ".mod2",
+//        function(){
 
-        //   console.log(item);
-        // salvattore.appendElements(grid, [item]);
+//         $(this).find('.alt').toggleClass("noDisplay");
+//         $(this).find('.main').toggleClass("noDisplay");
 
+//       },
+// )
+// $(document).on("mouseleave", ".mod2",
+//        function(){
 
-  }
-})
+//         $(this).find('.alt').toggleClass("noDisplay");
+//         $(this).find('.main').toggleClass("noDisplay");
+
+//       },
+// )
 
 
 })
