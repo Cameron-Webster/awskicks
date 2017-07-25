@@ -40,9 +40,11 @@ class SneakersController < ApplicationController
   def create
     @sneaker = Sneaker.new(sneaker_params)
 
+    @sneaker.sneak_brand = Brand.find(sneaker_params[:brand_id]).name.to_s
+
     respond_to do |format|
       if @sneaker.save
-         Sneaker.reindex
+
         format.html { redirect_to @sneaker, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @sneaker }
       else
@@ -57,7 +59,7 @@ class SneakersController < ApplicationController
   def update
     respond_to do |format|
       if @sneaker.update(sneaker_params)
-         Sneaker.reindex
+
         format.html { redirect_to @sneaker, notice: 'Sneaker was successfully updated.' }
         format.json { render :show, status: :ok, location: @sneaker }
       else

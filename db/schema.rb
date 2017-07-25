@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718162705) do
+ActiveRecord::Schema.define(version: 20170718210754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,11 +101,13 @@ ActiveRecord::Schema.define(version: 20170718162705) do
     t.integer  "photo_height"
     t.string   "alt_photo"
     t.integer  "brand_id"
+    t.string   "sneak_brand"
     t.index ["brand_id"], name: "index_sneakers_on_brand_id", using: :btree
     t.index ["color"], name: "index_sneakers_on_color", using: :btree
     t.index ["gender"], name: "index_sneakers_on_gender", using: :btree
     t.index ["lowest_price"], name: "index_sneakers_on_lowest_price", using: :btree
     t.index ["name"], name: "index_sneakers_on_name", using: :btree
+    t.index ["sneak_brand"], name: "index_sneakers_on_sneak_brand", using: :btree
     t.index ["style_code"], name: "index_sneakers_on_style_code", unique: true, using: :btree
   end
 

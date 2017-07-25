@@ -1,0 +1,152 @@
+.ui-widget.ui-widget-content {
+    border: 1px solid $kickPurple!important;
+}
+
+.slider-range span {
+  background-color: $kickPurple!important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, {
+  background-color: $kickPurple!important;
+  border: none!important;
+}
+
+.ui-widget-header {
+    border: none!important;
+    background-color: $kickPurple!important;
+    color: #333333;
+    font-weight: bold;
+}
+
+
+p.price_slider label, p.price_slider input#amount {
+  font-size: 0.7em;
+  font-weight: normal;
+  max-width: 70px;
+  border: none;
+  margin-bottom: 5px;
+  max-width: 75px;
+}
+
+p.price_slider label {
+  margin-bottom: 5px;
+}
+
+// For facets
+
+div.dropdown button#dLabel {
+  background-color: white;
+  border: 1px solid $kickGreyLight;
+
+  .genderButton {
+    border-radius: 3px 0 0 3px;
+  }
+
+  .brandButton {
+    border-left: none;
+    border-right: none;
+  }
+
+}
+
+.dropdown, .facets, .kick_slider {
+  display: inline;
+}
+
+.facets {
+  align-self: flex-end;
+}
+
+
+.facet_row > [class*='col-'] {
+   display: flex;
+
+     justify-content: center;
+
+  p {
+    margin: 0;
+    text-align: right;
+  }
+
+}
+
+.facet_row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  padding-top: 10px;
+}
+
+.no_pad_left {
+  padding-left: 0;
+}
+.no_pad_right {
+  padding-right: 0;
+}
+
+.kick_slider {
+  margin-left: 20px;
+    padding-bottom: 2px;
+}
+
+// elipse
+
+.page-load-status {
+  display: none; /* hidden by default */
+  padding-top: 50px;
+  border-top: 1px solid #DDD;
+  text-align: center;
+  color: $kickPurple;
+}
+
+.loader-ellips {
+  font-size: 20px; /* change size here */
+  position: relative;
+  width: 4em;
+  height: 1em;
+  margin: 10px auto;
+}
+
+.loader-ellips__dot {
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  background: $kickPurple; /* change color here */
+  position: absolute;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.loader-ellips__dot:nth-child(1),
+.loader-ellips__dot:nth-child(2) {
+  left: 0;
+}
+.loader-ellips__dot:nth-child(3) { left: 1.5em; }
+.loader-ellips__dot:nth-child(4) { left: 3em; }
+
+@keyframes reveal {
+  from { transform: scale(0.001); }
+  to { transform: scale(1); }
+}
+
+@keyframes slide {
+  to { transform: translateX(1.5em) }
+}
+
+.loader-ellips__dot:nth-child(1) {
+  animation-name: reveal;
+}
+
+.loader-ellips__dot:nth-child(2),
+.loader-ellips__dot:nth-child(3) {
+  animation-name: slide;
+}
+
+.loader-ellips__dot:nth-child(4) {
+  animation-name: reveal;
+  animation-direction: reverse;
+}
+

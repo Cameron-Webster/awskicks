@@ -8,6 +8,7 @@ $('#srch').keyup(function(e){
   var v = $('#srch').val();
 
 
+
   $('#srch').parent('form').submit();
 
   var currentURL = location.href;
@@ -22,6 +23,8 @@ $('#srch').keyup(function(e){
 }
 })
 
+//-------------Gender aggs
+
 $(document).on("click", "li.genderbucket", function(){
 
   var para = $(this).data('val');
@@ -30,17 +33,85 @@ $(document).on("click", "li.genderbucket", function(){
   $('#srch').parent('form').submit();
 })
 
+//--------------Brand aggs
+
 $(document).on("click", "li.brandbucket", function(){
 
-  var para = $(this).data('val');
-  var currentdata = $("#brandoo").val();
-  // if (currentdata) {
-  //   $("#brandoo").val(currentdata + "," + para)
-  // } else {
-  $("#brandoo").val(para);
+  var that = $(this);
 
+  var para = that.data('val');
+
+  var currentdata = $("#brandoo").val();
+
+  if (that.hasClass("active")) {
+
+      var textReplace = new RegExp("," + para + "|" + para + "|" + para + ",");
+
+     currentdata = currentdata.replace(textReplace,"");
+    $("#brandoo").val(currentdata);
+
+    that.removeClass("active");
+
+  } else {
+
+
+    that.addClass("active");
+
+
+
+  if (para != "" && currentdata != "") {
+    currentdata = currentdata + "," + para
+
+    $("#brandoo").val(currentdata)
+  } else {
+  $("#brandoo").val(para);
+}
+}
+  $('#srch').parent('form').submit();
+});
+
+//--------------------------Price aggs
+
+$(document).on("click", "li.pricebucket", function(){
+
+  var that = $(this);
+
+  var para = that.data('val');
+
+  var currentdata = $("#priceoo").val();
+
+  if (that.hasClass("active")) {
+
+      var textReplace = new RegExp("," + para + "|" + para + "|" + para + ",");
+
+     currentdata = currentdata.replace(textReplace,"");
+    $("#priceoo").val(currentdata);
+
+    that.removeClass("active");
+
+  } else {
+
+
+    that.addClass("active");
+
+
+
+  if (para != "" && currentdata != "") {
+    currentdata = currentdata + "," + para
+
+    $("#priceoo").val(currentdata)
+  } else {
+  $("#priceoo").val(para);
+}
+}
   $('#srch').parent('form').submit();
 })
+
+
+
+
+
+
 
 // window.addEventListener('popstate', function(e){
 //       history.replaceState(null,"", "http://localhost:3000/");
@@ -56,7 +127,7 @@ $(document).on('click', ".mod2, .cancelBucket",function(){
     type: "GET",
     url: "/modal/" + sneak,
     success: function(data){
-      console.log(data);
+
     }
   })
 })

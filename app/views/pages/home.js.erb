@@ -1,3 +1,6 @@
+
+$('#products').html('');
+
 $('#products').html("<%= j render 'sneakers' %>");
 $('.facets').html("<%= j render 'facets' %>");
 
@@ -9,37 +12,45 @@ if ("<%= @sneakers.count %>" < 5){
     fw = false;
 }
 
-var grid = document.querySelector('.grid');
 
-var msnry = new Masonry( grid, {
-  itemSelector: '.grid-item',
-  columnWidth: '.grid-item',
-  percentPosition: true,
-  gutter: 10,
-  fitWidth: fw
-});
+// msnry.destroy();
 
-imagesLoaded( grid ).on( 'progress', function() {
-  // layout Masonry after each image loads
-  msnry.layout();
-});
+// var grid = document.querySelector('.grid');
 
+// var msnry = new Masonry( grid, {
+//   itemSelector: '.grid-item',
+//   columnWidth: '.grid-item',
+//   percentPosition: true,
+//   gutter: 10,
+//   fitWidth: fw
+// });
 
+// // grid.masonry('reload');
 
-
-var infScroll = new InfiniteScroll( grid, {
-  // options
-  path: '.pagination .next_page',
-  append: '.grid-item',
-  outlayer: msnry,
-  history: false
+// imagesLoaded( grid ).on( 'progress', function() {
+//   // layout Masonry after each image loads
+//   msnry.layout();
+// });
 
 
-});
 
 
-$(window).resize(function () {
-      msnry.layout();
-      msnry.layout();
-});
+// var infScroll = new InfiniteScroll( grid, {
+//   // options
+//   path: '.pagination .next_page',
+//   append: '.grid-item',
+//   outlayer: msnry,
+//   history: false,
+//   status: '.page-load-status'
+
+// });
+
+
+// $(window).resize(function () {
+//       msnry.layout();
+//       msnry.layout();
+// });
+
+//remove spinner
+$('span.spinner').html("").removeClass("slider_active");
 

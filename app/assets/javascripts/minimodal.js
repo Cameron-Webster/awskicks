@@ -1,11 +1,6 @@
 $(document).ready(function(){
 
 
-
-
-
-
-
 // When the user clicks on the button, open the modal
 $(document).on('click', "#myBtn", function(){
     var miniMod = $(".miniMod")

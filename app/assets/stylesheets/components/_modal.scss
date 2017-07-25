@@ -2,6 +2,34 @@
   display: block;
 }
 
+#mod2 {
+  h4.sneaker_title {
+    font-size: 1.5em;
+    color: $kickDarkGrey;
+  }
+
+  a {
+    color: $kickPurple;
+  }
+
+  hr.details {
+    margin: 2px 0;
+  }
+
+  .style_code {
+      color: #b1b1b1;
+      font-size: 0.8em;
+  }
+
+  .brand_logo {
+    max-height: 60px;
+  }
+
+  h4.logo_container {
+    text-align: right;
+  }
+}
+
 .noDisplay {
   display: none;
 }
@@ -90,10 +118,10 @@
 
 .bucketListButtonGrey {
   padding: 10px;
-  border: 1px solid $kickGrey;
-  background-color: $kickGrey;
+  border: 2px solid $kickPurple;
+
   display: inline-block;
-  color: $kickDarkGrey;
+  color: $kickPurple;
   border-radius: 5px;
 
   &:hover {
@@ -361,8 +389,13 @@ hr .break {
   p {
 text-align: right;
 line-height: 1.2;
+
 }
 
+}
+
+.previous_price {
+  text-decoration: line-through;
 }
 
 .ul_size_list {
