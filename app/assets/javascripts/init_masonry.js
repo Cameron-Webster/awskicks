@@ -33,7 +33,10 @@ $(document).ready(function(){
     $(".grid").infiniteScroll('destroy');
     $(".grid").data('infinitescroll', null);
 
-    $( document ).ajaxComplete(function() {
+    $( document ).ajaxComplete(function() { //products reloaded
+
+
+      //get form values
 
       var gender = $('input#generoo').val();
       var brand = $('input#brandoo').val();
@@ -72,6 +75,11 @@ $(document).ready(function(){
     })
 
   })
+
+  $(window).resize(function () {
+      msnry.layout();
+      msnry.layout();
+});
 
 })
 
