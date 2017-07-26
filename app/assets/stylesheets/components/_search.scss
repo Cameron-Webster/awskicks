@@ -1,0 +1,80 @@
+.jumbotron {
+  background-image: image-url("sneaker_header.jpg");
+  background-size: cover;
+    padding-left: 20%!important;
+    padding-right: 20%!important;
+    padding-top: 7%!important;
+    padding-bottom: 7%!important;
+
+  .search_bar {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(77,77,77,0.9);
+    border-radius: 10px;
+
+}
+}
+
+#top form div.input-group {
+    margin: 0 auto;
+    width: 50vw;
+
+    input {
+      width: 90%;
+    height: 40px;
+    color: #4d4d4d;
+    border-radius: 5px 0 0 5px;
+    box-shadow: none;
+    border-style: none;
+    padding-left: 5px;
+
+    }
+
+
+
+    button {
+    height: 40px;
+    background-color: $kickPurple;
+    border-style: none;
+    border-radius: 0 5px 5px 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    i {
+      color: white;
+    }
+    }
+}
+
+.seperator {
+      background-color: black;
+    height: 30px;
+    width: 100%;
+    font-size: 0.9em;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 10%;
+
+    li {
+      margin-right: 10px;
+    }
+
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #d8d8d8;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #d8d8d8;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #d8d8d8;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #d8d8d8;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #d8d8d8;
+}

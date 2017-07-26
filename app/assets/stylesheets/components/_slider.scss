@@ -34,9 +34,13 @@ p.price_slider label {
 
 // For facets
 
-div.dropdown button#dLabel {
+div.dropdown {
+
+  button#dLabel {
   background-color: white;
   border: 1px solid $kickGreyLight;
+  font-size: 0.8em;
+  padding: 5px;
 
   .genderButton {
     border-radius: 3px 0 0 3px;
@@ -47,6 +51,36 @@ div.dropdown button#dLabel {
     border-right: none;
   }
 
+}
+  ul.dropdown-menu {
+     background-color: white;
+  border: 1px solid $kickGreyLight;
+  font-size: 0.8em;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  -webkit-box-shadow: 8px 6px 12px rgba(0, 0, 0, 0.2);
+  top: inherit;
+
+  li {
+    border-bottom: 1px solid $kickGreyLight;
+  }
+
+  i.fa-times-circle {
+    color: $kickPurple;
+  }
+
+
+  i {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 5px;
+  }
+  }
+}
+
+.dropdown.open button {
+  border-bottom: 1px solid white;
 }
 
 .dropdown, .facets, .kick_slider {

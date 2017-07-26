@@ -1,6 +1,13 @@
+.pagination {
+  display: none;
+}
 
 .container {
-  width: 90vw;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
   color: $kickDarkGrey;
 }
 
@@ -16,6 +23,9 @@
 .sneak_info {
 
     font-size: 0.8em;
+     background-color: white;
+    border-radius: 0 0 10px 10px;
+      padding-top: 10px;
 
     .brand_title {
         font-size: 0.95em;
@@ -32,12 +42,16 @@
   }
 }
 }
+
+
 .mod2 {
   &:hover {
    cursor: -moz-zoom-in;
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
     background-color: $kickGreyLight;
+
+
 
    .share {
       display: block;
@@ -61,12 +75,7 @@
   border-radius: 10px;
   border: 1px solid white;
 
-   .sneak_info {
-                background-color: white;
-                border-radius: 10px;
-                padding-top: 10px;
 
-              }
 
     .orange {
          padding: 10px;
@@ -88,10 +97,16 @@
             margin: 2px 0;
           }
 
+          hr.img_seperator {
+                width: 50%;
+                margin: 0 auto;
+                padding-bottom: 10px;
+          }
+
         img {
           width: 100%;
-          border-radius: 10px;
-          margin-bottom: 10px;
+          border-radius: 10px 10px 0 0;
+          margin-bottom: 0px;
         }
       }
 
@@ -136,15 +151,7 @@
   }
 }
 
-.search_bar {
-  text-align: center;
 
-  input {
-    width: 50%;
-    height: 40px;
-    color: #4d4d4d;
-  }
-}
 
 .modal-content {
   -webkit-box-shadow: none;

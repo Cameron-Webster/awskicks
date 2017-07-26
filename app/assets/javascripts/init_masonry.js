@@ -1,6 +1,22 @@
 
 $(document).ready(function(){
 
+
+
+         var max_pages = parseInt($(".pagination a:nth-last-child(2)").text());
+
+         $('.grid').on( 'request.infiniteScroll', function( event, response, path ) {
+            var pageNo = $('.grid').data('infiniteScroll').pageIndex;
+              if (!max_pages || pageNo >= max_pages){
+                   $(".grid").infiniteScroll('destroy');
+                   $(".grid").data('infinitescroll', null);
+                   $(".page-load-status").css("display", "none");
+                   $("#fin").css("display", "block");
+              }
+         });
+
+
+
   var $grid = $('.grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-item',
@@ -21,7 +37,9 @@ $(document).ready(function(){
     outlayer: msnry,
     history: false,
     status: ".page-load-status",
-    debug: true
+    checkLastPage: ".next_page",
+    debug: true,
+    hideNav: '.pagination'
 
   });
 
@@ -29,11 +47,29 @@ $(document).ready(function(){
 
      // path: '/?brand=&gender=female&lowest_price=&page={{#}}&search=&utf8=%E2%9C%95'
 
+
+
+
     $(".grid").masonry('destroy');
     $(".grid").infiniteScroll('destroy');
     $(".grid").data('infinitescroll', null);
 
     $( document ).ajaxComplete(function() { //products reloaded
+
+      $(".page-load-status").css("display", "block");
+      $("#fin").css("display", "none");
+
+       var max_pages = parseInt($(".pagination a:nth-last-child(2)").text());
+
+         $('.grid').on( 'request.infiniteScroll', function( event, response, path ) {
+            var pageNo = $('.grid').data('infiniteScroll').pageIndex;
+              if (!max_pages || pageNo >= max_pages){
+                   $(".grid").infiniteScroll('destroy');
+                   $(".grid").data('infinitescroll', null);
+                   $(".page-load-status").css("display", "none");
+                   $("#fin").css("display", "block");
+              }
+         });
 
 
       //get form values
@@ -68,7 +104,9 @@ $(document).ready(function(){
         outlayer: msnry,
         history: false,
         status: ".page-load-status",
-        debug: true
+        checkLastPage: ".next_page",
+        debug: true,
+        hideNav: '.pagination'
 
       });
 
@@ -83,88 +121,6 @@ $(document).ready(function(){
 
 })
 
-
-
-// var grid = document.querySelector('.grid');
-
-// var msnry = new Masonry( grid, {
-//   itemSelector: '.grid-item',
-//   columnWidth: '.grid-item',
-//   percentPosition: true,
-//   gutter: 10,
-//   fitWidth: true
-// });
-
-// imagesLoaded( grid ).on( 'progress', function() {
-//   // layout Masonry after each image loads
-//   msnry.layout();
-// });
-
-
-
-// var infScroll = new InfiniteScroll( grid, {
-//   // options
-//   path: '.pagination .next_page',
-//   append: '.grid-item',
-//   outlayer: msnry,
-//   history: false,
-//   status: ".page-load-status",
-//   debug: true
-
-// });
-
-
-// $(window).resize(function () {
-//       msnry.layout();
-//       msnry.layout();
-// });
-
-
-// // after search results returned
-
-// $( document ).ajaxComplete(function() {
-
-
-// // infScroll.destroy();
-// // infScroll.data('infinitescroll', null);
-
-// console.log("previous infinite scroll " +  infScroll);
-
-
-// var infScroll = InfiniteScroll.data( ".grid" );
-
-// console.log("this infinite scroll" + infScroll);
-
-// var grad = document.querySelector('.grid');
-
-// var msnry = new Masonry( grad, {
-//   itemSelector: '.grid-item',
-//   columnWidth: '.grid-item',
-//   percentPosition: true,
-//   gutter: 10,
-//   fitWidth: true
-// });
-
-// // grid.masonry('reload');
-
-// imagesLoaded( grad ).on( 'progress', function() {
-//   // layout Masonry after each image loads
-//   msnry.layout();
-// });
-
-// var infScroll2 = new InfiniteScroll( grad, {
-//   // options
-//   path: '.pagination .next_page',
-//   append: '.grid-item',
-//   outlayer: msnry,
-//   history: false,
-//   status: ".page-load-status",
-//   debug: true
-
-// });
-
-
-// });
 
 
 

@@ -1,15 +1,21 @@
 $(document).ready(function() {
+
+
+
   count = 0;
 
 
 $('#srch').keyup(function(e){
+
   count += 1;
   if (count > 2) {
   var v = $('#srch').val();
 
 
 
-  $('#srch').parent('form').submit();
+  $('#stubby').parent('form').submit();
+
+
 
   var currentURL = location.href;
   var search = /search/;
@@ -30,7 +36,7 @@ $(document).on("click", "li.genderbucket", function(){
   var para = $(this).data('val');
 
   $("#generoo").val(para);
-  $('#srch').parent('form').submit();
+  $('#stubby').parent('form').submit();
 })
 
 //--------------Brand aggs
@@ -67,45 +73,45 @@ $(document).on("click", "li.brandbucket", function(){
   $("#brandoo").val(para);
 }
 }
-  $('#srch').parent('form').submit();
+  $('#stubby').parent('form').submit();
 });
 
 //--------------------------Price aggs
 
-$(document).on("click", "li.pricebucket", function(){
+// $(document).on("click", "li.pricebucket", function(){
 
-  var that = $(this);
+//   var that = $(this);
 
-  var para = that.data('val');
+//   var para = that.data('val');
 
-  var currentdata = $("#priceoo").val();
+//   var currentdata = $("#priceoo").val();
 
-  if (that.hasClass("active")) {
+//   if (that.hasClass("active")) {
 
-      var textReplace = new RegExp("," + para + "|" + para + "|" + para + ",");
+//       var textReplace = new RegExp("," + para + "|" + para + "|" + para + ",");
 
-     currentdata = currentdata.replace(textReplace,"");
-    $("#priceoo").val(currentdata);
+//      currentdata = currentdata.replace(textReplace,"");
+//     $("#priceoo").val(currentdata);
 
-    that.removeClass("active");
+//     that.removeClass("active");
 
-  } else {
-
-
-    that.addClass("active");
+//   } else {
 
 
+//     that.addClass("active");
 
-  if (para != "" && currentdata != "") {
-    currentdata = currentdata + "," + para
 
-    $("#priceoo").val(currentdata)
-  } else {
-  $("#priceoo").val(para);
-}
-}
-  $('#srch').parent('form').submit();
-})
+
+//   if (para != "" && currentdata != "") {
+//     currentdata = currentdata + "," + para
+
+//     $("#priceoo").val(currentdata)
+//   } else {
+//   $("#priceoo").val(para);
+// }
+// }
+//   $('#srch').parent('form').submit();
+// })
 
 
 
