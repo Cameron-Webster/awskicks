@@ -12,8 +12,11 @@ Rails.application.routes.draw do
 
   resources :buckets, except: [:new]
   get "buckets/new/:sneaker_id", to: "buckets#new", as: 'new_bucket'
+  get "bucketsempty", to: "buckets#newempty", as: "new_empty_bucket"
+  # post "buckets/createempty", to: "buckets#createempty", as: "create_empty_bucket"
 
-   resources :pins
+   resources :pins, except: [:destroy]
+   delete "pins/:id/:bucket_id", to: "pins#destroy"
 
     post  "/pins/:id/stockwatch", to: 'pins#create_stock_watch', as: "stockwatch"
 
@@ -24,6 +27,7 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
   end
 
   resources :logos, only: [:new, :create, :index]
+  resources :brands, only: [:new, :create, :index]
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -9,55 +9,28 @@
         <div class="">
           <!-- work out a better way to do this -->
           <% if @current_pin = pin_exist?(@sneaker) %>
-
           <div class="bucketListButtonGrey" id="myBtn">
             <i class='fa fa-star-o' aria-hidden='true'></i> Saved </div>
             <% else %>
-
             <div class="bucketListButton bucketButton-<%= @sneaker.id %>" id="myBtn">
               <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save
             </div>
             <% end %>
-            <% if @current_pin && @current_pin.price_watch.nil? %>
-
-            <div class="price_watch_button">
-              <%= link_to(edit_pin_path(@current_pin), remote: true) do %>
-              <i class="fa fa-bell-o" aria-hidden="true"></i> Add Price Watch no pins
-              <% end %>
-            </div>
-            <% elsif  @current_pin && @current_pin.price_watch %>
-            <%= link_to(edit_pin_path(@current_pin), remote: true) do %>
-            <div class="priceWatchSet">
-              <i class="fa fa-bell-o" aria-hidden="true"></i> Price watch set
-            </div>
-            <% end %>
-            <% end %>
-
           </div>
-
-
         </div>
         <!-- END OF HEADER -->
         <!-- BODY OF MODAL -->
         <div class="modal-body">
-
-
-
          <div class="row">
-
            <!-- left column -->
-
            <div class="col-md-6">
             <div class="fullCard">
               <!-- render the save button and image-->
               <div class="card">
                 <div class="row">
                   <div class="col-md-12">
-
-
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-12">
                     <div class="modal-main-image">
@@ -86,14 +59,16 @@
                 </div>
               </div>
               <!-- card 2 -->
-              <div class="miniMod">
 
+              <div class="miniMod">
                 <div class="miniMod-content">
+
                   <div class="row">
                     <div class="col-md-12">
                      <span class="close">&times;</span>
                    </div>
                  </div>
+                  <% if current_user %>
                  <div class="row">
                   <div class="col-md-6">
                     <ul class="slides">
@@ -106,7 +81,7 @@
                       <li><h5><%= @sneaker.name %></h5></li>
                     </ul>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 no_pad_right border-left no_pad_left">
                     <div class="card2">
 
                       <div class="bucketListForm">
@@ -119,120 +94,183 @@
                         </h5>
                         <% end %>
 
+                        <!--  bucket list as div -->
+                        <% if @buckets_cut %>
+                        <% @buckets_cut.each_with_index do |bk_8, i| %>
+                        <div class="pretty_bucket_list_outer <%= 'noDisplay' if i > 0 %>" data-page="<%= i %>">
+                          <p class="miniMod-header border-bottom">Choose bucket</p>
+                          <ul class="pretty_bucket_list">
+                            <% bk_8.each do |bucket| %>
+                            <li data-bucket="<%= bucket.id %>">
+                              <ul class="list-inline">
+                                <li class="bucket_name"><%= bucket.name %> </li>
+                                <li class="plus_logo"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></li>
+                              </ul>
+                            </li>
+                            <% end %>
+                          </ul>
+                          <% if i < @buckets_cut.length - 1 %>
+                          <div class="view_more" data-page="<%= i %>"><p>View More&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></p></div>
+                          <% end %>
+                          <% if i  > 0 %>
+                          <div class="previous" data-page="<%= i %>"><p><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Previous </p></div>
+                          <% end %>
+                        </div>
+                        <% end %>
+                        <% else %>
+                        <div class="pretty_bucket_list_outer <%= 'noDisplay' if i > 0 %>" data-page="<%= i %>">
+                          <p class="miniMod-header border-bottom">Sign in to Save to Wardrobe</p>
+                        </div>
+                        <% end %>
 
+
+                        <!-- price watch list as div -->
+
+
+
+                        <div class="price_watch_container noDisplay">
+                          <p class="miniMod-header border-bottom">Add Price Watch</p>
+                          <ul class="list-inline">
+                            <li data-price="1">Any Price Drop</li>
+                            <li data-price="10">10% Off</li>
+                            <li data-price=20>20% Off</li>
+                          </ul>
+                        </div>
                         <div class="noButton">
                           <% if @buckets.any? %>
-
                           <%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
-                          <%= f.input :bucket, collection: @buckets, label: "Select Bucket", input_html: {size: @buckets.count > 19 ? 19 : @buckets.count} %>
-                          <%= f.input :price_watch, label: "Add Price watch?", priority: ["Any Price Drop", 1], collection: [["Any Price Drop", 1], ["10% Or More Off", 10], ["20% Or More Off", 20]], include_blank: false, input_html: {class: "overflow-rigid", size: 3}, wrapper_html: { class: 'noDisplay' } %>
+                          <%= f.input :bucket, label: false, input_html: {class: "noDisplay"} %>
+                          <%= f.input :price_watch, label: false, input_html: {class: "noDisplay"} %>
                           <%= f.input :sneaker, as: :hidden, input_html: {value: @sneaker.id} %>
                           <%= f.submit "do it!", class: "pinSubmit" %>
                           <% end %>
                           <% end %>
-                          <div class="noPriceWatch noDisplay">No thanks!</div>
+                          <div class="noPriceWatch noDisplay" data-price="nil">Save without price watch</div>
                         </div>
-
                       </div>
-
-
                       <div class="newBucket">
-
                         <%= link_to " + Create New Bucket", new_bucket_path(@sneaker), remote: true, class: "displayNewBucket" %>
-
                       </div>
-
                     </div>
                     <!-- card 3 -->
                     <div class="card3">
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
-        </div>
-
-
-
-        <!-- right column -->
-
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-md-9">
-
-              <h4><%= @sneaker.name %></h4>
-              <div class="row">
-                <div class="col-md-6">Style <%= @sneaker.style_code %></div>
-                <div class="col-md-6">Lowest Price: £<%= @sneaker.lowest_price %></div>
-              </div>
-            </div>
-            <div class="col-md-3"><h4>LOGO</h4></div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <hr class="break">
-              <h2>Stocked in the following shops:</h2>
-              <hr class="break">
-              <div class="">
-                <% @sneaker.vendors.each do |vend| %>
-                <div class="row vendor_card">
-                  <div class="col-md-12">
-                    <div class="row top myrow">
-                      <div class="col-md-3 no-right-padding">
-                        <div class="row upper_vendrow">
-                          <div class="col-md-12"><%= cl_image_tag(vend.logo.photo, class: "vendor_logo") %></div>
-                        </div>
-
-                      </div>
-                      <div class="col-md-5">
-                        <div class="row">
-                         <div class="col-md-12 previous_price no-right-padding"><p>previous price</p></div>
-                       </div>
-                       <div class="row">
-                         <div class="col-md-12 price no-right-padding"><p>£<%= vend.current_price %></p></div>
-                       </div>
-                       <div class="row">
-                         <div class="col-md-12 price_spacer"><p>&nbsp;</p></div>
-                       </div>
-                     </div>
-                     <div class="col-md-4">
-                      <div class="row">
-                        <div class="col-md-12"><div class="shop_link">Go To Shop</div></div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="shop_name"> <%= vend.logo.name %></div></div></div>
-                        </div>
-                      </div>
-                      <div class="row bottom">
-                        <div class="col-md-3 sizes_title">
-                          <p> Available sizes:</p>
-                        </div>
-                        <div class="col-md-9 no-horizontal-padding">
-                         <ul class="list-inline ul_size_list">
-                          <% vend.uk_available.each do |ob| %>
-                          <li class="size_list"><%= ob %></li>
-                          <% end %>
-                        </ul>
-                      </div>
                     </div>
                   </div>
-
                 </div>
-
+                <% else %>
+                <p class="center-align"> Please Login or Sign Up to save to wardrobe </p>
+                <ul class="list-inline no_entry">
+                <li class="center-align"><%= link_to "Log In", new_user_session_path, class: "shop_link padding-sides-30" %></li>
+                 <li class="center-align"><%= link_to "Sign Up", new_user_registration_path, class: "shop_link padding-sides-30" %></li>
+                 </ul>
                 <% end %>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- right column -->
 
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-8">
+              <div>
+                <h4 class="sneaker_title"><%= @sneaker.name %></h4>
+              </div>
+              <div class="style_code">Style(sku): <%= @sneaker.style_code %></div>
+              <hr class="details">
+              <div class="shrinkwrap price_badge">From £<%= @sneaker.lowest_price %></div>
+            </div>
+            <div class="col-md-4"><h4 class="logo_container"><%= cl_image_tag(@sneaker.brand.logo, class: "brand_logo") %></h4></div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <hr class="break">
+              <ul class="list-inline flex-between middle_info">
+                <li class="store_count"><%= (sVendors = @sneaker.vendors).count %> Stores</li>
+                <li>
+                 <% if @current_pin && @current_pin.price_watch.nil? %>
+                 <div class="price_watch_button price_watch_message-<%= @sneaker.id %>">
+                  <%= link_to(edit_pin_path(@current_pin), remote: true) do %>
+                  <i class="fa fa-bell-o" aria-hidden="true"></i> <span id="save_message">Add</span> Price Watch
+                  <% end %>
+                </div>
+                <% elsif  @current_pin && @current_pin.price_watch %>
+                <%= link_to(edit_pin_path(@current_pin), remote: true) do %>
+                <div class="priceWatchSet price_watch_message-<%= @sneaker.id %>">
+                  <i class="fa fa-bell-o" aria-hidden="true"></i> Price watch set
+                </div>
+                <% end %>
+                <% else %>
+                <div class="priceWatchSet price_watch_message-<%= @sneaker.id %>">
+                  <i class="fa fa-bell-o" aria-hidden="true"></i><span id="save_message">Save</span> <span style="color: #4d4d4d;">to add price watch</span>
+                </div>
+                <% end %>
+              </li>
+            </ul>
+            <hr class="break">
+            <div class="">
+              <% sVendors.each do |vend| %>
+              <div class="row vendor_card vendrow">
+               <div class="col-md-3 no-right-padding">
+                      <div class="row upper_vendrow">
+                        <div class="col-md-12 sty"><%= cl_image_tag(vend.logo.photo, class: "vendor_logo") %></div>
+                      </div>
+                    </div>
+
+                <div class="col-md-9">
+                  <div class="row top myrow">
+
+                    <div class="col-md-7">
+                      <div class="row">
+                        <div class="col-md-9">
+                          <span class="sizes_title">available sizes:</span>
+
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                           <div class="col-md-12 previous_price no-right-padding style_code">
+                             <% if (@prev = vend.previous_price || 0) > vend.current_price %>
+                             <p>£<%= @prev %></p>
+                             <% end %>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12 no-right-padding price"><p>£<%= vend.current_price %></p></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12 price_spacer"><p>&nbsp;</p></div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="col-md-5">
+                    <div class="row">
+                      <div class="col-md-12"><div class="shop_link">Go To Shop</div></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="shop_name"> <%= vend.logo.name %></div></div></div>
+                      </div>
+                    </div>
+                    <div class="row bottom myrow">
+
+                      <div class="col-md-12">
+                          <ul class="list-inline ul_size_list">
+
+                            <% vend.uk_available.each do |ob| %>
+                            <li class="size_list"><%= ob %></li>
+                            <% end %>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

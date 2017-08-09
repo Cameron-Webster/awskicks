@@ -1,0 +1,91 @@
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12" style="padding: 0;">
+<div class="seperator">
+  <ul class="list-inline">
+    <li>Blog</li>
+        <li><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Facebook</li>
+        <li><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;Twitter</li>
+        <li><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;Instagram</li>
+  </ul>
+
+</div>
+</div></div>
+
+
+  <div class="row margin-top-3p margin-bottom-3p vendrow">
+  <div class="col-md-1">
+
+  </div>
+    <div class="col-md-4">
+      <h1 class="center-align"><%= current_user.first_name %>&nbsp;<%= current_user.last_name %></h1>
+
+    </div>
+
+    <div class="col-md-4">
+     <ul class="list-inline margin-left-10 margin-top-20 profile_info">
+       <li><b><%= current_user.pins.count %></b> Saved Sneakers</li>
+       <li><b><%= current_user.buckets.count %></b> Buckets</li>
+     </ul>
+    </div>
+    <div class="col-md-2">
+      <div class="profile" style="background-image: url(<%= current_user.profile_pic %>)">
+
+      </div>
+    </div>
+  </div>
+
+<div id="facet_menu"></div>
+  <div class="row padding-10">
+<div class="col-md-6">
+<p class="buckets_header">Your Buckets</p>
+</div><div class="col-md-6">
+ <div class="newEmptyBucket">
+                        <%= link_to " + Create New Bucket", new_empty_bucket_path, remote: true, class: "displayNewBucket", id: "#myBtn" %>
+                      </div>
+</div></div>
+ <div class="miniMod">
+  <div class="miniMod-content">
+   <div class="row">
+                    <div class="col-md-12 right-align">
+                     <span class="close-mini">&times;</span>
+                   </div>
+                 </div>
+<div class="cardBucket">
+</div></div>
+
+</div>
+  <div class="row">
+<div class="col-md-12">
+<div id="user_bucket" class="">
+
+
+
+
+
+<%= render 'buckets' %>
+
+</div>
+
+<div id="pagin"></div>
+</div>
+</div>
+<div class="end">
+<div class="page-load-status">
+  <div class="loader-ellips infinite-scroll-request">
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+  </div>
+  <div class="infinite-scroll-last">
+
+    <a href="#top">Back to top</a>
+
+  </div>
+
+</div>
+<div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
+</div>
+ </div>

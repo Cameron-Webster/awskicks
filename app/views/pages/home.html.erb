@@ -1,24 +1,71 @@
 
 <div class="container-fluid">
+<div class="row">
+  <div class="col-md-12" style="padding: 0;">
+<div class="seperator">
+  <ul class="list-inline">
+    <li>Blog</li>
+        <li><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Facebook</li>
+        <li><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;Twitter</li>
+        <li><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;Instagram</li>
+  </ul>
+
+</div>
+</div></div>
 
 <div class="row">
   <div class="col-md-12 jumbotron">
-    <div class="search_bar">
-      <%= form_tag root_path, method: 'get', remote: true do %>
+    <div class="search_bar" id="top">
+      <%= form_tag root_path, method: 'get', id: "formoq", remote: true do %>
 
-      <%= text_field_tag :gender, params[:gender], id: 'generoo' %>
-      <%= text_field_tag :brand, params[:brand], id: 'brandoo' %>
-      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
-      <%= submit_tag "search", :name => nil %>
+      <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
+      <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
+      <%= hidden_field_tag :lowest_price, params[:lowest_price], id: 'priceoo' %>
+      <%= hidden_field_tag :order, params[:order], id: 'sortoo' %>
+        <div class="input-group" id="stubby">
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search" %>
+      <button id="searchSub"><i class="fa fa-search"></i></button>
+      </div>
+      <%= submit_tag "search", :name => nil, style: 'display: none;' %>
+
+
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-2 col-md-offset-5 facets">
+
+<div class="row facet_row">
+  <div class="col-md-5 col-md-offset-4 no_pad_right">
+  <div class="facets" id="facet_menu">
    <%= render 'facets' %>
-  </div>
+   </div>
+        <div class="kick_slider">
+
+<p class="price_slider">
+
+  <!-- <label for="amount">Price range:</label> -->
+  <input type="text" id="amount" readonly style="max-width: 70px;">
+
+</p>
+
+
+<div id="slider-range"></div>
+</div>
+   <div class="slide_loader" style="width: 30px;">
+
+   </div>
+
+   </div>
+
+
+  <div>
+  <div class="row">
+  <div class="col-md-3 col-md-offset-5">
+
+</div>
+</div>
+</div>
   </div>
 
 
@@ -37,10 +84,23 @@
 <div id="pagin"></div>
 </div>
 </div>
+<div class="end">
+<div class="page-load-status">
+  <div class="loader-ellips infinite-scroll-request">
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+  </div>
+  <div class="infinite-scroll-last">
 
+    <a href="#top">Back to top</a>
+
+  </div>
 
 </div>
-
+<div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
+</div>
 
 
 

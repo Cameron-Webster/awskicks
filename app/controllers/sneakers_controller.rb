@@ -40,9 +40,11 @@ class SneakersController < ApplicationController
   def create
     @sneaker = Sneaker.new(sneaker_params)
 
+    @sneaker.sneak_brand = Brand.find(sneaker_params[:brand_id]).name.to_s
+
     respond_to do |format|
       if @sneaker.save
-         Sneaker.reindex
+
         format.html { redirect_to @sneaker, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @sneaker }
       else
@@ -57,7 +59,7 @@ class SneakersController < ApplicationController
   def update
     respond_to do |format|
       if @sneaker.update(sneaker_params)
-         Sneaker.reindex
+
         format.html { redirect_to @sneaker, notice: 'Sneaker was successfully updated.' }
         format.json { render :show, status: :ok, location: @sneaker }
       else
@@ -86,7 +88,7 @@ class SneakersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sneaker_params
-      params.require(:sneaker).permit(:name, :style_code, :brand, :color, :gender, :photo, :photo_cache, :alt_photo, :alt_photo_cache)
+      params.require(:sneaker).permit(:name, :style_code, :brand_id, :color, :gender, :photo, :photo_cache, :alt_photo, :alt_photo_cache)
     end
 
     # def admin?

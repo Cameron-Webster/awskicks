@@ -36,7 +36,9 @@ class Vendor < ApplicationRecord
         end
       end
 
-
+      if self.sneaker.lowest_price.nil? || self.current_price < self.sneaker.lowest_price
+        self.sneaker.lowest_price = current_price
+      end
   end
 
 end

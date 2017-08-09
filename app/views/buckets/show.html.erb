@@ -1,11 +1,132 @@
-<%= @bucket.name %>
 
-<% if @bucket.pins.any? %>
-<% @bucket.pins.each do |pin| %>
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12" style="padding: 0;">
+<div class="seperator">
+  <ul class="list-inline">
+    <li>Blog</li>
+        <li><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Facebook</li>
+        <li><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;Twitter</li>
+        <li><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;Instagram</li>
+  </ul>
 
-  <%= pin.sneaker.name %>
-  <%= pin.sneaker.style_code %>
-  <%= pin.sneaker.rrp %>
-  <%= cl_image_tag(pin.sneaker.photo, height: 100, width: 100, crop: :fill) %>
-  <% end %>
-<% end %>
+</div>
+</div></div>
+
+<div class="row">
+  <div class="col-md-12 jumbotronLight">
+    <div class="search_bar" id="top">
+      <%= form_tag bucket_path(@bucket), method: 'get', id: "formoq", remote: true do %>
+
+      <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
+      <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
+      <%= hidden_field_tag :lowest_price, params[:lowest_price], id: 'priceoo' %>
+      <%= hidden_field_tag :order, params[:order], id: 'sortoo' %>
+        <div class="input-group" id="stubby">
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search" %>
+      <button id="searchSub"><i class="fa fa-search"></i></button>
+      </div>
+      <%= submit_tag "search", :name => nil, style: 'display: none;' %>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row facet_row">
+  <div class="col-md-4 col-md-offset-4 no_pad_right">
+  <div class="facets" id="facet_menu">
+   <%= render 'pages/facets' %>
+   </div>
+        <div class="kick_slider">
+<p class="price_slider">
+
+  <label for="amount">Price range:</label>
+  <input type="text" id="amount" readonly style="max-width: 70px;">
+
+</p>
+
+
+<div id="slider-range"></div>
+</div>
+
+
+   </div>
+
+  <div>
+  <div class="row">
+  <div class="col-md-3 col-md-offset-5">
+
+</div>
+</div>
+</div>
+  </div>
+
+
+  <div class="row">
+<div class="col-md-12">
+<div id="products" class="">
+
+
+
+
+
+<%= render 'sneakers' %>
+
+</div>
+
+<div id="pagin"></div>
+</div>
+</div>
+<div class="end">
+<div class="page-load-status">
+  <div class="loader-ellips infinite-scroll-request">
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+  </div>
+  <div class="infinite-scroll-last">
+
+    <a href="#top">Back to top</a>
+
+  </div>
+
+</div>
+<div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
+</div>
+
+<!-- Small modal -->
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content miniMod-content noBorder">
+
+     <div class="row">
+                    <div class="col-md-12 right-align">
+                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   </div>
+                 </div>
+                 <div class="row">
+                 <div class="col-md-12">
+    <p class="margin-bottom-3p">
+      Confirm delete Sneaker from Bucket?
+      </p>
+      </div>
+      <div class="margin-left-15">
+      <%= link_to pin_path(000), method: :delete, class: "confirm_delete" do %>
+      <button class="purple_button">Delete</button>
+      <% end %>
+      <button type="button" class="purple_button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+

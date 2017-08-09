@@ -7,8 +7,10 @@
   $(".noPriceWatch").addClass("noDisplay");
   $(".bucketListForm").prepend("<h5 class='bucket_added'>Added to <%= j @pin.bucket.name %></h5>");
 
-$(".bucketButton-<%= @pin.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved ").addClass("bucketListButtonGrey").removeClass("working");
-<% if @pin.price_watch? %>
-$('.addPriceWatch-<%= @pin.id %>').html('<p>Price watch Added!</p>');
-$(".addPriceWatchNoPin-<%= @pin.sneaker.id %>").html('<p>Price watch Added!</p>');
+$(".bucketButton-<%= @pin.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved ").addClass("bucketListButtonGrey").removeClass("bucketListButton");
+<% if @pin.price_watch != nil %>
+$(".price_watch_message-<%= @pin.sneaker.id %>").html('<i class="fa fa-bell-o" aria-hidden="true"></i> Price Watch Added');
+<% else %>
+$(".price_watch_message-<%= @pin.sneaker.id %>").html("<i class='fa fa-bell-o' aria-hidden='true'></i> <span class='add_price_watch_copy'>Add</span> <span style='color: #4d4d4d;'>Price Watch</span>");
 <% end %>
+

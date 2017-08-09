@@ -1,3 +1,5 @@
+<div class="row form_body">
+<div class="col-md-6 sign-up left-side">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -5,6 +7,9 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :footsize, collection: [1,2,3,4,5,6,7,8,9,10,11,12,13,14], label: "Shoe Size (UK)" %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>
@@ -14,4 +19,13 @@
   </div>
 <% end %>
 
+<p class="margin-top-20">Already have an account?</p>
+
 <%= render "devise/shared/links" %>
+</div>
+<div class="col-md-6 sign-up-right-panel">
+
+
+
+</div>
+</div>

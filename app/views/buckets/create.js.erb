@@ -2,7 +2,11 @@ $(".card3").velocity({ translateX: ['120%', '0%'] });
 $(".card2").removeClass("noDisplay");
 $(".bucketListForm").prepend("<h5 class='bucket_added'>Added to <%= j @bucket.name %></h5>");
 $(".miniMod").css("display", "none");
-$(".bucketButton-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved %>").addClass("bucketListButtonGrey").removeClass("working");
-
+$(".bucketButton-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved").addClass("bucketListButtonGrey").removeClass("bucketListButton");
+<% if @bucket.pins.first.price_watch? %>
+$(".price_watch_message-<%= @bucket.pins.first.sneaker.id %>").html('<i class="fa fa-bell-o" aria-hidden="true"></i> Price Watch Added');
+<% else %>
+$(".price_watch_message-<%= @bucket.pins.first.sneaker.id %>").html("<i class='fa fa-bell-o' aria-hidden='true'></i> <span class='add_price_watch_copy'>Add</span> <span style='color: #4d4d4d;'>Price Watch</span>");
+<% end %>
 // $(".card").velocity({ translateX: ['0%', '-100%'] });
 // $(".bucketListButtonGrey").html("<i class='fa fa-star-o' aria-hidden='true'></i> Saved");

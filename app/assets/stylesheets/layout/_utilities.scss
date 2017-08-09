@@ -23,3 +23,119 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+
+a {
+  color: $kickPurple;
+}
+
+
+.shrinkwrap {
+  display: inline-block;
+}
+
+.flex-between {
+     display: flex;
+    justify-content: space-between;
+}
+
+
+.border-left {
+  border-left: 1px solid $kickGreyLight;
+}
+
+.border-right {
+  border-right: 1px solid $kickGreyLight;
+}
+
+.border-bottom {
+   border-bottom: 1px solid $kickGreyLight;
+}
+
+.no_pad_left {
+  padding-left: 0;
+}
+
+// Positoning
+
+.pos-rel {
+  position: relative;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.padding-sides-30 {
+      padding-left: 30%!important;
+    padding-right: 30%!important;
+}
+
+.padding-10 {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.float-right {
+  float: right;
+}
+
+.bold_16 {
+      font-weight: 800;
+    font-size: 16px;
+}
+
+//margins
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-left-30p {
+  margin-left: 30%;
+}
+
+.no_margin_bottom {
+  margin-bottom: 0;
+}
+
+.margin-top-3p {
+  margin-top: 3%;
+}
+.margin-bottom-3p {
+  margin-bottom: 3%;
+}
+
+.margin-left-10 {
+margin-left: 10px;
+}
+
+.padding-right-20 {
+  padding-right: 20px;
+}
+
+.noBorder {
+  border: none!important;
+}
+
+.margin-left-15 {
+  margin-left: 15px;
+}
+
+.padding-left-3p {
+  padding-left: 3%;
+}
+
+.padding-left-5 {
+  padding-left: 5px;
+}
+
+.line-height-35 {
+  line-height: 35px;
+}
+.purple {
+  color: $kickPurple;
+}

@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :set_pin, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  # before_action :correct_user, only: [:edit, :update, :destroy]
 
 
   def index
@@ -70,9 +70,13 @@ class PinsController < ApplicationController
 
 
   def destroy
+
+
+
+    @pin = current_user.pins.find_by bucket_id: params[:bucket_id], sneaker_id: params[:id]
     @pin.destroy
     respond_to do |format|
-      format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
+      format.html { redirect_to bucket_path(params[:bucket_id]), notice: 'Pin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -88,8 +92,8 @@ class PinsController < ApplicationController
       params.require(:pin).permit(:bucket, :sneaker, :stock_watch, :price_watch)
     end
 
-    def correct_user
-      @pin = current_user.pins.find_by(id: params[:id])
-      redirect_to pins_path, notice: "Not authorized to edit pin" if @pin.nil?
-    end
+    # def correct_user
+    #   @pin = current_user.pins.find_by(id: params[:id])
+    #   redirect_to pins_path, notice: "Not authorized to edit pin" if @pin.nil?
+    # end
 end

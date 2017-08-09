@@ -1,0 +1,99 @@
+<div class="miniMod">
+  <div class="miniMod-content">
+    <div class="row">
+      <div class="col-md-12">
+       <span class="close">&times;</span>
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+      <ul class="slides">
+        <li class="active">
+          <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+        </li>
+        <li>
+          <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+        </li>
+        <li><h5><%= @sneaker.name %></h5></li>
+      </ul>
+    </div>
+    <div class="col-md-6 no_pad_right border-left no_pad_left">
+      <div class="card2">
+
+        <div class="bucketListForm">
+          <% if @existing_buckets %>
+          <h5 class="bucket_added">Already Added to:
+            <%= @existing_buckets[0].name %>
+            <% if @existing_buckets.length > 1 %>
+            <span class='active_buckets'> and others...</span>
+            <% end %>
+          </h5>
+          <% end %>
+
+          <!--  bucket list as div -->
+          <% if @buckets_cut %>
+          <% @buckets_cut.each_with_index do |bk_8, i| %>
+          <div class="pretty_bucket_list_outer <%= 'noDisplay' if i > 0 %>" data-page="<%= i %>">
+            <p class="miniMod-header border-bottom">Choose bucket</p>
+            <ul class="pretty_bucket_list">
+              <% bk_8.each do |bucket| %>
+              <li data-bucket="<%= bucket.id %>">
+                <ul class="list-inline">
+                  <li class="bucket_name"><%= bucket.name %> </li>
+                  <li class="plus_logo"><i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i></li>
+                </ul>
+              </li>
+              <% end %>
+            </ul>
+            <% if i < @buckets_cut.length - 1 %>
+            <div class="view_more" data-page="<%= i %>"><p>View More&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></p></div>
+            <% end %>
+            <% if i  > 0 %>
+            <div class="previous" data-page="<%= i %>"><p><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;Previous </p></div>
+            <% end %>
+          </div>
+          <% end %>
+          <% else %>
+          <div class="pretty_bucket_list_outer <%= 'noDisplay' if i > 0 %>" data-page="<%= i %>">
+            <p class="miniMod-header border-bottom">Sign in to Save to Wardrobe</p>
+          </div>
+          <% end %>
+
+
+          <!-- price watch list as div -->
+
+
+
+          <div class="price_watch_container noDisplay">
+            <p class="miniMod-header border-bottom">Add Price Watch</p>
+            <ul class="list-inline">
+              <li data-price="1">Any Price Drop</li>
+              <li data-price="10">10% Off</li>
+              <li data-price=20>20% Off</li>
+            </ul>
+          </div>
+          <div class="noButton">
+            <% if @buckets.any? %>
+            <%= simple_form_for(@pin = Pin.new, remote: true) do |f| %>
+            <%= f.input :bucket, label: false, input_html: {class: "noDisplay"} %>
+            <%= f.input :price_watch, label: false, input_html: {class: "noDisplay"} %>
+            <%= f.input :sneaker, as: :hidden, input_html: {value: @sneaker.id} %>
+            <%= f.submit "do it!", class: "pinSubmit" %>
+            <% end %>
+            <% end %>
+            <div class="noPriceWatch noDisplay" data-price="nil">Save without price watch</div>
+          </div>
+        </div>
+        <div class="newBucket">
+          <%= link_to " + Create New Bucket", new_bucket_path(@sneaker), remote: true, class: "displayNewBucket" %>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="card3">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

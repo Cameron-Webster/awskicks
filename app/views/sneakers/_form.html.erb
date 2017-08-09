@@ -1,7 +1,8 @@
+
 <%= simple_form_for(@sneaker) do |f| %>
   <%= f.input :name %>
   <%= f.input :style_code %>
-  <%= f.input :brand %>
+  <%= f.input :brand_id, collection: Brand.all %>
   <%= f.input :color %>
   <%= f.input :gender, collection: ["male", "female"] %>
   <%= f.input :photo %>

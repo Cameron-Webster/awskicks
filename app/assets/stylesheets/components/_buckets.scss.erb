@@ -1,0 +1,264 @@
+.grid-item_bucket {
+  // float: left;
+
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #4d4d4d;
+  max-height: 220px;
+  overflow: hidden;
+
+    &:hover {
+      background-color: #eeeeee;
+      i.fa-pencil {
+          display: block;
+      }
+    }
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding-top: 5px;
+      padding-bottom: 5px;
+         overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 300px;
+    }
+  }
+
+  img {
+    max-width: 135px;
+    border-radius: 5px;
+  }
+
+}
+
+.grid_bucket {
+    padding: 2.5% 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+  }
+
+.bucket_info {
+      padding-left: 10px;
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+
+.bucket-thumb {
+  background-color: white!important;
+  padding-left: 5px;
+
+  ul li {
+    padding: 0;
+  }
+}
+
+.buckets_header {
+  margin-top: 35px;
+  font-size: 1.5em;
+  padding-left: 30%;
+}
+
+.cardBucket {
+    // min-height: 50vh;
+
+    vertical-align: bottom;
+    margin: 0 auto;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  z-index: 10;
+  top: 0;
+  background-color: white;
+
+  input {
+    border: 1px solid #d2d2d2;
+  }
+
+  abbr {
+    display: none;
+  }
+
+}
+
+#new_bucket input[type=submit]#newempty {
+  display:block!important;
+  margin-top: 10px;
+  background-color: $kickPurple;
+  color: white;
+}
+
+.newEmptyBucket {
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+.close-mini {
+  font-size: 2em;
+  padding-right: 5%;
+  color: $kickGreyLight;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+   .delete {
+
+            font-size: 1.2em;
+            background-color: $kickDarkGrey;
+            color: white;
+            border-radius: 5px;
+            padding: 5px;
+            display: none;
+            z-index: 2;
+
+            &:hover {
+              cursor: pointer;
+              opacity: 0.9;
+            }
+          }
+
+          .bucket_sneaker {
+            border-radius: 10px;
+
+            .sneaker_thumb_buk {
+              &:hover {
+               cursor: -moz-zoom-in;
+               cursor: -webkit-zoom-in;
+               cursor: zoom-in;
+             }
+           }
+           &:hover {
+             background-color: $kickGreyLight;
+             .share {
+              display: block;
+            }
+
+            .brand_title, .sneaker_title {
+              color: $kickPurple;
+            }
+            .delete {
+              display: inline-block;
+            }
+          }
+        }
+
+.image_sm {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bucket_info {
+  padding-left: 15px;
+  padding-right: 15px;
+      word-wrap: break-word;
+
+      i {
+        padding: 5px;
+        &:hover {
+          color: white;
+          background-color: $kickPurple;
+        }
+      }
+}
+
+.pop_up_para {
+    top: 0%;
+    position: absolute;
+    display: none;
+
+    border-radius: 5px;
+    padding: 20px 6px 20px 20px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.pop_up_info {
+  position: absolute;
+    top: 1%;
+    left: 2%;
+    width: 96%;
+    height: 98%;
+
+    .show_link {
+      width: 100%;
+      height: 100%;
+    }
+  &:hover {
+    background: linear-gradient(to top, rgba(256,256,256,1), rgba(256,256,256,0.6));
+
+        border: 5px solid #EEEEEE;
+    border-radius: 10px;
+    // opacity: 0.7;
+
+    .pop_up_para {
+      display: block;
+      text-align: left;
+
+      a {
+
+        &:focus {
+          color: $kickPurple!important;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: $kickPurple;
+          .bucket_name_profile {
+          color: $kickPurple!important;
+        }
+        }
+      }
+    }
+  }
+
+}
+
+a.delete_bucket, .bucket_delete, .bucket_save {
+    float: left;
+    padding: 10px;
+    background-color: $kickPurple;
+    color: white;
+    margin-right: 15px;
+    border: none;
+
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+}
+
+.confirm_delete, #bucket_name {
+  border: none;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+.profile {
+   background-size: cover;
+   background-position: center;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile_info {
+ color: #b1b1b1;
+ b {
+  color: #4d4d4d;
+ }
+}

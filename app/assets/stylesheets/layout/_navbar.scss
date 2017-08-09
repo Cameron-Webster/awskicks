@@ -8,6 +8,11 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+
+
+  img {
+    max-height: 59px;
+  }
 }
 
 /* Optional class to fix the navbar on top */
@@ -40,11 +45,14 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+   padding: 5px 20px;
+    border: 3px solid $kickPurple;
+    border-radius: 5px;
 }
+
 .navbar-wagon-link:hover {
-  color: #da552f;
+
+  cursor: pointer;
   text-decoration: none;
 }
 

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :set_user
 
   # GET /pins
   # GET /pins.json
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /pins/1.json
   def show
     @bucket = Bucket.new
-    @user = current_user
+
   end
 
   # GET /pins/new
@@ -45,6 +45,14 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
       @pin = Pin.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :profile_pic, :profile_pic_cache)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

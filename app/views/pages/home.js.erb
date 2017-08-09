@@ -1,45 +1,14 @@
+
+// $('#products').html('');
+
 $('#products').html("<%= j render 'sneakers' %>");
 $('.facets').html("<%= j render 'facets' %>");
 
 
 
-var fw = true;
-
-if ("<%= @sneakers.count %>" < 5){
-    fw = false;
-}
-
-var grid = document.querySelector('.grid');
-
-var msnry = new Masonry( grid, {
-  itemSelector: '.grid-item',
-  columnWidth: '.grid-item',
-  percentPosition: true,
-  gutter: 10,
-  fitWidth: fw
-});
-
-imagesLoaded( grid ).on( 'progress', function() {
-  // layout Masonry after each image loads
-  msnry.layout();
-});
 
 
+//remove spinner
+$('span.spinner').html("").removeClass("slider_active");
 
-
-var infScroll = new InfiniteScroll( grid, {
-  // options
-  path: '.pagination .next_page',
-  append: '.grid-item',
-  outlayer: msnry,
-  history: false
-
-
-});
-
-
-$(window).resize(function () {
-      msnry.layout();
-      msnry.layout();
-});
-
+$('#loading_screen').remove();

@@ -6,13 +6,19 @@
   list-style: none;
 }
 
-li.filters {
-  border: 1px solid black;
-}
+
 
 footer {
   height: 200px;
   background-color: #4d4d4d;
   color: white;
   margin-top: 250px;
+  padding: 50px 20px 20px 30px;
+  font-size: 0.8em;
+  a {
+    color: white!important;
+    &:hover {
+        color: white!important;
+    }
+  }
 }

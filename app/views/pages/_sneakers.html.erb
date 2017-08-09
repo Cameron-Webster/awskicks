@@ -1,3 +1,11 @@
+<hr class="title_breaker">
+<p class="header1"><%= @search %></p>
+<p class="header2">showing <b><%= ent = @sneakers.total_entries %></b> <%= 'Sneaker'.pluralize(ent) %></p>
+  <select id="sorting">
+    <option value="" <%= selected='selected' if params[:order].nil? %> >Sort By: Relevance</option>
+    <option value="lowest_price asc" <%= selected='selected' if params[:order] == 'lowest_price asc' %> >Price Lowest First</option>
+    <option value="lowest_price desc" <%= selected='selected' if params[:order] == 'lowest_price desc' %> >Price Highest First</option>
+  </select>
 <div class="row">
 <div class="col-md12">
 <div class="grid">
@@ -7,31 +15,44 @@
 <% count += 1 %>
 <div class="grid-item">
   <div class="orange mod2" data-rails="<%= sneak.id %>">
- <div class="share"> </div>
+
+
+ <div class="sneaker_thumb" data-rails="<%= sneak.id %>">
+
 <% if sneak.alt_photo.file    %>
 <%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
-
 <% else %>
 <%= cl_image_tag(sneak.photo) %>
 <% end %>
-<div class="sneak_info">
-<p class="brand_title sneaker_title"><b><%= sneak.brand %></b></p>
-<p class="sneaker_title">
-<%=  sneak.name %></p>
-<hr>
-<p class="style_code">
-<%= sneak.style_code %>
-</p>
-<hr>
-  <div class="row">
-    <div class="col-md-6">
-      <p class="purple_button"><%= sneak.vendors.count %> Stores</p>
-    </div>
-     <div class="col-md-6">
-      <p class="align-right purple_button">from £<%= sneak.lowest_price %></p>
-    </div>
-  </div>
 </div>
+<div class="sneak_info">
+<hr class="img_seperator">
+<div class="row">
+  <div class="col-md-9 brand_title sneaker_title">
+    <p class="no_margin_bottom"><b><%= sneak.brand.name unless sneak.brand.nil? %></b></p>
+  </div>
+
+</div>
+<div class="row vendrow-b">
+  <div class="col-md-7 sneaker_title">
+    <p class=""><%=  sneak.name %></p>
+  </div>
+  <div class="col-md-5">
+  from £<%= sneak.lowest_price %>
+</div>
+</div>
+<hr>
+<div class="stores"><%= sneak.vendors.count %> Stores</div>
+<div class="sale">Sale</div>
+
+  <p class="center-align style_code">sku: <%= sneak.style_code %></p>
+
+
+
+<hr>
+
+</div>
+
 </div>
 </div>
 <% end %>
