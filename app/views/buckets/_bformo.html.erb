@@ -1,22 +1,38 @@
   <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 no_pad_right">
+
 
 
 
         <%= simple_form_for(@bucket, remote: true, input_html: {class: "bformo"}) do |f| %>
-        <%= f.input :name, label: "Bucket Name" %>
+        <%= f.input :name, label: "Bucket Name", required: true %>
         <% @bucket.pins.each do |pin| %>
 
         <%= f.simple_fields_for :pins, pin do |pn| %>
 
           <%= pn.input :sneaker_id, as: :hidden, input_html: {value: @sneaker} %>
-            <%= pn.input :price_watch, label: "Add Price watch?", priority: ["Any Price Drop", 1], collection: [["Any Price Drop", 1], ["10% Or More Off", 10], ["20% Or More Off", 20]], include_blank: false, input_html: {class: "overflow-rigid", size: 3} %>
+            <%= pn.input :price_watch, label: false, input_html: {class: "noDisplay"} %>
         <% end %>
 
         <% end %>
         <%= f.submit "buck submit", class: "bucketSubmit" %>
         <% end %>
-        <div class="noPriceWatchBucket">No Price Watch</div>
+        <p class="bucket_name_errors">&nbsp;</p>
+
+           <div class="price_watch_container_new_bucket">
+                          <p class="miniMod-header border-bottom">Add Price Watch</p>
+                            <ul class="list-inline">
+                              <li data-price="1">Any Price Drop</li>
+                              <li data-price="10">10% Off</li>
+                              <li data-price=20>20% Off</li>
+                            </ul>
+                        </div>
+        <div class="noPriceWatch_new_bucket" data-price="nil">Save without price watch</div>
+                      </div>
 
   </div>
               </div>
+
+
+
+

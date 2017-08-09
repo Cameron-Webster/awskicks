@@ -2,7 +2,7 @@
 <div class="container-fluid">
 <div class="row">
   <div class="col-md-12" style="padding: 0;">
-<div class="seperator" style="background-color: black;height:30px; width: 100%;">
+<div class="seperator">
   <ul class="list-inline">
     <li>Blog</li>
         <li><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Facebook</li>
@@ -16,11 +16,12 @@
 <div class="row">
   <div class="col-md-12 jumbotron">
     <div class="search_bar" id="top">
-      <%= form_tag root_path, method: 'get', remote: true do %>
+      <%= form_tag root_path, method: 'get', id: "formoq", remote: true do %>
 
-      <%= text_field_tag :gender, params[:gender], id: 'generoo', style: 'display: none;' %>
-      <%= text_field_tag :brand, params[:brand], id: 'brandoo', style: 'display: none;' %>
-      <%= text_field_tag :lowest_price, params[:lowest_price], id: 'priceoo', style: 'display: none;' %>
+      <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
+      <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
+      <%= hidden_field_tag :lowest_price, params[:lowest_price], id: 'priceoo' %>
+      <%= hidden_field_tag :order, params[:order], id: 'sortoo' %>
         <div class="input-group" id="stubby">
       <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search" %>
       <button id="searchSub"><i class="fa fa-search"></i></button>
@@ -35,14 +36,15 @@
 
 
 <div class="row facet_row">
-  <div class="col-md-4 col-md-offset-4 no_pad_right">
+  <div class="col-md-5 col-md-offset-4 no_pad_right">
   <div class="facets" id="facet_menu">
    <%= render 'facets' %>
    </div>
         <div class="kick_slider">
+
 <p class="price_slider">
 
-  <label for="amount">Price range:</label>
+  <!-- <label for="amount">Price range:</label> -->
   <input type="text" id="amount" readonly style="max-width: 70px;">
 
 </p>
@@ -50,7 +52,12 @@
 
 <div id="slider-range"></div>
 </div>
+   <div class="slide_loader" style="width: 30px;">
+
    </div>
+
+   </div>
+
 
   <div>
   <div class="row">
@@ -94,7 +101,6 @@
 </div>
 <div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
 </div>
-
 
 
 

@@ -6,8 +6,10 @@ $(document).ready(function(){
          var max_pages = parseInt($(".pagination a:nth-last-child(2)").text());
 
          $('.grid').on( 'request.infiniteScroll', function( event, response, path ) {
+          console.log("infinite scroll requested");
             var pageNo = $('.grid').data('infiniteScroll').pageIndex;
               if (!max_pages || pageNo >= max_pages){
+                console.log("should be off");
                    $(".grid").infiniteScroll('destroy');
                    $(".grid").data('infinitescroll', null);
                    $(".page-load-status").css("display", "none");
@@ -31,6 +33,8 @@ $(document).ready(function(){
 
   var msnry = $grid.data('masonry');
 
+  if ($('.pagination .next_page')[0]) {
+
   var $cont = $grid.infiniteScroll({
     path: '.pagination .next_page',
     append: '.grid-item',
@@ -43,12 +47,14 @@ $(document).ready(function(){
 
   });
 
+}
+
   $(document).on("submit", '.search_bar form', function() { //ajax enabled form
 
      // path: '/?brand=&gender=female&lowest_price=&page={{#}}&search=&utf8=%E2%9C%95'
 
 
-
+      $(".page-load-status").css("display", "block");
 
     $(".grid").masonry('destroy');
     $(".grid").infiniteScroll('destroy');
@@ -56,14 +62,15 @@ $(document).ready(function(){
 
     $( document ).ajaxComplete(function() { //products reloaded
 
-      $(".page-load-status").css("display", "block");
-      $("#fin").css("display", "none");
+      $(".page-load-status").css("display", "none");
+      $("#fin").css("display", "block");
 
        var max_pages = parseInt($(".pagination a:nth-last-child(2)").text());
 
          $('.grid').on( 'request.infiniteScroll', function( event, response, path ) {
             var pageNo = $('.grid').data('infiniteScroll').pageIndex;
               if (!max_pages || pageNo >= max_pages){
+
                    $(".grid").infiniteScroll('destroy');
                    $(".grid").data('infinitescroll', null);
                    $(".page-load-status").css("display", "none");
@@ -98,6 +105,8 @@ $(document).ready(function(){
 
       var msnry = $grid2.data('masonry');
 
+        if ($('.pagination .next_page')[0]) { //need to check this does work
+
       $(".grid").infiniteScroll({
         path: request_path,
         append: '.grid-item',
@@ -110,9 +119,20 @@ $(document).ready(function(){
 
       });
 
+    }
+
+    // V calling twice prevents resize grid error (ajax)
+
+      $(window).resize(function () {
+      msnry.layout();
+      msnry.layout();
+      });
+
     })
 
   })
+
+  //non - ajax
 
   $(window).resize(function () {
       msnry.layout();

@@ -1,0 +1,73 @@
+<hr class="title_breaker">
+<p class="header1"><%= @search %></p>
+<p class="header2">showing <b><%= ent = @sneakers.total_entries %></b> <%= 'Sneaker'.pluralize(ent) %></p>
+  <select id="sorting">
+    <option value="" <%= selected='selected' if params[:order].nil? %> >Sort By: Relevance</option>
+    <option value="lowest_price asc" <%= selected='selected' if params[:order] == 'lowest_price asc' %> >Price Lowest First</option>
+    <option value="lowest_price desc" <%= selected='selected' if params[:order] == 'lowest_price desc' %> >Price Highest First</option>
+  </select>
+<div class="row">
+<div class="col-md12">
+<div class="grid">
+
+
+<% @sneakers.each do |sneak| %>
+
+<div class="grid-item">
+  <div class="orange bucket_sneaker" data-rails="<%= sneak.id %>">
+<div class="mod2"></div>
+
+
+ <div class="sneaker_thumb_buk" data-rails="<%= sneak.id %>">
+
+<% if sneak.alt_photo.file    %>
+<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+<% else %>
+<%= cl_image_tag(sneak.photo) %>
+<% end %>
+
+</div>
+
+<div class="sneak_info">
+<hr class="img_seperator">
+<div class="row">
+  <div class="col-md-9 brand_title sneaker_title">
+    <p><b><%= sneak.brand.name unless sneak.brand.nil? %></b></p>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-7 sneaker_title">
+    <p><%=  sneak.name %></p>
+  </div>
+  <div class="col-md-5">
+  from £<%= sneak.lowest_price %>
+</div>
+</div>
+<hr>
+<div class="stores"><%= sneak.vendors.count %> Stores</div>
+<div class="sale">Sale</div>
+<div class="row padding-left-5">
+<div class="col-md-7 line-height-35">
+  <p class=" style_code line-height-35">sku: <%= sneak.style_code %></p>
+  </div>
+  <div class="col-md-5 align-right line-height-35">
+<div  data-pin="<%= sneak.id %>" data-toggle="modal" data-target=".bs-example-modal-sm" class="padding-right-20"><i class="fa fa-trash-o delete" aria-hidden="true"></i> </div>
+</div>
+
+</div>
+<hr>
+
+</div>
+
+</div>
+</div>
+<% end %>
+<div class="mooo"></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md12"><%= will_paginate @sneakers %></div></div>
+
+

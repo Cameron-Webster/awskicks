@@ -1,0 +1,9 @@
+$(".cardBucket").html(" <%= j render 'edit_form' %>");
+$(".miniMod").css("display", "block");
+
+$(document).on("click", ".bucket_delete", function(){
+
+$(".cardBucket").html(" <%= j render 'confirm_delete' %>");
+
+
+});

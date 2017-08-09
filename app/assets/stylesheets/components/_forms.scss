@@ -1,0 +1,60 @@
+.sign-up {
+  padding: 50px;
+
+  #user_footsize {
+    max-width: 100px;
+  }
+
+
+}
+
+.sign-up-right-panel {
+  background-image: image-url("aj1.jpg");
+  background-size: cover;
+  background-position: bottom;
+  float: none;
+  display: table-cell;
+
+}
+
+.form_body {
+  display: table;
+  width: 100vw;
+  margin-bottom: -250px;
+}
+
+
+.left-side {
+
+    float: none;
+    display: table-cell;
+    border-top: 1px solid;
+}
+
+a.login_button {
+    color: white!important;
+  background-color: $kickPurple;
+  display: inline-block;
+      border-radius: 2px;
+    padding: 10px;
+    margin-top: 2px;
+
+
+
+      &:hover {
+        opacity: 0.9;
+    }
+}
+
+.new_sneaker {
+  margin: 0 auto;
+  padding: 2% 20%;
+
+  h2 {
+    padding: 0 10%;
+  }
+
+  form {
+    padding: 1% 10%
+  }
+}

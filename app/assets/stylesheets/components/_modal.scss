@@ -3,6 +3,10 @@
 }
 
 #mod2 {
+
+  p.store_count {
+    font-size: 0.8em;
+  }
   h4.sneaker_title {
     font-size: 1.5em;
     color: $kickDarkGrey;
@@ -49,8 +53,10 @@
   border-radius: 5px;
 }
 
-.noPriceWatch {
+.noPriceWatch, .noPriceWatch_new_bucket {
   padding-left: 12px;
+  color: $kickPurple;
+  font-size: 0.8em;
 
 }
 
@@ -71,14 +77,20 @@
 }
 
 #pin_price_watch, .bucket_pins_price_watch {
-  width: 171px;
+  width: 100%;
   margin-bottom: 0;
 
   option {
-    border: 4px solid $kickRed;
-    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    list-style: none;
+    line-height: 50px;
+    height: 50px;
+    color: white;
+    background-color: #4d4d4d;
 
-    border-radius: 5px;
+    &:hover {
+      color: $kickPurple;
+    }
 }
 }
 
@@ -100,13 +112,18 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.addPriceWatchLow, .priceWatchSet {
+.addPriceWatchLow {
   padding: 10px;
   display: inline-block;
 
-
 }
 
+.priceWatchSet {
+  padding: 0px;
+  display: inline-block;
+  color: $kickPurple;
+
+}
 .addPriceWatchNone {
   padding: 10px;
   border: 1px solid $kickRed;
@@ -186,11 +203,17 @@ select option {
 .form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-color: white;
+  border-color: #ccc;
 }
 
 select {
   overflow: auto;
+}
+
+
+
+.miniMod .noButton select.form-control.select {
+  width: 100%
 }
 
 
@@ -209,7 +232,12 @@ select {
   width: 100%;
   background-color: $kickRed;
   color: white;
-  border-radius: 5px;
+
+  display: block;
+}
+a.displayNewBucket {
+  color: white!important;
+    border-radius: 0px;
 }
 
 
@@ -243,10 +271,11 @@ select {
 .miniMod {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 3; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
+    min-height: 70vh;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
@@ -256,7 +285,7 @@ select {
 
 .miniMod-content {
   background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 55%;
@@ -377,11 +406,26 @@ hr .break {
 }
 
 .size_list {
-  margin-right: 5px;
+  margin-right: 3px;
+  padding: 3px;
+  background-color: #4d4d4d;
+  color: white;
+
+  border-radius: 3px;
+  margin-bottom: 3px;
+  min-width: 32px;
+  text-align: center;
+  font-size: 0.7em;
+}
+
+.price_badge {
+  margin-top: 5px;
+
   padding: 3px;
   background-color: #4d4d4d;
   color: white;
   font-size: 0.8em;
+  border-radius: 3px;
 }
 
 .price, .previous_price {
@@ -399,7 +443,8 @@ line-height: 1.2;
 }
 
 .ul_size_list {
-  margin-left: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
 }
 
 .myrow {
@@ -421,12 +466,20 @@ line-height: 1.2;
   background-color: $kickRed;
   color: white;
   padding: 7px;
-  border-radius: 5px;
   font-size: 1em;
-  // margin-top: 50%;
-  // -webkit-transform: translateY(-50%);
-  // transform: translateY(-50%);
   text-align: center;
+      border: 3px solid white;
+   &:hover {
+    cursor: pointer;
+    border: 3px solid #E3E3E3;
+   }
+}
+
+.shop_name {
+    color: #b1b1b1;
+    font-size: 0.8em;
+    padding-top: 2px;
+    margin-bottom: 3px;
 }
 
 .vendor_card {
@@ -435,10 +488,12 @@ line-height: 1.2;
   margin-right: -12px;
   max-width: 103%;
   padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .vendor_logo {
   max-width: 100%;
+  max-height: 70px;
 }
 
 .vendor_price {
@@ -454,6 +509,14 @@ line-height: 1.2;
   display: -ms-flexbox;
   display:         flex;
   padding-top: 10px;
+}
+
+.vendrow-b {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  padding-top: 0px;
 }
 
 .no-right-padding {
@@ -472,8 +535,13 @@ line-height: 1.2;
   }
 }
 
+ul.middle_info {
+  font-size: 0.9em;
+}
+
   .sizes_title {
     padding-right: 0;
+  font-size: 0.8em;
 
       p {
         font-size: 0.8em;
@@ -492,6 +560,19 @@ line-height: 1.2;
 
 }
 
+.vendrow-b > [class*='col-'] {
+   display: flex;
+   flex-direction: column;
+     justify-content: flex-end;
+
+  p {
+    margin: 0 0 0 15px;
+    text-align: left;
+  }
+
+}
+
+
 
 
 .modal-content {
@@ -502,6 +583,75 @@ line-height: 1.2;
   overflow: hidden;
   // height: 80vh;
 }
+
+.modal-dialog {
+  max-width: 1100px;
+}
+
+.miniMod-header {
+  font-size: 0.9em;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: $kickDarkGrey;
+    font-weight: bold;
+}
+
+.view_more, .previous {
+
+  height: 50px;
+  line-height: 50px;
+  border-top: 1px solid $kickGreyLight;
+
+  p {
+  padding-left: 10px;
+  color: $kickPurple;
+
+
+  i {
+    display: none;
+  }
+}
+&:hover {
+      background-color: $kickGreyLight;
+      cursor: pointer;
+    i {
+      display: inline-block;
+    }
+  }
+}
+
+.add_price_watch_copy {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+ul.no_entry {
+
+
+    text-align: center;
+
+    li {
+      width: 45%;
+      &:hover {
+      opacity: 0.9;
+      cursor: pointer;
+      }
+      a {
+        color: white!important;
+        text-decoration: none;
+      }
+    }
+
+}
+
+#save_message {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media (min-width:768px){
   .left-drawer {
       width: 50%;

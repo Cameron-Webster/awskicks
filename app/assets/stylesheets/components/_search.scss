@@ -1,26 +1,61 @@
+
+p.header1 {
+  font-size: 1.2em;
+  padding-left: 3%;
+}
+
+p.header2 {
+  font-size: 1.0em;
+  padding-left: 3%;
+  display: inline-block
+}
+
+#loading_screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
+  opacity: 0.3;
+}
+
+.jumbotronLight {
+   background-image: none;
+    background-color: #eeeeee;
+    padding-left: 20%!important;
+    padding-right: 20%!important;
+    padding-top: 1%!important;
+    padding-bottom: 3%!important;
+
+}
+
+
 .jumbotron {
   background-image: image-url("sneaker_header.jpg");
   background-size: cover;
-    padding-left: 20%!important;
-    padding-right: 20%!important;
-    padding-top: 7%!important;
-    padding-bottom: 7%!important;
+  padding-left: 20%!important;
+  padding-right: 20%!important;
+  padding-top: 7%!important;
+  padding-bottom: 7%!important;
+  margin-bottom: 0!important;
 
-  .search_bar {
+}
+
+ .search_bar {
     text-align: center;
     padding: 20px;
     background-color: rgba(77,77,77,0.9);
     border-radius: 10px;
 
-}
-}
+  }
 
 #top form div.input-group {
-    margin: 0 auto;
-    width: 50vw;
+  margin: 0 auto;
+  width: 50vw;
 
-    input {
-      width: 90%;
+  input {
+    width: 90%;
     height: 40px;
     color: #4d4d4d;
     border-radius: 5px 0 0 5px;
@@ -28,11 +63,11 @@
     border-style: none;
     padding-left: 5px;
 
-    }
+  }
 
 
 
-    button {
+  button {
     height: 40px;
     background-color: $kickPurple;
     border-style: none;
@@ -43,38 +78,144 @@
     i {
       color: white;
     }
-    }
+  }
 }
 
 .seperator {
-      background-color: black;
-    height: 30px;
-    width: 100%;
-    font-size: 0.9em;
-    line-height: 30px;
-    text-align: right;
-    padding-right: 10%;
+  background-color: rgba(77, 77, 77, 0.1);
+  color: rgb(146, 142, 142);
+  height: 30px;
+  width: 100%;
+  font-size: 0.9em;
+  line-height: 30px;
+  text-align: right;
+  padding-right: 10%;
 
-    li {
-      margin-right: 10px;
-    }
+  li {
+    margin-right: 10px;
+  }
 
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #d8d8d8;
+  color:    #d8d8d8;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #d8d8d8;
-   opacity:  1;
+ color:    #d8d8d8;
+ opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #d8d8d8;
-   opacity:  1;
+ color:    #d8d8d8;
+ opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #d8d8d8;
+ color:    #d8d8d8;
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color:    #d8d8d8;
+ color:    #d8d8d8;
+}
+
+.pretty_bucket_list {
+  padding-left: 0;
+  padding-bottom: 0;
+
+  li {
+
+    padding: 0px 0px 0px 5px;
+    text-overflow: ellipsis;
+    list-style: none;
+    line-height: 50px;
+    height: 50px;
+
+    ul.list-inline {
+      margin-left: 0;
+    }
+
+    ul li {
+      max-width: 80%;
+      overflow: hidden;
+    }
+
+    ul li.bucket_name {
+      width: 80%;
+      white-space: nowrap;
+    }
+
+    .plus_logo {
+      display: none;
+      padding-top: 5px;
+    }
+
+
+    &:hover {
+
+      color: $kickPurple;
+      background-color: $kickGreyLight;
+      cursor: pointer;
+
+      .plus_logo {
+        display: inline-block;
+      }
+
+    }
+  }
+}
+
+.price_watch_container ul, .price_watch_container_new_bucket ul {
+      margin-left: 10px;
+      margin-bottom: 0;
+
+  li {
+  background-color: #4d4d4d;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 5px;
+  padding: 3px;
+  width: 45%;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+    &:hover {
+      background-color: $kickPurple;
+    }
+}
+}
+
+form#new_bucket {
+
+  label {
+    font-weight: normal;
+    color: $kickPurple;
+    font-size: 0.9em;
+  }
+
+  input {
+      font-size: 0.9em;
+    color: #4d4d4d;
+
+    height: 30px;
+    border: 1px solid #d2d2d2;
+}
+}
+
+.bucket_name_errors {
+  margin-top: 4px;
+  font-size: 0.8em;
+  color: red;
+}
+
+form.new_bucket, .form-group.bucket_name {
+  margin-bottom: 0;
+}
+
+#sorting {
+        font-size: 0.7em;
+    float: right;
+    margin-right: 10%;
+}
+
+.title_breaker {
+  margin-right: 45%;
+  margin-left: 45%;
+
 }

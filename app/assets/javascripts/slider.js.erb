@@ -17,7 +17,7 @@ $( "#slider-range" ).slider({
          var hold_slider = $('#priceoo').val();
         if (!($('span.spinner').hasClass("slider_active"))) {
 
-        $('p.price_slider input#amount').after("<span class='spinner slider_active' style='display:inline;'><i class='fa fa-spinner fa-pulse fa-fw'></i></span>").addClass("slider_active");
+        $('.slide_loader').html("<span class='spinner slider_active' style='display:block;'><i class='fa fa-spinner fa-pulse fa-fw'></i></span>").addClass("slider_active");
         }
         setTimeout(function(){
 

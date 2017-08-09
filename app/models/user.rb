@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :pins
   has_many :buckets
 
+  mount_uploader :profile_pic, PhotoUploader
+
 
 end

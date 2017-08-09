@@ -1,0 +1,63 @@
+<hr class="title_breaker">
+
+<div class="row">
+<div class="col-md12">
+<div class="grid">
+
+<% count = 0 %>
+<% @buckets.each do |bucket| %>
+<% if pin = bucket.pins.first %>
+
+<div class="grid-item">
+<div class="orange" data-rails="<%= pin.sneaker.id %>">
+<div class="notification">25</div>
+
+
+ <div class="sneaker_thumb">
+  <% if pin.sneaker.alt_photo.file    %>
+<%= cl_image_tag(pin.sneaker.alt_photo.thumb, class: "main") %>
+<% end %>
+<%= cl_image_tag(pin.sneaker.photo) %>
+
+
+</div>
+<div class="sneak_info bucket_info">
+<hr class="img_seperator">
+<p class="brand_title sneaker_title bold_16"><%= bucket.name %></p>
+
+<hr>
+
+</div>
+
+<div class="pop_up_info">
+
+<div class="pop_up_para">
+<div class="align-right bucket_info">
+<%= link_to edit_bucket_path(bucket), remote: true do %>
+<i class="fa fa-pencil" aria-hidden="true"></i>
+<% end %>
+</div>
+<%= link_to bucket_path(bucket) do %>
+  <p class="bucket_name_profile"><b><%= bucket.name %></b></p>
+  <p class="black_button_small"><%= bucket.pins.count %> Sneakers</p>
+  <% end %>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<% end %>
+<% end %>
+<div class="mooo"></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+

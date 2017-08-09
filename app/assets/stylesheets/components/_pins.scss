@@ -11,6 +11,14 @@
   color: $kickDarkGrey;
 }
 
+a.purple_button {
+  color: white!important;
+   &:hover {
+          color: white!important;
+          text-decoration: none;
+        }
+}
+
 .purple_button {
   color: white;
   background-color: $kickPurple;
@@ -19,8 +27,39 @@
     padding: 2px 10px;
     margin-top: 2px;
 
+
+
+      &:hover {
+        opacity: 0.9;
+    }
+
 }
+
+.black_button {
+  color: white;
+  background-color: $kickDarkGrey;
+  display: inline-block;
+      border-radius: 5px;
+    padding: 2px 10px;
+    margin-top: 2px;
+}
+
+.black_button_small {
+    color: white;
+  background-color: $kickDarkGrey;
+  display: inline-block;
+      border-radius: 5px;
+    padding: 2px 5px;
+    margin-top: 2px;
+    font-size: 0.8em;
+}
+
 .sneak_info {
+
+  text-align: left;
+  p {
+    margin: 0 0 5px 15px;
+  }
 
     font-size: 0.8em;
      background-color: white;
@@ -37,23 +76,61 @@
     }
 
   .sneaker_title {
+    word-wrap: break-word;
+    padding-left: 5px;
   &:hover {
     color: $kickPurple;
   }
 }
 }
 
+.stores {
+  position: absolute;
+  display:none;
+  top: 7%;
+  padding: 4px 5px 4px 17px;
+  background-color: rgba(86,80,80, 0.9);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9em;
+  color: white;
+}
+
+.sale {
+  position: absolute;
+  right: 7%;
+  top: 7%;
+  color: $notification-red;
+  font-size: 0.9em;
+  padding: 4px 3px;
+
+    background-color: rgba(256,256,256,0.7);
+  border-radius: 4px;
+}
+
 
 .mod2 {
+
+  .sneaker_thumb {
   &:hover {
    cursor: -moz-zoom-in;
     cursor: -webkit-zoom-in;
     cursor: zoom-in;
+
+  }
+}
+}
+
+  .mod2 {
+
+     &:hover {
     background-color: $kickGreyLight;
 
 
-
    .share {
+      display: block;
+    }
+
+     .stores {
       display: block;
     }
 
@@ -62,6 +139,12 @@
     }
   }
   border-radius: 10px;
+}
+
+.brand_title, .sneaker_title {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .align-right {
@@ -139,6 +222,7 @@
 
   &:hover {
     background-color: #f2f2f2;
+
   }
 
   img {
