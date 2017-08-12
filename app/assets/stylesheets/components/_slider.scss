@@ -67,10 +67,16 @@ p.price_slider label {
 div.dropdown {
 
   button#dLabel {
-  background-color: white;
-  border: 1px solid $kickGreyLight;
+  background-color: rgba(77,77,77,0);
+  border: 2px solid white;
+  border-radius: 5px;
   font-size: 0.8em;
   padding: 5px;
+  color: white;
+
+  &:hover {
+    background-color: rgba(256,256,256,0.1);
+  }
 
   .genderButton {
     border-radius: 3px 0 0 3px;
@@ -92,9 +98,7 @@ div.dropdown {
   -webkit-box-shadow: 8px 6px 12px rgba(0, 0, 0, 0.2);
   top: inherit;
 
-  li {
-    border-bottom: 1px solid $kickGreyLight;
-  }
+
 
   i.fa-times-circle {
     color: $kickPurple;
@@ -139,6 +143,8 @@ div.dropdown {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
+  background-color: rgba(77,77,77,0.9);
+  padding-bottom: 2%;
 
 }
 

@@ -32,7 +32,9 @@ class Vendor < ApplicationRecord
         self.sizes.delete_all
 
         scraper.sizes.each do |size|
-            self.sizes.create(size_uk: size, size_eu: scraper.multiplyer_eu(size, self.sneaker.gender), size_us: scraper.multiplyer_us(size, self.sneaker.gender))
+      # self.sizes.create(size_uk: size, size_eu: scraper.multiplyer_eu(size, self.sneaker.gender), size_us: scraper.multiplyer_us(size, self.sneaker.gender))
+          # puts size
+            self.sizes.create(size_uk: size)
         end
       end
 

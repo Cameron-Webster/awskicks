@@ -14,10 +14,11 @@
 <% @sneakers.each do |sneak| %>
 <% count += 1 %>
 <div class="grid-item">
-  <div class="orange mod2" data-rails="<%= sneak.id %>">
+  <div class="orange" data-rails="<%= sneak.id %>">
 
-
+<%= link_to "Sneaker Dashboard", sneakers_admin_show_path(sneak)  %>
  <div class="sneaker_thumb" data-rails="<%= sneak.id %>">
+
 
 <% if sneak.alt_photo.file    %>
 <%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
@@ -38,7 +39,7 @@
     <p class=""><%=  sneak.name %></p>
   </div>
   <div class="col-md-5">
-  from £<%= '%.2f' % sneak.lowest_price if sneak.lowest_price %>
+  from £<%= sneak.lowest_price %>
 </div>
 </div>
 <hr>

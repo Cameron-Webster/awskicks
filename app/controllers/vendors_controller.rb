@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
 
-  before_action :set_vendor, only: [:show]
+  before_action :set_vendor, only: [:show, :edit, :destroy]
   def index
   end
 
@@ -9,6 +9,8 @@ class VendorsController < ApplicationController
   end
 
   def edit
+    @sneaker = Sneaker.find(params[:sneaker_id])
+    @vendor = Vendor.find(params[:id])
   end
 
     def new
@@ -25,7 +27,7 @@ class VendorsController < ApplicationController
     @vendor.sneaker = Sneaker.find(params[:sneaker_id])
     respond_to do |format|
       if @vendor.save
-        format.html { redirect_to @vendor.sneaker, notice: 'vendor was successfully created.' }
+        format.html { redirect_to sneakers_admin_show_path(@vendor.sneaker), notice: 'vendor was successfully created.' }
         format.json { render :show, status: :created, location: @vendor.sneaker }
       else
         raise
@@ -42,6 +44,13 @@ class VendorsController < ApplicationController
   end
 
   def destroy
+    sneaker = @vendor.sneaker
+    if @vendor.destroy
+      respond_to do |format|
+      format.html {redirect_to sneakers_admin_show_path(@vendor.sneaker), notice: 'vendor successfully destroyed'}
+      end
+    end
+
   end
 
 private

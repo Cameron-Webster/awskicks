@@ -14,7 +14,7 @@ $(document).ready(function() {
 
           if (v == $('#srch').val()) {
             initial_search = true;
-            $('.jumbotron').addClass('jumbotronLight').removeClass('jumbotron');
+            // $('.jumbotron').addClass('jumbotronLight').removeClass('jumbotron');
 
             $('#stubby').parent('form').submit();
 

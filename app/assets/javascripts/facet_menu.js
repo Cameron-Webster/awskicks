@@ -5,4 +5,10 @@ $(document).ready(function() {
 
 $('ul.dropdown-menu').css('width', width_menu);
 
+// stops dropdown menu closing too quickly
+
+$('.dropdown-menu').click(function(e) {
+    e.stopPropagation();
+});
+
 })

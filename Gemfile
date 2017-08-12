@@ -22,6 +22,7 @@ gem 'searchkick'
 gem 'will_paginate'
 gem 'carrierwave', '~> 0.11.2'
 gem 'sidekiq'
+
 gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'

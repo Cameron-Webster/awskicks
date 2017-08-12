@@ -4,19 +4,26 @@
   <div class="col-md-12" style="padding: 0;">
 <div class="seperator">
   <ul class="list-inline">
-    <li>News</li>
-    <li> Reviews</li>
-    <li>Upcoming Releases</li>
-
+    <li>Blog</li>
+        <li><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp;Facebook</li>
+        <li><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;Twitter</li>
+        <li><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;Instagram</li>
   </ul>
 
 </div>
 </div></div>
-
 <div class="row">
-  <div class="col-md-12 no_padding">
+  <div class="col-md-12 align-right margin-top-3p">
+    <%= link_to "Manage Logos", logos_path, class: "purple_button" %>
+    <%= link_to "New Sneaker", new_sneaker_path, class: "purple_button" %>
+    <%= link_to "UPDATE ALL", sneakers_admin_update_all_path, class: "black_button" %>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
     <div class="search_bar" id="top">
-      <%= form_tag root_path, method: 'get', id: "formoq", remote: true do %>
+      <%= form_tag sneakers_admin_index_path, method: 'get', id: "formoq", remote: true do %>
 
       <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
       <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
@@ -36,54 +43,37 @@
 
 
 <div class="row facet_row">
-<div class="filter_button">
-    <div class="facets" id="facet_menu">
-     <%= render 'facets' %>
+  <div class="col-md-5 col-md-offset-4 no_pad_right">
+  <div class="facets" id="facet_menu">
+   <%= render 'pages/facets' %>
+   </div>
+        <div class="kick_slider">
+
+<p class="price_slider">
+
+  <!-- <label for="amount">Price range:</label> -->
+  <input type="text" id="amount" readonly style="max-width: 70px;">
+
+</p>
+
+
+<div id="slider-range"></div>
+</div>
+   <div class="slide_loader" style="width: 30px;">
+
    </div>
 
-   <div class="dropdown">
-    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="genderButton">
-      Price
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
-
-
-      <div class="kick_slider">
-
-      <ul class="list-inline">
-      <li>
-        <p class="price_slider">
-
-          <!-- <label for="amount">Price range:</label> -->
-          <input type="text" id="amount" readonly style="max-width: 70px;">
-
-        </p>
-        </li>
-        <li>
-          <div class="slide_loader" style="width: 30px;">
-
-           </div>
-        </li>
-      </ul>
-
-        <div id="slider-range"></div>
-      </div>
-    </ul></div>
-
-
-
-  </div>
+   </div>
 
 
   <div>
-    <div class="row">
-      <div class="col-md-3 col-md-offset-5">
+  <div class="row">
+  <div class="col-md-3 col-md-offset-5">
 
-      </div>
-    </div>
-  </div>
 </div>
+</div>
+</div>
+  </div>
 
 
   <div class="row">
@@ -94,7 +84,7 @@
 
 
 
-<%= render 'sneakers' %>
+<%= render 'sneakers_admin' %>
 
 </div>
 
@@ -118,8 +108,6 @@
 </div>
 <div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
 </div>
-
-
 
 
 

@@ -3,7 +3,7 @@ class Sneaker < ApplicationRecord
 searchkick word_start: [:name], searchable: [:name, :sneak_brand, :style_code]
 
 
-  has_many :pins
+  has_many :pins, dependent: :destroy
   has_many :vendors, dependent: :destroy
   has_many :buckets, through: :pins
   belongs_to :brand, required: true

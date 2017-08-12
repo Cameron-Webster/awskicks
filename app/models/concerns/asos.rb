@@ -3,7 +3,7 @@ require 'active_support/concern'
 module Asos
     def run
     price_raw = @browser.first "span[data-id='current-price']"
-    @current_price = price_raw.text.gsub(/£/,"").to_i
+    @current_price = price_raw.text.gsub(/£/,"").to_f
     available_sizes = @browser.all "#aside-content select[data-id='sizeSelect'] option:not(:disabled)"
     @sizes = available_sizes.each_with_index.map do |size, i|
       next if i == 0

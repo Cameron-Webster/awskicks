@@ -379,6 +379,12 @@ a.displayNewBucket {
 
 .modal-main-image {
    border-bottom: 1px solid #EDEDED;
+
+   &:hover {
+    .social_share {
+      display: block;
+    }
+   }
 }
 
 .leftside-modal-footero {
@@ -493,7 +499,7 @@ line-height: 1.2;
 
 .vendor_logo {
   max-width: 100%;
-  max-height: 70px;
+  max-height: 80px;
 }
 
 .vendor_price {

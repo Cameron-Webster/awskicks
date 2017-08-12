@@ -1,18 +1,2 @@
-<p></p>
-<%= form_tag sneakers_path, method: 'get', remote: true do %>
-<%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
-<%= submit_tag "search", :name => nil, hidden: true %>
-<% end %>
-<div id="products" class="">
-
-
-
-
-
-<%= render 'sneakers' %>
-
-</div>
-
-<div id="pagin"></div>
 
 
