@@ -62,12 +62,17 @@ a {
 }
 
 .no_pad_left {
-  padding-left: 0;
+  padding-left: 0!important;
+}
+.no_pad_top {
+  padding-top: 0!important;
 }
 
 .no_padding {
-  padding: 0;
+  padding: 0!important;
 }
+
+
 
 // Positoning
 
@@ -124,6 +129,10 @@ a {
   margin-bottom: 0;
 }
 
+.no-margin-left {
+  margin-left: 0;
+}
+
 .margin-top-3p {
   margin-top: 3%;
 }
@@ -133,6 +142,14 @@ a {
 
 .margin-left-10 {
 margin-left: 10px;
+}
+
+.margin-left-5 {
+margin-left: 5px!important;
+}
+
+.margin-top-5 {
+  margin-top: 5px!important;
 }
 
 .padding-right-20 {
@@ -274,9 +291,45 @@ margin-left: 10px;
     opacity: 0.9;
   }
 }
-.notfications_bar {
-  margin-left: 80px;
+.notifications_bar {
+  // margin-left: 80px;
   color: #ababab;
+
+  .notification_active {
+    font-size: 0.6em;
+    color: #ffffff;
+    background-color: $notification-red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -3px;
+    right: -6px;
+    line-height: 16px;
+    border: 2px solid white;
+  }
+
+  .notification_icon {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 2px solid #ababab;
+    position: relative;
+
+     i {
+    font-size: 1.5em;
+      }
+
+  &:hover {
+    background-color: $kickGreyLight;
+    cursor: pointer;
+  }
+
+  }
+
+
 
 }
 
@@ -315,4 +368,31 @@ margin-left: 10px;
   margin-bottom: 3px;
   font-size: 0.9em;
   color: #ababab;
+}
+
+.dropdown-menu {
+      position: absolute;
+    top: 100%;
+    left: -280px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 350px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 16px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.fifty_view {
+  max-height: 60vh;
+  overflow-y: auto;
 }

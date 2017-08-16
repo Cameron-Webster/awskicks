@@ -59,6 +59,25 @@ a.login_button {
   }
 }
 
+.new_blog {
+  margin: 0 auto;
+  padding: 2% 5%;
+
+  h2 {
+    padding: 0 10%;
+  }
+
+  form {
+    padding: 1% 10%
+  }
+}
+
+//summernote
+
+.note-editing-area {
+  min-height: 200px;
+}
+
 // Admin styles
 
 .user_list {

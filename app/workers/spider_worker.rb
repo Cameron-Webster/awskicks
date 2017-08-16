@@ -2,6 +2,7 @@ class SpiderWorker
   include Sidekiq::Worker
 
   def perform(id = nil)
+    changed_sneakers = Array.new
     puts "starting Spider Worker"
     if id
       sneaker = Sneaker.find(id)
@@ -14,6 +15,9 @@ class SpiderWorker
             end
         end
         sneaker.save
+         if sneaker.current_price_changed? && sneaker.current_price < sneaker.previous_price
+          changed_sneakers << sneaker.id
+        end
 
     else
      Sneaker.all.each do |sneaker|
@@ -24,7 +28,12 @@ class SpiderWorker
             end
         end
         sneaker.save
+        if sneaker.current_price_changed? && sneaker.current_price < sneaker.previous_price
+          changed_sneakers << sneaker.id
+        end
+
       end
     end
+    NotificationWorker.perform_async(changed_sneakers)
   end
 end

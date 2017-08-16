@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810200046) do
+ActiveRecord::Schema.define(version: 20170816144956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20170810200046) do
     t.index ["user_id"], name: "index_buckets_on_user_id", using: :btree
   end
 
+  create_table "homepage_notifications", force: :cascade do |t|
+    t.boolean  "read"
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["notification_id"], name: "index_homepage_notifications_on_notification_id", using: :btree
+    t.index ["read"], name: "index_homepage_notifications_on_read", where: "(read = false)", using: :btree
+    t.index ["user_id"], name: "index_homepage_notifications_on_user_id", using: :btree
+  end
+
   create_table "logos", force: :cascade do |t|
     t.string   "name"
     t.string   "photo"
@@ -55,11 +66,11 @@ ActiveRecord::Schema.define(version: 20170810200046) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "pin_id"
-    t.boolean  "read"
+    t.boolean  "read",         default: false
     t.string   "action"
-    t.integer  "price_change"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.float    "price_change"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.index ["pin_id"], name: "index_notifications_on_pin_id", using: :btree
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
@@ -72,11 +83,23 @@ ActiveRecord::Schema.define(version: 20170810200046) do
     t.integer  "user_id"
     t.integer  "bucket_id"
     t.integer  "sneaker_id"
-    t.integer  "price_watch"
+    t.float    "price_watch"
     t.float    "stock_watch"
     t.index ["bucket_id"], name: "index_pins_on_bucket_id", using: :btree
     t.index ["sneaker_id"], name: "index_pins_on_sneaker_id", using: :btree
     t.index ["user_id"], name: "index_pins_on_user_id", using: :btree
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.string   "image"
+    t.text     "title"
+    t.text     "subtext"
+    t.text     "search_term"
+    t.boolean  "highlight"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "blog_id"
+    t.index ["blog_id"], name: "index_promos_on_blog_id", using: :btree
   end
 
   create_table "sizes", force: :cascade do |t|
@@ -130,6 +153,9 @@ ActiveRecord::Schema.define(version: 20170810200046) do
     t.string   "last_name"
     t.string   "profile_pic"
     t.boolean  "admin",                  default: false
+    t.integer  "notification_setting",   default: -1
+    t.datetime "last_email_send"
+    t.boolean  "marketing_prefs"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -140,7 +166,7 @@ ActiveRecord::Schema.define(version: 20170810200046) do
     t.float    "previous_price"
     t.string   "url"
     t.string   "logo"
-    t.integer  "lowest_price"
+    t.float    "lowest_price"
     t.integer  "sneaker_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -150,11 +176,14 @@ ActiveRecord::Schema.define(version: 20170810200046) do
   end
 
   add_foreign_key "buckets", "users"
+  add_foreign_key "homepage_notifications", "notifications"
+  add_foreign_key "homepage_notifications", "users"
   add_foreign_key "notifications", "pins"
   add_foreign_key "notifications", "users"
   add_foreign_key "pins", "buckets"
   add_foreign_key "pins", "sneakers"
   add_foreign_key "pins", "users"
+  add_foreign_key "promos", "blogs"
   add_foreign_key "sizes", "vendors"
   add_foreign_key "sneakers", "brands"
   add_foreign_key "vendors", "logos"

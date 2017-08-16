@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  layout 'blog'
 
   # GET /blogs
   # GET /blogs.json
@@ -10,6 +11,10 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    related_blogs = Blog.last(4).reject {|blog| blog.id == @blog.id}
+
+    @related_blogs = related_blogs.first(3)
+
   end
 
   # GET /blogs/new
@@ -69,6 +74,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.fetch(:blog, {})
+      params.require(:blog).permit(:title, :subtitle, :content, :photo, :photo_cache, :author, :photo_two, :photo_two_cache, :photo_three, :photo_three_cache)
     end
 end

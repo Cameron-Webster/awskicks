@@ -21,16 +21,10 @@
          <!-- BLOG -->
 
 
-      <!-- Notification -->
-
-    <div class="notfications_bar">
-      <i class="fa fa-2x fa-globe" aria-hidden="true"></i>
-     <span class="notif_text"> Notifications</span>
-    </div>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %><span class="user_name"> Cameron</span>
+          <%= image_tag profile_pic, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %><span class="user_name" data-toggle="dropdown">&nbsp;<%= current_user.first_name %></span>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
@@ -50,6 +44,28 @@
           </ul>
         </div>
       </div>
+
+      <!-- Notification -->
+
+    <div class="notifications_bar">
+    <div class="dropdown">
+    <div class="notification_icon dropdown-toggle" id="notification_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <i class="fa fa-commenting-o" aria-hidden="true"></i>
+
+      <div class="notification_active <%= 'noDisplay' if home_badges[:count] < 1 %>"><%= home_badges[:count] %></div>
+
+      </div>
+      <ul class="dropdown-menu fifty_view newest_notifications" aria-labelledby="notification_dropdown">
+      <% home_badges[:newest].each do |message| %>
+        <li><ul class="list-inline">
+          <li><%= cl_image_tag(message.notification.pin.sneaker.photo.thumb) %></li>
+          <li><%= link_to "#{message.notification.action}", root_path %></li>
+        </ul> <ul>
+        <li><%= message.created_at.strftime("%d/%m/%y") %></li></ul></li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
 
     <% else %>
 

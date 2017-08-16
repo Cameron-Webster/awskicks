@@ -1,17 +1,21 @@
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-md-12" style="padding: 0;">
-<div class="seperator">
-  <ul class="list-inline">
-    <li>News</li>
-    <li> Reviews</li>
-    <li>Upcoming Releases</li>
+  <div class="col-md-12 no_pad_right no_pad_left">
+    <div id="captioned-gallery">
+  <figure class="slider">
+    <% @blogs.each do |blog| %>
+    <figure>
+    <div class="home_image_slider" style="background-image: url(<%= blog.photo %>)"></div>
 
-  </ul>
+      <figcaption><%= blog.title %></figcaption>
+    </figure>
+    <% end %>
 
+  </figure>
 </div>
-</div></div>
+  </div>
+  </div>
 
 <div class="row">
   <div class="col-md-12 no_padding">
@@ -70,12 +74,7 @@
         <div id="slider-range"></div>
       </div>
     </ul></div>
-
-
-
   </div>
-
-
   <div>
     <div class="row">
       <div class="col-md-3 col-md-offset-5">

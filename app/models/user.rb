@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :pins
   has_many :buckets
+  has_many :notifications
+  has_many :homepage_notifications
 
   mount_uploader :profile_pic, PhotoUploader
 

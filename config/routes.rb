@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # end
 
   resources :blogs
+  resources :images
 
   resources :buckets, except: [:new]
   get "buckets/new/:sneaker_id", to: "buckets#new", as: 'new_bucket'
@@ -34,6 +35,7 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
     resources :vendors
   end
 
+  get 'homepage_notifications/read', to: 'homepage_notifications#read'
 
 
   get "sneakers/admin/index", to: "sneakers#admin"
