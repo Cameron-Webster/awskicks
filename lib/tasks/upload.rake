@@ -27,7 +27,7 @@ namespace :upload do
           name: f["name"],
           style_code: f["style_code"],
           brand: brand,
-          sneak_brand: brand.name,
+          sneak_brand: f["sneak_brand"],
           color: f["color"],
           gender: f["gender"],
           photo: sneak_photo,
