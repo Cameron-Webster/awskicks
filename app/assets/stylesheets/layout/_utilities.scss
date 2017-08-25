@@ -72,7 +72,14 @@ a {
   padding: 0!important;
 }
 
+.no-padding-sides {
+  padding-left: 0;
+  padding-right: 0;
+}
 
+.break-word {
+  word-wrap: break-word;
+}
 
 // Positoning
 
@@ -106,12 +113,20 @@ a {
   float: right;
 }
 
+.float-left {
+  float: left;
+}
+
 .bold_16 {
       font-weight: 800;
     font-size: 16px;
 }
 
 //margins
+
+.margin-right-100 {
+  margin-right: 100px;
+}
 
 .margin-top-20 {
   margin-top: 20px;
@@ -329,8 +344,6 @@ margin-left: 5px!important;
 
   }
 
-
-
 }
 
 .user_name {
@@ -395,4 +408,22 @@ margin-left: 5px!important;
 .fifty_view {
   max-height: 60vh;
   overflow-y: auto;
+}
+
+.break_thin {
+  margin-top: 10px;
+}
+
+.full_height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.full_height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-border {
+  border-right: 1px solid #EDEDED;
 }

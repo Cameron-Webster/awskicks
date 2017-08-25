@@ -1,10 +1,12 @@
 class SpiderWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => 4
 
-  def perform(id = nil)
+  def perform(id)
+
     changed_sneakers = Array.new
     puts "starting Spider Worker"
-    if id
+    if id.class == Fixnum
       sneaker = Sneaker.find(id)
 
         sneaker.vendors.each do |vendor|
@@ -15,12 +17,12 @@ class SpiderWorker
             end
         end
         sneaker.save
-         if sneaker.current_price_changed? && sneaker.current_price < sneaker.previous_price
+         if sneaker.changed && sneaker.lowest_price < sneaker.previous_lowest_price.to_f
           changed_sneakers << sneaker.id
         end
 
-    else
-     Sneaker.all.each do |sneaker|
+    elsif id.class == Array
+     Sneaker.where(id: id).each do |sneaker|
         sneaker.vendors.each do |vendor|
             vendor.update_price_and_stock
             if vendor.changed
@@ -28,7 +30,7 @@ class SpiderWorker
             end
         end
         sneaker.save
-        if sneaker.current_price_changed? && sneaker.current_price < sneaker.previous_price
+        if sneaker.changed && sneaker.lowest_price < sneaker.previous_lowest_price.to_f
           changed_sneakers << sneaker.id
         end
 

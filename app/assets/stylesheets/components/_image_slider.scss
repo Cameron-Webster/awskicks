@@ -1,41 +1,5 @@
-@keyframes slidy {
-0% { left: 0%; }
-25% { left: 0%; }
-33% { left: -100%; }
-60% { left: -100%; }
-66% { left: -200%; }
-100% { left: -200%; }
 
-
-
-// 0% { left: 0%; }
-// 20% { left: 0%; }
-// 25% { left: -100%; }
-// 45% { left: -100%; }
-// 50% { left: -200%; }
-// 70% { left: -200%; }
-// 75% { left: -300%; }
-// 95% { left: -300%; }
-// 100% { left: -400%; }
-}
-
- figure {
-  margin: 0; background: #101010;
-  font-weight: 100;
-}
-div#captioned-gallery {
-  width: 100%; overflow: hidden;
-}
-figure.slider {
-  position: relative; width: 500%;
-  font-size: 0; animation: 30s slidy infinite;
-}
-figure.slider figure {
-  width: 20%; height: auto;
-  display: inline-block;  position: inherit;
-}
-figure.slider img { width: 100%; height: auto; }
-figure.slider figure figcaption {
+figure.slider figcaption {
   position: absolute; bottom: 0;
   background: rgba(0,0,0,0.4);
   color: #fff; width: 100%;
@@ -49,6 +13,107 @@ figure.slider figure figcaption {
   height: 260px;
   background-size: cover;
   background-position: center;
+
+      position:absolute;
+    left:0px;
+    top:0;
+    -webkit-animation-name: fade;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 24s;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 24s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    z-index: 2;
 }
 
 
+
+.captioned-gallery {
+  position: relative;
+
+
+}
+
+ figure.slider {
+    position: relative;
+    height: 260px;
+    background-color: #000000;
+  }
+
+
+
+
+
+@-webkit-keyframes fade {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    33% {opacity: 1;}
+    34% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes fade {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    33% {opacity: 1;}
+    34% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes fade0 {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    65% {opacity: 1;}
+    66% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes fade0 {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    65% {opacity: 1;}
+    66% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@-webkit-keyframes fade2 {
+    0% {opacity: 1;}
+    1% {opacity: 1;}
+    34% {opacity: 1;}
+    35% {opacity: 0;}
+    100% {opacity: 0;}
+}
+@keyframes fade2 {
+    0% {opacity: 1;}
+    1% {opacity: 1;}
+    34% {opacity: 1;}
+    35% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+
+#f0 {
+    background-color: #4c4c4c;
+    z-index: 1;
+    animation-name: fade0;
+}
+#f1 {
+    -webkit-animation-delay: -15s;
+    background-color: #4c4c4c;
+    z-index: 3;
+    animation-name: fade2
+}
+#f2 {
+    -webkit-animation-delay: -7s;
+    background-color: #4c4c4c;
+    z-index: 2;
+    animation-name: fade;
+
+}
+
+a.white_links {
+  color: white;
+  &:hover {
+    text-decoration: underline;
+  }
+}

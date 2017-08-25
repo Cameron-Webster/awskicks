@@ -23,4 +23,12 @@ module ApplicationHelper
     return {newest: newest, count: count}
   end
 
+  def on_sale(sneaker)
+    if (plp = sneaker.previous_lowest_price) &.> (lp = sneaker.lowest_price)
+          sale_p = (lp / plp * 100 - 100).round
+      content_tag(:div, "#{sale_p}%",class: "sale")
+    end
+
+  end
+
 end

@@ -13,7 +13,7 @@
             <i class='fa fa-star-o' aria-hidden='true'></i> Saved </div>
             <% else %>
             <div class="bucketListButton bucketButton-<%= @sneaker.id %>" id="myBtn">
-              <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save
+              <i class="fa fa-thumb-tack" aria-hidden="true"></i> Sign In to Save
             </div>
             <% end %>
           </div>
@@ -21,9 +21,9 @@
         <!-- END OF HEADER -->
         <!-- BODY OF MODAL -->
         <div class="modal-body">
-         <div class="row">
+         <div class="row full_height">
            <!-- left column -->
-           <div class="col-md-6">
+           <div class="col-md-6 right-border">
             <div class="fullCard">
               <!-- render the save button and image-->
               <div class="card">
@@ -185,7 +185,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <hr class="break">
+              <hr class="break_thin">
               <ul class="list-inline flex-between middle_info">
                 <li class="store_count"><%= (sVendors = @sneaker.vendors).count %> Stores</li>
                 <li>
@@ -229,14 +229,14 @@
                         </div>
                         <div class="col-md-3">
                           <div class="row">
-                           <div class="col-md-12 previous_price no-right-padding style_code">
-                             <% if (@prev = vend.previous_price) > vend.current_price %>
+                           <div class="col-md-12 previous_price no-right-padding no_pad_left style_code">
+                             <% if (@prev = vend.previous_price) &.> vend.current_price %>
                              <p class="font-size-09">£<%= '%.2f' % @prev %></p>
                              <% end %>
                            </div>
                          </div>
                          <div class="row">
-                           <div class="col-md-12 no-right-padding price"><p class="font-size-09">£<%= '%.2f' % vend.current_price if vend.current_price %></p></div>
+                           <div class="col-md-12 no-right-padding price no_pad_left"><p class="font-size-09">£<%= '%.2f' % vend.current_price if vend.current_price %></p></div>
                          </div>
                          <div class="row">
                            <div class="col-md-12 price_spacer"><p>&nbsp;</p></div>

@@ -18,11 +18,11 @@
 </div>
 <div class="col-md-3">
   <h1>Vendor management</h1>
-  <div class="left-align"><%= link_to "Update Pricing", sneakers_admin_update_path(@sneaker), class: "black_button padding-all-10" %></div>
+  <div class="left-align float-left"><%= link_to "Update Pricing", sneakers_admin_update_path(@sneaker), class: "black_button padding-all-10" %></div>
   <div class="right-align"><%= link_to "+ New vendor", new_sneaker_vendor_path(@sneaker), class: "black_button padding-all-10" %></div>
   <% @sneaker.vendors.each do |vendor| %>
       <div class="row vend_man_row">
-        <div class="col-md-3">
+        <div class="col-md-3 no-padding-sides break-word">
          <%= vendor.name %>
         </div>
           <div class="col-md-1">

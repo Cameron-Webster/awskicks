@@ -1,5 +1,7 @@
 class Sneaker < ApplicationRecord
 
+
+
 searchkick word_start: [:name], searchable: [:name, :sneak_brand, :style_code]
 
 

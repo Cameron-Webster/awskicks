@@ -16,6 +16,7 @@ class PagesController < ApplicationController
           @order =  {order_params[0].to_sym => order_params[1].to_sym}
         else
             @order = {_score: :desc}
+
         end
 
       if params[:lowest_price].present?

@@ -85,9 +85,9 @@ $(document).ready(function(){
       var brand = $('input#brandoo').val();
       var price = $('input#priceoo').val();
       var search = $('input#srch').val();
+      var sort = $('input#sortoo').val();
 
-
-      var request_path = '/?brand='+brand+'&gender='+gender+'&lowest_price='+price+'&page={{#}}'+'&search='+search+'&utf8=%E2%9C%95'
+      var request_path = '/?brand='+brand+'&gender='+gender+'&order='+sort+'&lowest_price='+price+'&page={{#}}'+'&search='+search+'&utf8=%E2%9C%95'
 
 
 

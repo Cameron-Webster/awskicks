@@ -32,6 +32,8 @@
 
 #slider-range {
   height: 8px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 
@@ -43,7 +45,7 @@
 
 .ui-widget-header {
     border: none!important;
-    background-color: #4d4d4d!important;
+    background-color: white!important;
     color: #333333;
     font-weight: bold;
 }
@@ -58,8 +60,13 @@ p.price_slider label, p.price_slider input#amount {
   max-width: 75px;
 }
 
-p.price_slider label {
+p.price_slider {
+  margin-bottom: 4px;
+
+
+label {
   margin-bottom: 5px;
+}
 }
 
 // For facets
@@ -73,6 +80,7 @@ div.dropdown {
   font-size: 0.8em;
   padding: 5px;
   color: white;
+  width: 80px;
 
   &:hover {
     background-color: rgba(256,256,256,0.1);
@@ -147,6 +155,10 @@ div.dropdown {
   padding-bottom: 1%;
   padding-top: 1%;
 
+}
+
+.ui-widget-content {
+  background-color: #717171!important;
 }
 
 .no_pad_left {

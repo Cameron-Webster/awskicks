@@ -4,12 +4,14 @@
   <div class="col-md-12 no_pad_right no_pad_left">
     <div id="captioned-gallery">
   <figure class="slider">
-    <% @blogs.each do |blog| %>
-    <figure>
-    <div class="home_image_slider" style="background-image: url(<%= blog.photo %>)"></div>
+    <% @blogs.each_with_index do |blog, i| %>
 
-      <figcaption><%= blog.title %></figcaption>
-    </figure>
+    <div class="home_image_slider" style="background-image: url(<%= blog.photo %>)" id="f<%= i %>">
+      <figcaption><%= link_to "Article: #{blog.title}", blog_path(blog), class: "white_links cursor" %></figcaption>
+    </div>
+
+
+
     <% end %>
 
   </figure>
@@ -50,12 +52,12 @@
       Price
       <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
+    <ul class="dropdown-menu price_drop_down" aria-labelledby="dLabel">
 
 
       <div class="kick_slider">
 
-      <ul class="list-inline">
+      <ul class="list-inline center-align">
       <li>
         <p class="price_slider">
 

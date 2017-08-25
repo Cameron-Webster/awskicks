@@ -8,7 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Social -->
-        <ul class="list-inline social">
+        <ul class="list-inline social margin-right-100">
           <li><div class="facebook"> <i class="fa fa-facebook" aria-hidden="true"></i></div></li>
           <li><div class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></div></li>
           <li><div class="insta"><div class="instagram"></div></div></li>
@@ -41,6 +41,7 @@
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
             </li>
+
           </ul>
         </div>
       </div>
@@ -70,7 +71,10 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link sign_up_button" %>
+
+      <!-- Login text link -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link nav_login_button" %>
 
     <% end %>
 

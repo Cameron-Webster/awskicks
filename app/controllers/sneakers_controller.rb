@@ -40,12 +40,14 @@ class SneakersController < ApplicationController
   def create
     @sneaker = Sneaker.new(sneaker_params)
 
+
+
     @sneaker.sneak_brand = Brand.find(sneaker_params[:brand_id]).name.to_s
 
     respond_to do |format|
       if @sneaker.save
 
-        format.html { redirect_to @sneaker, notice: 'Pin was successfully created.' }
+        format.html { redirect_to sneakers_admin_show_path(@sneaker), notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @sneaker }
       else
         format.html { render :new }
@@ -75,7 +77,7 @@ class SneakersController < ApplicationController
     @sneaker.destroy
      Sneaker.reindex
     respond_to do |format|
-      format.html { redirect_to sneaker_url, notice: 'Pin was successfully destroyed.' }
+      format.html { redirect_to sneakers_admin_index_path, notice: 'Pin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -126,11 +128,15 @@ class SneakersController < ApplicationController
   end
 
   def sneaker_update_all
-      SpiderWorker.perform_async
+    Sneaker.all.each do |sneaker|
+      SpiderWorker.perform_async(sneaker.id)
+    end
       respond_to do |format|
         format.html {redirect_to sneakers_admin_index_path}
       end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

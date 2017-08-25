@@ -1,0 +1,23 @@
+
+.dropdown-menu.gender_drop_down, .dropdown-menu.brand_drop_down, .dropdown-menu.price_drop_down {
+width: 300%!important;
+background-color: #4c4c4c!important;
+color: white!important;
+min-width: 245px!important;
+}
+
+.dropdown-menu.brand_drop_down {
+  left: -100%!important;
+}
+
+.dropdown-menu.price_drop_down {
+  left: -208%!important;
+
+  input#amount {
+    background-color: #4c4c4c!important;
+  }
+}
+
+.dropdown-menu.gender_drop_down {
+  left: 0!important;
+}

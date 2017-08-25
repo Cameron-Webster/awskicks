@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'accounts'
 
+  get 'accounts/sign_out', to: 'devise/sessions#destroy'
+
   authenticate :user, lambda { |u| u.admin? } do
 
    mount Sidekiq::Web => '/sidekiq'
@@ -43,8 +45,11 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
   get "sneakers/admin/:id/update", to: "sneakers#sneaker_update", as: "sneakers_admin_update"
   get "sneakers/admin/update/all", to: "sneakers#sneaker_update_all", as: "sneakers_admin_update_all"
 
+
   resources :logos, only: [:new, :create, :index]
   resources :brands, only: [:new, :create, :index]
   root to: 'pages#home'
+
+  delete "logout" => "devise/sessions#destroy", :as => "logout"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
