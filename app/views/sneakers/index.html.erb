@@ -1,18 +1,218 @@
-<p></p>
-<%= form_tag sneakers_path, method: 'get', remote: true do %>
-<%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch" %>
-<%= submit_tag "search", :name => nil, hidden: true %>
-<% end %>
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12" style="padding: 0;">
+
+</div></div>
+
+  <div class="row margin-top-3p margin-bottom-3p vendrow">
+  <div class="col-md-1">
+
+  </div>
+    <div class="col-md-4">
+      <h1 class="center-align"><%= current_user.first_name %>&nbsp;<%= current_user.last_name %></h1>
+
+    </div>
+
+    <div class="col-md-4">
+     <ul class="list-inline margin-left-10 margin-top-20 profile_info">
+       <li><b><%= current_user.pins.count %></b> Saved Kicks</li>
+       <li><b><%= current_user.buckets.count %></b> Collections</li>
+     </ul>
+    </div>
+    <div class="col-md-2">
+      <div class="profile" style="background-image: url(<%= current_user.profile_pic %>)">
+
+      </div>
+    </div>
+  </div>
+
+<div id="facet_menu"></div>
+  <div class="row padding-10">
+<div class="col-md-6">
+<p class="buckets_header"><span class="grey_button"><%= link_to 'Collections', buckets_path, class: 'grey_button' %></span>&nbsp;<span class="black_button pointer">Kicks</span></p>
+</div></div></div>
+
+
+<div class="container-fluid">
+
+
+<div class="row">
+  <div class="col-md-12 no_padding">
+    <div class="search_bar" id="top">
+      <%= form_tag sneakers_path, method: 'get', id: "formoq", remote: true do %>
+
+      <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
+      <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
+      <%= hidden_field_tag :lowest_price, params[:lowest_price], id: 'priceoo' %>
+      <%= hidden_field_tag :order, params[:order], id: 'sortoo' %>
+       <%= hidden_field_tag :size, params[:size], id: 'sizeoo' %>
+        <div class="input-group" id="stubby">
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search" %>
+      <button id="searchSub"><i class="fa fa-search"></i></button>
+      </div>
+      <%= submit_tag "search", :name => nil, style: 'display: none;' %>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row facet_row">
+<div class="filter_button">
+    <div class="facets" id="facet_menu">
+     <%= render 'pages/facets' %>
+   </div>
+
+   <div class="dropdown">
+    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="genderButton">
+      Price
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu price_drop_down" aria-labelledby="dLabel">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="zerofive">Price Range:</p>
+      </div>
+    </div>
+  <div class="row vendrow margin-b-10px">
+  <div class="col-md-6">
+      <div class="kick_slider">
+
+      <ul class="list-inline center-align">
+      <li>
+        <p class="price_slider">
+
+          <!-- <label for="amount">Price range:</label> -->
+          <input type="text" id="amount" readonly style="max-width: 70px;">
+
+        </p>
+        </li>
+        <li>
+          <div class="slide_loader" style="width: 30px;">
+
+           </div>
+        </li>
+      </ul>
+
+        <div id="slider-range"></div>
+      </div>
+  </div>
+  <div class="col-md-6">
+       <form action="">
+         <input type="button" value="Update" name="Update" class="purple_button update_button">
+       </form>
+       </div>
+       </div>
+    </ul></div>
+
+     <div class="dropdown sizedrop">
+    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="genderButton">
+      Size
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu size_drop_down" aria-labelledby="dLabel">
+     <form action="">
+     <table>
+     <tr>
+       <th>Sizes</th>
+     </tr>
+     <tr>
+    <% for i in 2..5 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+      <tr>
+    <% for i in 6..9 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+         <tr>
+    <% for i in 10..13 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+    <tr><td>
+      <input type="radio" name="size" data-size="">&nbsp;All<br>
+    </td></tr>
+    <tr>
+    <td colspan="2">
+        <input type="checkbox" name="half" data-size="0.5"> Include Half sizes
+    </td>
+    <td colspan="2">
+      <input type="button" value="Update" name="Update" class="purple_button update_button">
+    </td></tr>
+    </table>
+
+      </form>
+
+    </ul></div>
+
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-5">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row">
+<div class="col-md-12">
 <div id="products" class="">
 
 
 
 
 
-<%= render 'sneakers' %>
+<%= render 'buckets/sneakers' %>
 
 </div>
 
 <div id="pagin"></div>
+</div>
+</div>
+<div class="end">
+<div class="page-load-status">
+  <div class="loader-ellips infinite-scroll-request">
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+    <span class="loader-ellips__dot"></span>
+  </div>
+  <div class="infinite-scroll-last">
 
+    <a href="#top">Back to top</a>
+
+  </div>
+
+</div>
+<div id="fin" style="display: none; text-align: center; padding-top: 50px;">End of results back to <a href="#top">Top</a></div>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" id="delete_pin" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content padding-20px">
+      <div class="row">
+      <div class="col-md-12">
+       <span class="close" data-dismiss="modal">&times;</span>
+     </div>
+   </div>
+    <h3>Confirm Delete item from collection</h3>
+    <%= link_to "Delete", root_path, class: "purple_button confirm_delete padding-5px", method: :delete %>
+    </div>
+  </div>
+</div>
 

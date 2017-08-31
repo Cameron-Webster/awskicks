@@ -1,0 +1,157 @@
+.unhide_blogs {
+
+  .unhide_news {
+  padding: 0 10%;
+}
+}
+
+.homepage_blog_articles {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 25px;
+}
+
+
+
+  .blog_info {
+    width: 230px;
+    font-size: 0.8em;
+    padding: 5px;
+  }
+.homepage_blog_card {
+  width: 230px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.blog_page {
+
+.blog_title {
+
+    position: absolute;
+    bottom: 0;
+    padding: 20px 20px 0px 20px;
+
+    color: #828282;
+    background-color: rgba(238, 238, 238, 0.75);
+    width: 100%;
+
+}
+
+.blog_title_inner {
+  width: 70%;
+  text-align: left;
+    font-size: 1.7em;
+}
+
+.header_section {
+  position: relative;
+  text-align: center;
+  width: 80%;
+  margin:0 auto;
+
+
+}
+
+ img.blog_header {
+      width: 100%;
+    }
+
+.social.no-margin.no_pad_top {
+  margin-left: 0;
+  padding-top: 0
+}
+
+.blog-share {
+  text-align: left;
+}
+
+.padding-bottom-5 {
+  padding-bottom: 5px;
+}
+
+.vendrow.left-align > [class*='col-'] p {
+text-align: left!important;
+}
+
+ul.social.list-inline.no_pad_top.no-margin-left {
+  margin-bottom: 0!important;
+}
+
+.blog_subtitle {
+  padding-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 10px;
+
+  .header_1 {
+    font-weight: 600;
+    font-size: 1.3em;
+  }
+}
+
+.blog_content {
+  padding: 0 10%;
+}
+
+.side_photo {
+  max-width: 100%
+}
+
+.blog_side_content {
+  padding-right: 10%;
+}
+
+.related_posts {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.related_card {
+  width: 180px;
+  height: 300px;
+  img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+.related-post_heading {
+  background-color: $kickDarkGrey;
+  color: white;
+}
+
+p.blog_back {
+  font-size: 0.8em;
+  margin-top: 8px;
+  margin-bottom:8px;
+}
+
+}
+
+.grid-sizer-blog {
+  width: 300px;
+
+  img {
+    width: 100%;
+
+  }
+   a {
+    color: $kickDarkGrey!important;
+    &:hover {
+      color: $kickPurple!important;
+    }
+  }
+}
+
+.blog_index_header {
+  h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+  }
+
+
+}

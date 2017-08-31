@@ -32,6 +32,8 @@
 
 #slider-range {
   height: 8px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 
@@ -43,7 +45,7 @@
 
 .ui-widget-header {
     border: none!important;
-    background-color: #4d4d4d!important;
+    background-color: white!important;
     color: #333333;
     font-weight: bold;
 }
@@ -58,8 +60,13 @@ p.price_slider label, p.price_slider input#amount {
   max-width: 75px;
 }
 
-p.price_slider label {
+p.price_slider {
+  margin-bottom: 4px;
+
+
+label {
   margin-bottom: 5px;
+}
 }
 
 // For facets
@@ -67,10 +74,17 @@ p.price_slider label {
 div.dropdown {
 
   button#dLabel {
-  background-color: white;
-  border: 1px solid $kickGreyLight;
+  background-color: rgba(77,77,77,0);
+  border: 2px solid white;
+  border-radius: 5px;
   font-size: 0.8em;
   padding: 5px;
+  color: white;
+  width: 80px;
+
+  &:hover {
+    background-color: rgba(256,256,256,0.1);
+  }
 
   .genderButton {
     border-radius: 3px 0 0 3px;
@@ -92,9 +106,7 @@ div.dropdown {
   -webkit-box-shadow: 8px 6px 12px rgba(0, 0, 0, 0.2);
   top: inherit;
 
-  li {
-    border-bottom: 1px solid $kickGreyLight;
-  }
+
 
   i.fa-times-circle {
     color: $kickPurple;
@@ -139,7 +151,14 @@ div.dropdown {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
+  background-color: rgba(77,77,77,0.9);
+  padding-bottom: 1%;
+  padding-top: 1%;
 
+}
+
+.ui-widget-content {
+  background-color: #717171!important;
 }
 
 .no_pad_left {

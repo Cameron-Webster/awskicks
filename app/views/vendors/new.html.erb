@@ -1,2 +1,9 @@
-<h1>Add a new vednor for <%= @sneaker.name %></h1>
+<div class="row">
+  <div class="col-md-12">
+  <div class="breadcrumb padding-left-10p"><%= link_to "back to Sneaker Admin Panel", sneakers_admin_show_path(@sneaker) %></div>
+  <div class="new_sneaker">
+<h1>Add a new vendor for <%= @sneaker.name %></h1>
 <%= render 'vendor_form' %>
+</div>
+</div>
+</div>

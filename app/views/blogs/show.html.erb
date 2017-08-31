@@ -1,0 +1,77 @@
+<div class="blog_page">
+<div class="row">
+  <div class="col-md-12 center-align">
+    <div class="header_section">
+    <p class="left-align blog_back"><%= link_to blogs_path do %>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to News Home
+      <% end %>
+    </p>
+      <%= cl_image_tag(@blog.photo, class: "blog_header") %>
+      <div class="blog_title">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="blog_title_inner">
+              <%= @blog.title %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row vendrow no_pad_top left-align">
+          <div class="col-md-5">
+           By <%= @blog.author %> <%= @blog.created_at.strftime("Published %m/%d/%Y") %>
+         </div>
+         <div class="col-md-6 left-align">
+          <p class="padding-bottom-5 left-align">Share</p>
+          <ul class="social list-inline no_pad_top no-margin-left ">
+            <li><div class="facebook"> <i class="fa fa-facebook" aria-hidden="true"></i></div></li>
+            <li><div class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></div></li>
+            <li><div class="pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></div></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 blog_subtitle">
+   <p class="header_1"> <%= @blog.subtitle %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 blog_content">
+   <p class="header_1"> <%= raw @blog.content %></p>
+  </div>
+  <div class="col-md-4 blog_side_content">
+
+    <%= cl_image_tag(@blog.photo_two, class: "side_photo") if @blog.photo_two %>
+
+  </div>
+</div>
+<div class="row related_posts">
+  <div class="cold-md-12">
+
+  <div class="row">
+  <h2>More News</h2>
+   <p><%= link_to "View All", blogs_path %></p>
+  <% @related_blogs.each do |blog| %>
+    <div class="col-md-4 related_card">
+      <%= cl_image_tag(blog.photo) %>
+        <div class="related_card_title">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="related_card_title_inner">
+              <%= link_to blog.title, blog_path(blog) %>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    </div>
+<% end %>
+  </div>
+</div>
+</div>
+

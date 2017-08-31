@@ -1,0 +1,67 @@
+<hr class="title_breaker">
+<p class="header1"><%= @search %></p>
+<p class="header2">showing <b><%= ent = @sneakers.total_entries %></b> <%= 'Sneaker'.pluralize(ent) %></p>
+  <select id="sorting">
+    <option value="" <%= selected='selected' if params[:order].nil? %> >Sort By: Relevance</option>
+    <option value="lowest_price asc" <%= selected='selected' if params[:order] == 'lowest_price asc' %> >Price Lowest First</option>
+    <option value="lowest_price desc" <%= selected='selected' if params[:order] == 'lowest_price desc' %> >Price Highest First</option>
+  </select>
+<div class="row">
+<div class="col-md12">
+<div class="grid">
+
+<% count = 0 %>
+<% @sneakers.each do |sneak| %>
+<% count += 1 %>
+<div class="grid-item">
+  <div class="orange" data-rails="<%= sneak.id %>">
+
+<%= link_to "Sneaker Dashboard", sneakers_admin_show_path(sneak)  %>
+ <div class="sneaker_thumb" data-rails="<%= sneak.id %>">
+
+
+<% if sneak.alt_photo.file    %>
+<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+<% else %>
+<%= cl_image_tag(sneak.photo) %>
+<% end %>
+</div>
+<div class="sneak_info">
+<hr class="img_seperator">
+<div class="row">
+  <div class="col-md-9 brand_title sneaker_title">
+    <p class="no_margin_bottom"><b><%= sneak.brand.name unless sneak.brand.nil? %></b></p>
+  </div>
+
+</div>
+<div class="row vendrow-b">
+  <div class="col-md-7 sneaker_title">
+    <p class=""><%=  sneak.name %></p>
+  </div>
+  <div class="col-md-5">
+  from £<%= sneak.lowest_price %>
+</div>
+</div>
+<hr>
+<div class="stores"><%= sneak.vendors.count %> Stores</div>
+<div class="sale">Sale</div>
+
+  <p class="center-align style_code">sku: <%= sneak.style_code %></p>
+
+
+
+<hr>
+
+</div>
+
+</div>
+</div>
+<% end %>
+<div class="mooo"></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md12"><%= will_paginate @sneakers %></div></div>
+
+

@@ -6,13 +6,15 @@ class DynamicPageScraper
 
   def initialize(url)
 
+
+
       Capybara.register_driver :poltergeist do |app|
       # stop images loading
-        options = {
-        phantomjs_options: ['--load-images=no']
-       }
+       #  options = {
+       #    js_errors: false
+       # }
 
-      Capybara::Poltergeist::Driver.new(app, js_errors: false)
+      Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--load-images=no', '--proxy=45.32.231.36:31280', '--proxy-auth=' + ENV["PROXY_DYNAMIC"]], js_errors: false)
       end
 
     Capybara.default_driver = :poltergeist
@@ -26,6 +28,8 @@ class DynamicPageScraper
     @browser = Capybara.current_session
     @browser.visit url
     sleep 5
+
+
 
   end
 

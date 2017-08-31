@@ -6,16 +6,40 @@
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#ffffff"
+        },
+        "button": {
+          "background": "#474343"
+        }
+      },
+      "theme": "edgeless"
+    })});
+</script>
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <div class="container">
+    <div class="container-fluid">
+    <div class="row">
+  <div class="col-md-12" style="padding: 0;">
+<div class="seperator">
+
+
+</div>
+</div></div></div>
     <%= yield %>
     </div>
     <div>
@@ -27,13 +51,13 @@
 
   <ul class="list-inline">
   <li>
-  <a href="/cookies">Cookie Policy</a> |
+    &nbsp;<a href="/contact">Contact</a> |
   </li>
   <li>
-    &nbsp;<a href="/contact">Contact and Legal</a> |
+    &nbsp;<a href="/privacy">Privacy & Cookies</a> |
   </li>
   <li>
-    &nbsp;<a href="/privacy">Privacy</a>
+    &nbsp;<a href="/terms">Terms of Service</a>
   </li>
   </ul>
    <p>&copy; Kickworks <%= Date.today.year %></p>

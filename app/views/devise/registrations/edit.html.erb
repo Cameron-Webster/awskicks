@@ -1,3 +1,6 @@
+ <div class="container-fluid">
+<div class="row">
+<div class="col-md-6">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -19,14 +22,24 @@
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
   </div>
+  <div class="form-group">
+    <%= f.input :notification_setting, label: "Price Drop Notifications", collection: [['No notifications', -1], ['Immediately', 1], ['Once Daily', 24], ['Once Weekly', 144]] %>
+  </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>
 <% end %>
 
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div></div>
+</div>

@@ -1,26 +1,5 @@
 $(document).ready(function(){
 
-  //Truncating bucket names on hover
-
-  //   $(document).on("mouseenter mouseleave", ".pretty_bucket_list li", function(ev){
-
-  //   var $that = $(this);
-
-  //   var longText = $that.text();
-  //   if (longText.length > 18) {
-  //     if (ev.type == 'mouseenter') {
-  //       $that.val(longText);
-  //       var shortText = longText.substring(0, 18) + ".."
-  //       $that.text(shortText);
-  //     } else {
-  //       $that.text($that.val());
-  //       console.log(longText);
-  //     }
-  //   }
-
-  // });
-
-
 
 
 // When the user clicks on the button, open the modal

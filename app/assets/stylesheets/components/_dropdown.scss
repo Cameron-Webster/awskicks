@@ -1,0 +1,53 @@
+
+.dropdown-menu.gender_drop_down, .dropdown-menu.brand_drop_down, .dropdown-menu.price_drop_down, .dropdown-menu.size_drop_down {
+width: 400%!important;
+background-color: #4c4c4c!important;
+color: white!important;
+// min-width: 245px!important;
+min-width: 0;
+}
+
+.dropdown-menu.brand_drop_down {
+  left: -100%!important;
+}
+
+.dropdown-menu.price_drop_down {
+  left: -208%!important;
+
+  input#amount {
+    background-color: #4c4c4c!important;
+  }
+}
+
+.dropdown-menu.gender_drop_down {
+  left: 0!important;
+
+  label {
+    display: inline;
+  }
+input[type=checkbox] {
+    display: inline;
+    }
+}
+
+.size_drop_down {
+  // width: 415%;
+  left: -300%;
+
+table {
+  width: 100%;
+
+  td {
+    padding: 10px;
+  }
+}
+}
+
+.sizedrop {
+  width: 84px;
+}
+
+.update_button {
+  width: 145px;
+  line-height: 2em;
+}

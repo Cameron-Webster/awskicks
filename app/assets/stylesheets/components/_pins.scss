@@ -107,6 +107,18 @@ a.purple_button {
   border-radius: 4px;
 }
 
+.sale_notification {
+  position: absolute;
+  right: 7%;
+  top: 7%;
+  color: white;
+  font-size: 0.9em;
+  padding: 4px 3px;
+
+    background-color: $notification-red;
+  border-radius: 4px;
+}
+
 
 .mod2 {
 
@@ -120,7 +132,7 @@ a.purple_button {
 }
 }
 
-  .mod2 {
+  .mod2, .mod_index {
 
      &:hover {
     background-color: $kickGreyLight;

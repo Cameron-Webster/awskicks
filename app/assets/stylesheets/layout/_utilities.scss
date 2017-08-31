@@ -4,10 +4,31 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
+ body {
+  overflow-x: hidden;
+ }
+
 // Paddings
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
+}
+
+.padding-all-10 {
+  padding: 10px;
+}
+
+.padding-20px {
+  padding: 20px;
+}
+
+.padding-5px {
+  padding: 5px;
+}
+//font size
+
+.font-size-09 {
+  font-size: 0.9em;
 }
 
 // Backgrounds
@@ -52,7 +73,23 @@ a {
 }
 
 .no_pad_left {
+  padding-left: 0!important;
+}
+.no_pad_top {
+  padding-top: 0!important;
+}
+
+.no_padding {
+  padding: 0!important;
+}
+
+.no-padding-sides {
   padding-left: 0;
+  padding-right: 0;
+}
+
+.break-word {
+  word-wrap: break-word;
 }
 
 // Positoning
@@ -69,6 +106,10 @@ a {
   text-align: right;
 }
 
+.left-align {
+  text-align: left;
+}
+
 .padding-sides-30 {
       padding-left: 30%!important;
     padding-right: 30%!important;
@@ -79,8 +120,17 @@ a {
   padding-right: 10%;
 }
 
+.pad-downup-10 {
+padding-top: 10px;
+padding-down: 10px;
+}
+
 .float-right {
   float: right;
+}
+
+.float-left {
+  float: left;
 }
 
 .bold_16 {
@@ -90,6 +140,14 @@ a {
 
 //margins
 
+.margin-10px {
+margin: 10px;
+}
+
+.margin-right-100 {
+  margin-right: 100px;
+}
+
 .margin-top-20 {
   margin-top: 20px;
 }
@@ -98,8 +156,20 @@ a {
   margin-left: 30%;
 }
 
+.margin-left-15p {
+  margin-left: 15%;
+}
+
 .no_margin_bottom {
   margin-bottom: 0;
+}
+
+.margin_bottom_10 {
+  margin-bottom: 10px;
+}
+
+.no-margin-left {
+  margin-left: 0;
 }
 
 .margin-top-3p {
@@ -113,8 +183,20 @@ a {
 margin-left: 10px;
 }
 
+.margin-left-5 {
+margin-left: 5px!important;
+}
+
+.margin-top-5 {
+  margin-top: 5px!important;
+}
+
 .padding-right-20 {
   padding-right: 20px;
+}
+
+.padding-left-10p {
+  padding-left: 10%;
 }
 
 .noBorder {
@@ -123,6 +205,10 @@ margin-left: 10px;
 
 .margin-left-15 {
   margin-left: 15px;
+}
+
+.margin-b-10px {
+  margin-bottom: 10px;
 }
 
 .padding-left-3p {
@@ -138,4 +224,249 @@ margin-left: 10px;
 }
 .purple {
   color: $kickPurple;
+}
+
+.pointer {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+
+// brands
+
+
+
+.instagram {
+  background:
+    /////// Use radial gradients to get the rounded
+    /////// gradient effect in each corner
+
+    // left bottom
+    radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+    // left top
+    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+    radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+    //  right top
+    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+    radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+    // right bottom
+    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+
+    /////// create a base coat to smooth
+    /////// corner gradients
+    linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+
+  border-radius: .2em;
+  font-size: 2.0em;
+  height: 1em;
+  position: relative;
+  width: 1em;
+
+  &:before,
+  &:after {
+    color: #fff;
+    content: '';
+    display: block;
+    position: absolute;
+    border: .075em solid;
+  }
+
+  &:before {
+    border-radius: inherit;
+    height: .75em;
+    transform: translate(.125em, .125em);
+    width: .75em;
+  }
+
+  &:after {
+    border-radius: 1em;
+    box-shadow: .2em -.2em 0 -.16em;
+    height: .4em;
+    transform: translate(.3em, .3em);
+    width: .4em;
+  }
+}
+
+.insta {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, 0, 0);
+  transform: translateY(20%);
+
+}
+
+.facebook {
+  color: white;
+  background-color: #3b5998;
+  font-size: 1.5em;
+  padding-left: 10px!important;
+  padding-right: 10px!important;
+}
+
+.twitter {
+  background-color: #4099FF;
+  color: white;
+  font-size: 1.5em;
+  padding-left: 6px;
+  padding-right: 6px;
+
+}
+
+.pinterest {
+  background-color: #c92228;
+    color: white;
+  font-size: 1.5em;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.social li {
+  padding-left: 0;
+  padding-right: 0;
+  list-style: none;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+.notifications_bar {
+  // margin-left: 80px;
+  color: #ababab;
+
+  .notification_active {
+    font-size: 0.6em;
+    color: #ffffff;
+    background-color: $notification-red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -3px;
+    right: -6px;
+    line-height: 16px;
+    border: 2px solid white;
+  }
+
+  .notification_icon {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+   border: 2px solid white;
+    position: relative;
+
+     i {
+    font-size: 1.5em;
+      }
+
+  &:hover {
+      border: 2px solid #ababab;
+    background-color: $kickGreyLight;
+    cursor: pointer;
+  }
+
+  }
+
+}
+
+.user_name, .nav_menu_item {
+  color: #ababab;
+}
+
+.social_share {
+  position: absolute;
+  top:0;
+  display: none;
+  margin-left: 15px;
+  margin-top: 15px;
+  padding: 3px 3px 3px 7px;
+  background-color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+
+.social_share_list {
+  padding-left: 0;
+
+  li {
+    margin-right: 0;
+    margin-left: 0;
+    width: 35px;
+    list-style: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+.share_header {
+  margin-bottom: 3px;
+  font-size: 0.9em;
+  color: #ababab;
+}
+
+.dropdown-menu {
+      position: absolute;
+    top: 100%;
+    left: -280px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 350px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 16px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.fifty_view {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.break_thin {
+  margin-top: 10px;
+}
+
+.full_height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.full_height > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-border {
+  border-right: 1px solid #EDEDED;
+}
+
+.zerofive {
+  margin: 0 0 0 5px;
+}
+
+.flex-around {
+  display: flex;
+  justify-content:space-around;
+}
+
+.no_margin_sides {
+  margin-right: 0;
+  margin-left: 0;
 }

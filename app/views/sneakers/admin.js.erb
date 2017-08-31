@@ -1,0 +1,11 @@
+$('#products').html("<%= j render 'sneakers_admin' %>");
+$('.facets').html("<%= j render 'pages/facets' %>");
+
+
+
+
+
+//remove spinner
+$('span.spinner').html("").removeClass("slider_active");
+
+$('#loading_screen').remove();

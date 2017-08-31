@@ -58,3 +58,41 @@ a.login_button {
     padding: 1% 10%
   }
 }
+
+.new_blog {
+  margin: 0 auto;
+  padding: 2% 5%;
+
+  h2 {
+    padding: 0 10%;
+  }
+
+  form {
+    padding: 1% 10%
+  }
+}
+
+//summernote
+
+.note-editing-area {
+  min-height: 200px;
+}
+
+// Admin styles
+
+.user_list {
+  border: 1px solid #bebebe;
+    max-height: 300px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.vend_man_row {
+  border: 1px solid #bebebe;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+//breadcrumbs
+
+

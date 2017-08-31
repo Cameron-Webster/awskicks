@@ -1,0 +1,56 @@
+
+<div class="row">
+  <div class="col-md-12 padding-left-10p blog_index_header">
+    <h1>News, reviews and Upcoming Releases</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md12">
+    <div class="grid">
+
+
+      <% @blogs.each do |blog| %>
+
+      <div class="grid-item grid-sizer-blog">
+
+<%= link_to blog_path(blog) do %>
+
+       <div class="sneaker_thumb"">
+
+        <%= cl_image_tag(blog.photo, class: "main") %>
+
+      </div>
+      <div class="sneak_info">
+        <hr class="img_seperator">
+        <div class="row">
+          <div class="col-md-9 brand_title sneaker_title">
+            <p class="no_margin_bottom"><b><%= blog.title %></b></p>
+          </div>
+
+        </div>
+        <div class="row vendrow-b">
+          <div class="col-md-7 sneaker_title">
+            <p class=""><%=  blog.subtitle %></p>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <p class="style_code margin-left-5 margin-top-5"><%= blog.created_at.strftime("Published %m/%d/%Y") %></p>
+          </div>
+        </div>
+        <hr>
+
+
+        <hr>
+
+      </div>
+<% end %>
+
+    </div>
+    <% end %>
+    <div class="mooo"></div>
+    </div>
+  </div>
+</div>
+

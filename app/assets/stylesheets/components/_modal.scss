@@ -17,7 +17,7 @@
   }
 
   hr.details {
-    margin: 2px 0;
+    margin: 2px 0 0 0;
   }
 
   .style_code {
@@ -27,6 +27,7 @@
 
   .brand_logo {
     max-height: 60px;
+    max-width: 100%;
   }
 
   h4.logo_container {
@@ -105,6 +106,7 @@
 
   &:hover {
     border: 3px solid $kickGrey;
+    cursor: pointer;
   }
 }
 
@@ -374,11 +376,17 @@ a.displayNewBucket {
 
 .fullCard {
   position: relative;
-  border-right: 1px solid #EDEDED;
+
 }
 
 .modal-main-image {
-   border-bottom: 1px solid #EDEDED;
+
+
+   &:hover {
+    .social_share {
+      display: block;
+    }
+   }
 }
 
 .leftside-modal-footero {
@@ -388,6 +396,7 @@ a.displayNewBucket {
 hr .break {
    border-bottom: 1px solid #EDEDED;
 }
+
 
 .social {
     h5 {
@@ -463,6 +472,10 @@ line-height: 1.2;
 }
 
 .shop_link {
+  a {
+    color: white!important;
+    text-decoration: none!important;
+  }
   background-color: $kickRed;
   color: white;
   padding: 7px;
@@ -489,11 +502,12 @@ line-height: 1.2;
   max-width: 103%;
   padding-top: 10px;
   padding-bottom: 5px;
+  margin-left: -8px;
 }
 
 .vendor_logo {
   max-width: 100%;
-  max-height: 70px;
+  max-height: 80px;
 }
 
 .vendor_price {

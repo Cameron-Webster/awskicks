@@ -22,6 +22,7 @@ gem 'searchkick'
 gem 'will_paginate'
 gem 'carrierwave', '~> 0.11.2'
 gem 'sidekiq'
+
 gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'
@@ -30,6 +31,8 @@ gem 'typhoeus'
 gem 'jquery-ui-rails'
 
 group :development, :test do
+
+  gem "letter_opener"
   gem 'binding_of_caller'
   gem 'better_errors'
   gem 'faker'

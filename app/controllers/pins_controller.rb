@@ -24,7 +24,7 @@ class PinsController < ApplicationController
   end
 
   def create_stock_watch
-    # raise
+
       @sneaker_id = params[:id]
       @pin = current_user.pins.where('sneaker_id = ?', @sneaker_id).last
       respond_to do |format|
@@ -70,13 +70,11 @@ class PinsController < ApplicationController
 
 
   def destroy
-
-
-
-    @pin = current_user.pins.find_by bucket_id: params[:bucket_id], sneaker_id: params[:id]
+      previous_path = request.referrer
+    @pin = current_user.pins.find_by sneaker_id: params[:id]
     @pin.destroy
     respond_to do |format|
-      format.html { redirect_to bucket_path(params[:bucket_id]), notice: 'Pin was successfully destroyed.' }
+      format.html { redirect_to previous_path, notice: 'Pin was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

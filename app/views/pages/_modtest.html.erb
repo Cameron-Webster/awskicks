@@ -21,9 +21,9 @@
         <!-- END OF HEADER -->
         <!-- BODY OF MODAL -->
         <div class="modal-body">
-         <div class="row">
+         <div class="row full_height">
            <!-- left column -->
-           <div class="col-md-6">
+           <div class="col-md-6 right-border">
             <div class="fullCard">
               <!-- render the save button and image-->
               <div class="card">
@@ -42,18 +42,18 @@
                           <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
                         </li>
                       </ul>
+                        <div class="social_share">
+                        <p class="share_header">Share</p>
+                          <ul class="social_share_list">
+                            <li><div class="facebook"> <i class="fa fa-facebook" aria-hidden="true"></i></div></li>
+                            <li><div class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></div></li>
+                            <li><div class="pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></div></li>
+                          </ul>
+                      </div>
                     </div>
                     <div class="leftside-modal-footero">
 
-                      <div class="social">
-                        <h5>Share</h5>
-                        <ul class="list-inline">
-                          <li><%= image_tag("fb.png", height: '35', width: '35') %></li>
-                          <li><%= image_tag("twitter.png", height: '35', width: '35') %></li>
-                          <li><%= image_tag("pinterest.jpeg", height: '35', width: '35') %></li>
-                          <li><%= image_tag("google_plus.png", height: '35', width: '35') %></li>
-                        </ul>
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@
                         <% end %>
                         <% else %>
                         <div class="pretty_bucket_list_outer <%= 'noDisplay' if i > 0 %>" data-page="<%= i %>">
-                          <p class="miniMod-header border-bottom">Sign in to Save to Wardrobe</p>
+                          <p class="miniMod-header border-bottom">Sign in to Save to Collection</p>
                         </div>
                         <% end %>
 
@@ -158,7 +158,7 @@
                   </div>
                 </div>
                 <% else %>
-                <p class="center-align"> Please Login or Sign Up to save to wardrobe </p>
+                <p class="center-align"> Please Login or Sign Up to save to collection <br></p>
                 <ul class="list-inline no_entry">
                 <li class="center-align"><%= link_to "Log In", new_user_session_path, class: "shop_link padding-sides-30" %></li>
                  <li class="center-align"><%= link_to "Sign Up", new_user_registration_path, class: "shop_link padding-sides-30" %></li>
@@ -179,13 +179,13 @@
               </div>
               <div class="style_code">Style(sku): <%= @sneaker.style_code %></div>
               <hr class="details">
-              <div class="shrinkwrap price_badge">From £<%= @sneaker.lowest_price %></div>
+              <div class="shrinkwrap price_badge">From £<%= '%.2f' % @sneaker.lowest_price if @sneaker.lowest_price %></div>
             </div>
             <div class="col-md-4"><h4 class="logo_container"><%= cl_image_tag(@sneaker.brand.logo, class: "brand_logo") %></h4></div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <hr class="break">
+              <hr class="break_thin">
               <ul class="list-inline flex-between middle_info">
                 <li class="store_count"><%= (sVendors = @sneaker.vendors).count %> Stores</li>
                 <li>
@@ -229,14 +229,14 @@
                         </div>
                         <div class="col-md-3">
                           <div class="row">
-                           <div class="col-md-12 previous_price no-right-padding style_code">
-                             <% if (@prev = vend.previous_price || 0) > vend.current_price %>
-                             <p>£<%= @prev %></p>
+                           <div class="col-md-12 previous_price no-right-padding no_pad_left style_code">
+                             <% if (@prev = vend.previous_price) &.> vend.current_price %>
+                             <p class="font-size-09">£<%= '%.2f' % @prev %></p>
                              <% end %>
                            </div>
                          </div>
                          <div class="row">
-                           <div class="col-md-12 no-right-padding price"><p>£<%= vend.current_price %></p></div>
+                           <div class="col-md-12 no-right-padding price no_pad_left"><p class="font-size-09">£<%= '%.2f' % vend.current_price if vend.current_price %></p></div>
                          </div>
                          <div class="row">
                            <div class="col-md-12 price_spacer"><p>&nbsp;</p></div>
@@ -246,7 +246,7 @@
                    </div>
                    <div class="col-md-5">
                     <div class="row">
-                      <div class="col-md-12"><div class="shop_link">Go To Shop</div></div>
+                      <div class="col-md-12"><div class="shop_link"><%= link_to "Go To Shop", vend.url, target: '_blank' %></div></div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">

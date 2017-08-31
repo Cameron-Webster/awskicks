@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="padding-left-10p margin-top-3p"><%= link_to  sneakers_admin_index_path do %>
+      <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Sneaker List
+      <% end %>
+    </div>
+   <div class="modal-main-image margin-top-3p margin-left-15p">
+
+    <ul class="slides">
+      <li class="active">
+        <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+      </li>
+      <li>
+        <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col-md-3">
+  <h1>Vendor management</h1>
+  <div class="left-align float-left"><%= link_to "Update Pricing", sneakers_admin_update_path(@sneaker), class: "black_button padding-all-10" %></div>
+  <div class="right-align"><%= link_to "+ New vendor", new_sneaker_vendor_path(@sneaker), class: "black_button padding-all-10" %></div>
+  <% @sneaker.vendors.each do |vendor| %>
+      <div class="row vend_man_row">
+        <div class="col-md-3 no-padding-sides break-word">
+         <%= vendor.name %>
+        </div>
+          <div class="col-md-1">
+         £<%= vendor.current_price %>
+        </div>
+          <div class="col-md-7 no-pad-right right-align">
+          <%= link_to sneaker_vendor_path(@sneaker, vendor), class: "purple_button", method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+           <%= link_to edit_sneaker_vendor_path(@sneaker, vendor), class: "purple_button" do %>
+           <i class="fa fa-wrench" aria-hidden="true"></i>
+           <% end %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<div class="col-md-5">
+<div class="row">
+  <div class="col-md-12">
+    <h1>Actions</h1>
+    <div  data-pin="<%= @sneaker.id %>" data-toggle="modal" data-target=".bs-example-modal-sm" class="purple_button pointer"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Sneaker</div>
+
+    <%= link_to "edit Sneaker", edit_sneaker_path(@sneaker), class: "purple_button"  %>
+  </div>
+</div>
+
+<div class="row">
+ <h1>Attributes</h1>
+  <div class="col-md-6">
+    <ul>
+      <li>Name: <%= @sneaker.name %></li>
+      <li>Style: <%= @sneaker.style_code %></li>
+      <li>Gender: <%= @sneaker.gender %></li>
+    </ul>
+  </div>
+    <div class="col-md-6">
+    <ul>
+      <li>Brand: <%= @sneaker.brand.name %></li>
+      <li>lowest_price: <%= @sneaker.lowest_price %></li>
+      <li>Color: <%= @sneaker.color %></li>
+    </ul>
+  </div>
+
+  </div>
+    <div class="col-md-6">
+
+    <h2><%= @users.count %> Users saved this Sneaker</h2>
+      <div class="user_list">
+        <% @users.each do |user| %>
+        <ul class="list-inline">
+        <li>
+            <%= user.email %>
+        </li>
+        <li>Total Pins: <%= user.pins.count %></li>
+        </ul>
+        <% end %>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content miniMod-content noBorder">
+
+     <div class="row">
+                    <div class="col-md-12 right-align">
+                       <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   </div>
+                 </div>
+                 <div class="row">
+                 <div class="col-md-12">
+    <p class="margin-bottom-3p">
+      Confirm delete Sneaker from System?
+      </p>
+      </div>
+      <div class="margin-left-15">
+      <%= link_to "delete Sneaker", sneaker_path(@sneaker), class: "purple_button", method: :delete %>
+      <button type="button" class="purple_button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
