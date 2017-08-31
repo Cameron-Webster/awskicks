@@ -7,23 +7,46 @@
   <ul class="dropdown-menu gender_drop_down" aria-labelledby="dLabel">
 
 
-      <% if @conditions.key?(:gender) %>
+    <p class="zerofive">Gender</p>
 
-       <li class="genderbucket filters" data-val=""><i class="fa fa-times-circle" aria-hidden="true"></i>remove Gender filter </li>
+     <% if @conditions.key?(:gender) %>
 
-      <% else %>
 
-    <% @sneakers.aggs["gender"]["buckets"].each do |bucket| %>
-      <li>
-      <ul class="list-inline">
-    <li class="genderbucket filters" data-val="<%= bucket["key"]%>"><i class="fa fa-circle-thin" aria-hidden="true"></i><%= bucket["key"] %></li>
+          <% @sneakers.aggs["gender"]["buckets"].each do |bucket| %>
 
-    <li><%= bucket["doc_count"] %></li>
-    </ul>
-      </li>
+
+              <% if @conditions[:gender].split(",").include? bucket['key'] %>
+
+                <div class="facet_group">
+                  <input type="checkbox" class="filter-<%= bucket['key'] %>" checked='checked' data-val="<%= bucket['key'] %>">
+                  <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+                </div>
+              <% else %>
+                  <div class="facet_group">
+                  <input type="checkbox" class="filter-<%= bucket['key'] %>" data-val="<%= bucket['key'] %>">
+                  <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+                  </div>
+              <% end %>
+          <% end %>
+
+    <% else %>
+
+          <% @sneakers.aggs["gender"]["buckets"].each do |bucket| %>
+          <div class="facet_group">
+          <input type="checkbox" class="filter-<%= bucket['key'] %>" data-val="<%= bucket['key'] %>">
+          <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+          </div>
+          <% end %>
+
     <% end %>
 
-    <% end %>
+
+
+      <div class="right-align">
+      <input type="button" value="Update" name="Update" class="purple_button update_button margin-b-10px">
+  </div>
+
+
 
 
   </ul>
@@ -36,40 +59,39 @@
   </button>
   <ul class="dropdown-menu brand_drop_down" aria-labelledby="dLabel">
 
+<p class="zerofive">Brands</p>
+
+    <% if @conditions.key?(:sneak_brand) %>
 
 
-      <% if @conditions.key?(:sneak_brand) %>
+          <% @sneakers.aggs["sneak_brand"]["buckets"].each do |bucket| %>
 
-       <li class="brandbucket filters" data-val=""><i class="fa fa-times-circle" aria-hidden="true"></i>remove Brand filters </li>
-
-       <% @sneakers.aggs["sneak_brand"]["buckets"].each do |bucket| %>
-
-      <% if @conditions[:sneak_brand].include? bucket['key'] %>
-    <li class="brandbucket filters active" data-val="<%= bucket["key"]%>"><i class="fa fa-times-circle" aria-hidden="true"></i><%= bucket["key"] %></li>
-
+            <% if @conditions[:sneak_brand].include? bucket['key'] %>
+                <div class="facet_group">
+                <input type="checkbox" class="filter-<%= bucket['key'] %>" checked='checked' data-val="<%= bucket['key'] %>">
+                <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+                </div>
+            <% else %>
+                 <div class="facet_group">
+                <input type="checkbox" class="filter-<%= bucket['key'] %>" data-val="<%= bucket['key'] %>">
+                <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+                </div>
+            <% end %>
+          <% end %>
 
     <% else %>
-     <li>
-      <ul class="list-inline">
-    <li class="brandbucket filters" data-val="<%= bucket["key"]%>"><i class="fa fa-circle-thin" aria-hidden="true"></i><%= bucket["key"] %></li>
 
-    <li><%= bucket["doc_count"] %></li>
-      </ul></li>
-    <% end %>
-    <% end %>
-
-      <% else %>
-
-    <% @sneakers.aggs["sneak_brand"]["buckets"].each do |bucket| %>
-       <li>
-      <ul class="list-inline">
-    <li class="brandbucket filters" data-val="<%= bucket["key"]%>"><i class="fa fa-circle-thin" aria-hidden="true"></i> <%= bucket["key"] %></li>
-
-    <li><%= bucket["doc_count"] %></li>
-    </ul></li>
-    <% end %>
+          <% @sneakers.aggs["sneak_brand"]["buckets"].each do |bucket| %>
+           <div class="facet_group">
+          <input type="checkbox" class="filter-<%= bucket['key'] %>" data-val="<%= bucket['key'] %>">
+          <label for="filter-<%= bucket['key'] %>"><%= bucket["key"] %>&nbsp;<%= bucket["doc_count"] %></label>
+          </div>
+          <% end %>
 
     <% end %>
+    <div class="right-align">
+      <input type="button" value="Update" name="Update" class="purple_button update_button margin-b-10px">
+  </div>
 
 
   </ul>

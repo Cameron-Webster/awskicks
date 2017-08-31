@@ -7,7 +7,11 @@ class BucketsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-    @buckets = current_user.buckets.all
+
+    all_buckets = current_user.buckets.all
+    @buckets =  all_buckets.joins(:pins).group('buckets.id')
+    @text_only_buckets = all_buckets - @buckets
+
   end
 
   # GET /pins/1

@@ -14,7 +14,7 @@
     background-color: rgba(120, 65, 189, 0.9);
     display: inline-block;
     border-radius: 5px;
-    padding: 5px 20px;
+    padding: 3px 10px;
     margin-right: 10px;
     border: 3px solid rgba(120, 65, 189, 0);
 
@@ -61,18 +61,30 @@
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 5px;
+  margin: 0 18px;
+  border-radius: 5px;
 
+  a {
+    color: #ababab!important;
+    &:hover {
+      text-decoration: none!important;
+    }
+  }
 
   img {
-    width: 38px;
-    height: 38px;
+    width: 25px;
+    height: 25px;
+  }
+
+  &:hover {
+    background-color: #eeeeee;
   }
 }
 
 /* Navbar standard link */
 .navbar-wagon-link {
-   padding: 5px 20px;
+   padding: 3px 10px;
     border: 3px solid $kickPurple;
     border-radius: 5px;
 }
@@ -166,9 +178,13 @@
 }
 
 .newest_notifications {
+
+  .notification_text {
+    max-width: 60%;
+  }
   li {
     padding: 10px;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #ababab;
         word-wrap: break-word;
     a {
@@ -186,4 +202,9 @@
     width: 38px;
     height: 38px;
 }
+}
+
+.profile_menu {
+  left: 0!important;
+  margin-top: 5px!important;
 }

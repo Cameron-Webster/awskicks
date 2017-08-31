@@ -4,15 +4,17 @@
   <div class="col-md-12 no_pad_right no_pad_left">
     <div id="captioned-gallery">
   <figure class="slider">
+
     <% @blogs.each_with_index do |blog, i| %>
 
     <div class="home_image_slider" style="background-image: url(<%= blog.photo %>)" id="f<%= i %>">
       <figcaption><%= link_to "Article: #{blog.title}", blog_path(blog), class: "white_links cursor" %></figcaption>
     </div>
-
-
-
     <% end %>
+
+      <div class="home_image_slider filter f2" style="background-image: url(<%= @promo.image %>)">
+      </div>
+      <div class="f2 home_image_slider transparent"><div class="welcome_banner"><%= @promo.title %></div></div>
 
   </figure>
 </div>
@@ -22,14 +24,16 @@
 <div class="row">
   <div class="col-md-12 no_padding">
     <div class="search_bar" id="top">
+
       <%= form_tag root_path, method: 'get', id: "formoq", remote: true do %>
 
       <%= hidden_field_tag :gender, params[:gender], id: 'generoo' %>
       <%= hidden_field_tag :brand, params[:brand], id: 'brandoo' %>
       <%= hidden_field_tag :lowest_price, params[:lowest_price], id: 'priceoo' %>
       <%= hidden_field_tag :order, params[:order], id: 'sortoo' %>
+       <%= hidden_field_tag :size, params[:size], id: 'sizeoo' %>
         <div class="input-group" id="stubby">
-      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search" %>
+      <%= text_field_tag :search, params[:search], :"data-list" => ".list", id: "srch", autofocus: "autofocus", placeholder: "Search and compare prices on thousands of trainers and shoes" %>
       <button id="searchSub"><i class="fa fa-search"></i></button>
       </div>
       <%= submit_tag "search", :name => nil, style: 'display: none;' %>
@@ -53,8 +57,13 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu price_drop_down" aria-labelledby="dLabel">
-
-
+    <div class="row">
+      <div class="col-md-12">
+        <p class="zerofive">Price Range:</p>
+      </div>
+    </div>
+  <div class="row vendrow margin-b-10px">
+  <div class="col-md-6">
       <div class="kick_slider">
 
       <ul class="list-inline center-align">
@@ -75,7 +84,63 @@
 
         <div id="slider-range"></div>
       </div>
+  </div>
+  <div class="col-md-6">
+       <form action="">
+         <input type="button" value="Update" name="Update" class="purple_button update_button">
+       </form>
+       </div>
+       </div>
     </ul></div>
+
+     <div class="dropdown sizedrop">
+    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="genderButton">
+      Size
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu size_drop_down" aria-labelledby="dLabel">
+     <form action="">
+     <table>
+     <tr>
+       <th>Sizes</th>
+     </tr>
+     <tr>
+    <% for i in 2..5 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+      <tr>
+    <% for i in 6..9 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+         <tr>
+    <% for i in 10..13 do %>
+    <td>
+        <input type="radio" name="size" data-size="<%= i %>">&nbsp;<%= i %><br>
+        </td>
+    <% end %>
+    </tr>
+    <tr><td>
+      <input type="radio" name="size" data-size="">&nbsp;All<br>
+    </td></tr>
+    <tr>
+    <td colspan="2">
+        <input type="checkbox" name="half" data-size="0.5"> Include Half sizes
+    </td>
+    <td colspan="2">
+      <input type="button" value="Update" name="Update" class="purple_button update_button">
+    </td></tr>
+    </table>
+
+      </form>
+
+    </ul></div>
+
   </div>
   <div>
     <div class="row">

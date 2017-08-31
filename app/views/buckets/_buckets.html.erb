@@ -4,13 +4,12 @@
 <div class="col-md12">
 <div class="grid">
 
-<% count = 0 %>
 <% @buckets.each do |bucket| %>
 <% if pin = bucket.pins.first %>
 
 <div class="grid-item">
 <div class="orange" data-rails="<%= pin.sneaker.id %>">
-<div class="notification">25</div>
+<div class="notification"><%= bucket.pins.map{|p| p.notifications}.count %></div>
 
 
  <div class="sneaker_thumb">
@@ -50,11 +49,30 @@
 
 <% end %>
 <% end %>
+
 <div class="mooo"></div>
 </div>
 </div>
 </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2">
+    <h2><%= 'All Collections' if @text_only_buckets %></h2>
 
+    <% @text_only_buckets.each do |bucket| %>
+      <div class="row">
+        <div class="col-md-8">
+          <%= bucket.name %>
+        </div>
+        <div class="col-md-4">
+          <%= link_to edit_bucket_path(bucket), remote: true do %>
+<i class="fa fa-pencil" aria-hidden="true"></i>
+<% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
 
 
 

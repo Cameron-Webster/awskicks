@@ -4,6 +4,10 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
+ body {
+  overflow-x: hidden;
+ }
+
 // Paddings
 .padded {
   padding-top: 5em;
@@ -14,6 +18,13 @@
   padding: 10px;
 }
 
+.padding-20px {
+  padding: 20px;
+}
+
+.padding-5px {
+  padding: 5px;
+}
 //font size
 
 .font-size-09 {
@@ -109,6 +120,11 @@ a {
   padding-right: 10%;
 }
 
+.pad-downup-10 {
+padding-top: 10px;
+padding-down: 10px;
+}
+
 .float-right {
   float: right;
 }
@@ -123,6 +139,10 @@ a {
 }
 
 //margins
+
+.margin-10px {
+margin: 10px;
+}
 
 .margin-right-100 {
   margin-right: 100px;
@@ -142,6 +162,10 @@ a {
 
 .no_margin_bottom {
   margin-bottom: 0;
+}
+
+.margin_bottom_10 {
+  margin-bottom: 10px;
 }
 
 .no-margin-left {
@@ -181,6 +205,10 @@ margin-left: 5px!important;
 
 .margin-left-15 {
   margin-left: 15px;
+}
+
+.margin-b-10px {
+  margin-bottom: 10px;
 }
 
 .padding-left-3p {
@@ -326,11 +354,11 @@ margin-left: 5px!important;
 
   .notification_icon {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
     text-align: center;
-    border: 2px solid #ababab;
+   border: 2px solid white;
     position: relative;
 
      i {
@@ -338,6 +366,7 @@ margin-left: 5px!important;
       }
 
   &:hover {
+      border: 2px solid #ababab;
     background-color: $kickGreyLight;
     cursor: pointer;
   }
@@ -346,7 +375,7 @@ margin-left: 5px!important;
 
 }
 
-.user_name {
+.user_name, .nav_menu_item {
   color: #ababab;
 }
 
@@ -426,4 +455,18 @@ margin-left: 5px!important;
 
 .right-border {
   border-right: 1px solid #EDEDED;
+}
+
+.zerofive {
+  margin: 0 0 0 5px;
+}
+
+.flex-around {
+  display: flex;
+  justify-content:space-around;
+}
+
+.no_margin_sides {
+  margin-right: 0;
+  margin-left: 0;
 }

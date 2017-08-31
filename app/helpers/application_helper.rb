@@ -23,12 +23,20 @@ module ApplicationHelper
     return {newest: newest, count: count}
   end
 
-  def on_sale(sneaker)
+  def on_sale(sneaker, sale_class = 'sale')
     if (plp = sneaker.previous_lowest_price) &.> (lp = sneaker.lowest_price)
           sale_p = (lp / plp * 100 - 100).round
-      content_tag(:div, "#{sale_p}%",class: "sale")
+      content_tag(:div, "#{sale_p}%",class: sale_class)
     end
 
+  end
+
+  def notifiable(sneaker)
+    if (nCount = current_user.notifications.joins(:pin).where(pins: {sneaker_id: sneaker.id}).count) > 0
+      on_sale(sneaker, "sale_notification")
+      else
+       on_sale(sneaker)
+    end
   end
 
 end

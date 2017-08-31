@@ -5,7 +5,7 @@
 
 
         <%= simple_form_for(@bucket, remote: true, input_html: {class: "bformo"}) do |f| %>
-        <%= f.input :name, label: "Bucket Name", required: true %>
+        <%= f.input :name, label: "Collection Name", required: true %>
         <% @bucket.pins.each do |pin| %>
 
         <%= f.simple_fields_for :pins, pin do |pn| %>
@@ -15,7 +15,7 @@
         <% end %>
 
         <% end %>
-        <%= f.submit "buck submit", class: "bucketSubmit" %>
+        <%= f.submit "submit", class: "bucketSubmit" %>
         <% end %>
         <p class="bucket_name_errors">&nbsp;</p>
 

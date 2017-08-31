@@ -10,6 +10,9 @@
 
 footer {
   height: 200px;
+
+  bottom: 0;
+  width: 100%;
   background-color: #4d4d4d;
   color: white;
   margin-top: 250px;
@@ -21,4 +24,48 @@ footer {
         color: white!important;
     }
   }
+}
+
+.cc-revoke, .cc-window {
+position: relative;
+line-height: 0.5em;
+font-size: 12px;
+border-bottom: 1px solid #eee;
+}
+
+.welcome_message {
+  color: white;
+    text-align: left;
+    position: absolute;
+    top: 12%;
+    left: 25%;
+}
+
+.welcome_banner {
+  position: absolute;
+    left: 18%;
+    top: 33%;
+
+    color: #fff;
+
+    font-size: 2.5rem;
+    padding: .6rem;
+    padding-right: 2%;
+    max-width: 35%;
+  filter: brightness(100%);
+    border-radius: 5px;
+}
+
+.filter {
+  filter: brightness(75%)
+
+}
+
+.flip {
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+
+.transparent {
+  background-color: transparent!important;
 }

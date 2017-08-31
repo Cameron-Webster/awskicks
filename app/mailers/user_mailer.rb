@@ -28,6 +28,6 @@ class UserMailer < ApplicationMailer
   def notification_weekly(user)
      @user = user
       @notifications = @user.notifications
-      mail to: @user.email, subject: 'You have new notifcations'
+      mail to: @user.email, subject: 'You have new notifications'
   end
 end

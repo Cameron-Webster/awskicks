@@ -15,7 +15,9 @@ class EmailWorker
 
     users.each do |user|
 
-      mail_freq = user.notification_setting
+      # notification settings in hours needs to be converted to seconds
+
+      mail_freq = user.notification_setting * 3600
 
       unless mail_freq < 0
 
@@ -26,7 +28,7 @@ class EmailWorker
           UserMailer.notification_single(user).deliver_now
         else
 
-          timing = timing.abs + time.now.to_i
+          timing = timing.abs + Time.now.to_i
 
           UserMailer.notification_single(user).deliver_later(timing)
 

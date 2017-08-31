@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   #   resources :buckets, path: "", as: "bucket_show", only: [:show]
   # end
 
-  resources :blogs
+  resources :blogs, path: 'news'
   resources :images
 
-  resources :buckets, except: [:new]
+  resources :buckets, except: [:new], :path => :collections
   get "buckets/new/:sneaker_id", to: "buckets#new", as: 'new_bucket'
   get "bucketsempty", to: "buckets#newempty", as: "new_empty_bucket"
   # post "buckets/createempty", to: "buckets#createempty", as: "create_empty_bucket"
@@ -37,7 +37,9 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
     resources :vendors
   end
 
-  get 'homepage_notifications/read', to: 'homepage_notifications#read'
+  resources :promos
+
+  get 'homepage_notifications/markread', to: 'homepage_notifications#mark_read'
 
 
   get "sneakers/admin/index", to: "sneakers#admin"
@@ -49,6 +51,10 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
   resources :logos, only: [:new, :create, :index]
   resources :brands, only: [:new, :create, :index]
   root to: 'pages#home'
+
+get '/contact', to: 'pages#contact'
+get '/terms', to: 'pages#terms'
+get '/privacy', to: 'pages#privacy'
 
   delete "logout" => "devise/sessions#destroy", :as => "logout"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

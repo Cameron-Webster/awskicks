@@ -1,5 +1,5 @@
 class Promo < ApplicationRecord
 
-  belongs_to :blog
 
+  mount_uploader :image, PhotoUploader
 end

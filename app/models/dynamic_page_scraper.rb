@@ -14,7 +14,7 @@ class DynamicPageScraper
        #    js_errors: false
        # }
 
-      Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--load-images=no', '--proxy=45.32.231.36:31280', '--proxy-auth=railscam:railscamproxy90'], js_errors: false)
+      Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--load-images=no', '--proxy=45.32.231.36:31280', '--proxy-auth=' + ENV["PROXY_DYNAMIC"]], js_errors: false)
       end
 
     Capybara.default_driver = :poltergeist

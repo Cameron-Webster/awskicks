@@ -14,27 +14,15 @@ $( "#slider-range" ).slider({
         $( "#amount" ).val( "£" + ui.values[ 0 ] + " - £" + ui.values[ 1 ] );
 
          $('#priceoo').val(ui.values[ 0 ] + '-' + ui.values[ 1 ]);
-         var hold_slider = $('#priceoo').val();
-        if (!($('span.spinner').hasClass("slider_active"))) {
 
-        $('.slide_loader').html("<span class='spinner slider_active' style='display:block;'><i class='fa fa-spinner fa-pulse fa-fw'></i></span>").addClass("slider_active");
-        }
-        setTimeout(function(){
-
-            if (hold_slider == $('#priceoo').val()){
-
-               $('#stubby').parent('form').submit();
-
-            }
-
-        }, 1500)
 
       }
     });
     $( "#amount" ).val( "£" + $( "#slider-range" ).slider( "values", 0 ) +
       " - £" + $( "#slider-range" ).slider( "values", 1 ) );
 
-
-
+$(document).on('click', "ul.dropdown-menu.price_drop_down input[type='button']", function(){
+$('#stubby').parent('form').submit();
+});
 
 });

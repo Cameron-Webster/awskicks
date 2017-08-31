@@ -14,6 +14,15 @@
           <li><div class="insta"><div class="instagram"></div></div></li>
         </ul>
 
+     <div class="navbar-wagon-item">
+        <div class="dropdown nav_menu_item">
+        <%= link_to 'Home', root_path %>
+
+     </div></div>
+     <div class="navbar-wagon-item">
+        <div class="dropdown nav_menu_item">
+      <%= link_to 'News', blogs_path %>
+     </div></div>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
@@ -25,15 +34,10 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag profile_pic, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %><span class="user_name" data-toggle="dropdown">&nbsp;<%= current_user.first_name %></span>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu profile_menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to buckets_path do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>
             <li>
@@ -57,12 +61,20 @@
 
       </div>
       <ul class="dropdown-menu fifty_view newest_notifications" aria-labelledby="notification_dropdown">
+      <%= "No New Notifications" if home_badges[:count] < 1 %>
       <% home_badges[:newest].each do |message| %>
-        <li><ul class="list-inline">
-          <li><%= cl_image_tag(message.notification.pin.sneaker.photo.thumb) %></li>
-          <li><%= link_to "#{message.notification.action}", root_path %></li>
-        </ul> <ul>
-        <li><%= message.created_at.strftime("%d/%m/%y") %></li></ul></li>
+      <div class="row no_margin_sides margin_bottom_10">
+        <div class="col-md-2">
+          <%= cl_image_tag(message.notification.pin.sneaker.photo.thumb) %>
+        </div>
+        <div class="col-md-7">
+          <%= link_to "#{message.notification.action}", root_path %>
+        </div>
+        <div class="col-md-2">
+          <%= message.created_at.strftime("%d/%m/%y") %>
+        </div>
+      </div>
+
         <% end %>
       </ul>
       </div>

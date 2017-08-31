@@ -88,7 +88,7 @@ p.header2 {
 .seperator {
   background-color: rgba(77, 77, 77, 0.1);
   color: rgb(146, 142, 142);
-  height: 30px;
+  height: 12px;
   width: 100%;
   font-size: 0.9em;
   line-height: 30px;
@@ -222,4 +222,9 @@ form.new_bucket, .form-group.bucket_name {
   margin-right: 45%;
   margin-left: 45%;
 
+}
+
+.facet_group {
+  margin-right: 10px;
+  display: inline-block;
 }

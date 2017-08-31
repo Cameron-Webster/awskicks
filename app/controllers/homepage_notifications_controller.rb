@@ -1,10 +1,14 @@
 class HomepageNotificationsController < ApplicationController
 
-    def read
+    def mark_read
     if current_user
       current_user.homepage_notifications.where(read: false)&.each do |n|
         n.read = true
-        n.save
+       if n.save
+        respond_to do |format|
+          format.json { head :ok }
+          end
+       end
         destroy if current_user.homepage_notifications.count > 20
       end
     end

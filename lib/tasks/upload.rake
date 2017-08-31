@@ -4,6 +4,7 @@ namespace :upload do
   desc "bulk sneaker upload from file"
 
   task :sneakers => :environment do
+
     upload_file = ENV['file']
     sneaker_update_list = []
     CSV.foreach(upload_file, headers: true) do |row|
@@ -14,11 +15,13 @@ namespace :upload do
 
       next puts "Brand #{f['sneak_brand']} not found for sneaker: #{f['name']}" if brand.nil?
       photo_url = File.join("/Users/cameronwebster/code/Cameron-Webster/photo_uploads", f["photo"])
-      sneak_photo = File.new(photo_url)
+      next puts "#{f['name']}: image #{f['photo']} does not exist" if !File.exist?(photo_url)
+      sneak_photo = File.open(photo_url)
 
       alt_sneak_photo = if f["alt_photo"]
       alt_photo_url = File.join("/Users/cameronwebster/code/Cameron-Webster/photo_uploads", f["alt_photo"])
-      File.new(alt_photo_url)
+      next puts "#{f['name']}: image #{f['alt_photo']} does not exist" if !File.exist?(alt_photo_url)
+      File.open(alt_photo_url)
       else
         nil
       end
