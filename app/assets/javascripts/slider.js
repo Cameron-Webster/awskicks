@@ -1,6 +1,6 @@
 $(document).ready(function(){
-     var min_p = parseInt("<%= Sneaker.min_price %>");
-     var max_p = parseInt("<%= Sneaker.max_price %>");
+     var min_p = 10;
+     var max_p = 200;
 
 $( "#slider-range" ).slider({
 
