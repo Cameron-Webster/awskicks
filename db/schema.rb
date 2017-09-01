@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821193029) do
+ActiveRecord::Schema.define(version: 20170901170837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "available_sizes", force: :cascade do |t|
+    t.float    "size_uk"
+    t.float    "size_us"
+    t.float    "size_eu"
+    t.integer  "vendor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vendor_id"], name: "index_available_sizes_on_vendor_id", using: :btree
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.text     "title"
@@ -102,16 +112,6 @@ ActiveRecord::Schema.define(version: 20170821193029) do
     t.index ["blog_id"], name: "index_promos_on_blog_id", using: :btree
   end
 
-  create_table "sizes", force: :cascade do |t|
-    t.float    "size_uk"
-    t.float    "size_us"
-    t.float    "size_eu"
-    t.integer  "vendor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["vendor_id"], name: "index_sizes_on_vendor_id", using: :btree
-  end
-
   create_table "sneakers", force: :cascade do |t|
     t.string   "name"
     t.string   "style_code"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20170821193029) do
     t.index ["sneaker_id"], name: "index_vendors_on_sneaker_id", using: :btree
   end
 
+  add_foreign_key "available_sizes", "vendors"
   add_foreign_key "buckets", "users"
   add_foreign_key "homepage_notifications", "notifications"
   add_foreign_key "homepage_notifications", "users"
@@ -185,7 +186,6 @@ ActiveRecord::Schema.define(version: 20170821193029) do
   add_foreign_key "pins", "sneakers"
   add_foreign_key "pins", "users"
   add_foreign_key "promos", "blogs"
-  add_foreign_key "sizes", "vendors"
   add_foreign_key "sneakers", "brands"
   add_foreign_key "vendors", "logos"
   add_foreign_key "vendors", "sneakers"

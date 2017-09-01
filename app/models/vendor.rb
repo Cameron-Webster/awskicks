@@ -1,10 +1,10 @@
 class Vendor < ApplicationRecord
   belongs_to :sneaker
   belongs_to :logo
-  has_many :sizes, dependent: :destroy
+  has_many :available_sizes, dependent: :destroy
 
   def uk_available
-    list = self.sizes.map {|size| size.size_uk}
+    list = self.available_sizes.map {|size| size.size_uk}
 
     list.empty? ? ["out of stock"] : list
   end
@@ -27,18 +27,18 @@ class Vendor < ApplicationRecord
 
       self.current_price = scraper.current_price if self.current_price.nil? || self.current_price != scraper.current_price
 
-      unless self.sizes.pluck(:size_uk).to_set == scraper.sizes.to_set
+      unless self.available_sizes.pluck(:size_uk).to_set == scraper.sizes.to_set
 
         scraper.sizes.each do |sz|
           puts sz
         end
 
-        self.sizes.delete_all
+        self.available_sizes.delete_all
 
         scraper.sizes.each do |size|
       # self.sizes.create(size_uk: size, size_eu: scraper.multiplyer_eu(size, self.sneaker.gender), size_us: scraper.multiplyer_us(size, self.sneaker.gender))
           # puts size
-            self.sizes.create(size_uk: size)
+            self.available_sizes.create(size_uk: size)
         end
       end
 
