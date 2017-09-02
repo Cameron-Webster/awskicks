@@ -1,40 +1,9 @@
-# 5000.times do
-# Sneaker.create(name: Faker::App.name, style_code: Faker::Code.isbn,rrp: 3000, average_price: 5000, color: Faker::Color.color_name, photo: 'image/upload/v1496326714/pzipenmaboqbrxeoy9mx.jpg')
-# end
+for i in 1..4 do
 
-# brands = ["Nike", "Adidas", "Puma", "Diadora", "Fila"]
+Blog.create(title: "Test<%= i %>", subtitle: 'test sub', content: "<p>test <%= i %></p>", remote_photo_url: "https://i.pinimg.com/564x/2e/cc/d5/2eccd5efbebb4e05cf95f4f2e53d2be3.jpg", author: 'test')
 
-# prices = [300, 400, 200, 100]
-
-# colours = ["blue", "white", "green"]
-
-# gender = ["male", "female"]
-
-#   100.times do
-# sneaker = Sneaker.create(name: Faker::Name.name, style_code: Faker::Code.isbn, lowest_price: prices.sample, color: colours.sample, brand: brands.sample, gender: gender.sample)
-# sneaker.photo = Rails.root.join("db/images/retro_jordan.jpg").open
-# sneaker.save!
-#   end
-#   100.times do
-# sneaker = Sneaker.create(name: Faker::Pokemon.name, style_code: Faker::Code.isbn, lowest_price: prices.sample, color: colours.sample, brand: brands.sample, gender: gender.sample)
-# sneaker.photo = Rails.root.join("db/images/retro_jordan.jpg").open
-# sneaker.save!
-#   end
-#     100.times do
-# sneaker = Sneaker.create(name: Faker::Company.name, style_code: Faker::Code.isbn, lowest_price: prices.sample, color: colours.sample, brand: brands.sample, gender: gender.sample)
-# sneaker.photo = Rails.root.join("db/images/retro_jordan.jpg").open
-# sneaker.save!
-#   end
-#   100.times do
-# sneaker = Sneaker.create(name: Faker::Name.name_with_middle, style_code: Faker::Code.isbn, lowest_price: prices.sample, color: colours.sample, brand: brands.sample, gender: gender.sample)
-# sneaker.photo = Rails.root.join("db/images/retro_jordan.jpg").open
-# sneaker.save!
-#   end
-
-nike = Brand.find(1)
-
-Sneaker.all.each do |sneak|
-
-sneak.brand = nike
-sneak.save
 end
+
+Promo.create(title: "Search for the best price and availability of thousands of trainers and shoes", remote_image_url: "https://i.pinimg.com/564x/2e/cc/d5/2eccd5efbebb4e05cf95f4f2e53d2be3.jpg")
+
+Sneaker.create(name: "livetest", style_code: 'jhsdhchsbdchbshjbchjasbhcv', color: 'Blue', remote_photo_url: "https://i.pinimg.com/564x/2e/cc/d5/2eccd5efbebb4e05cf95f4f2e53d2be3.jpg", gender: 'female', brand_id: 6, sneak_brand: 'Adidas')

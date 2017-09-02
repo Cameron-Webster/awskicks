@@ -9,7 +9,7 @@ searchkick word_start: [:name], searchable: [:name, :sneak_brand, :style_code]
   has_many :vendors, dependent: :destroy
   has_many :buckets, through: :pins
   belongs_to :brand, required: true
-  has_many :sizes, through: :vendors
+  has_many :available_sizes, through: :vendors
 
   mount_uploader :photo, PhotoUploader
   mount_uploader :alt_photo, PhotoUploader
@@ -19,7 +19,7 @@ searchkick word_start: [:name], searchable: [:name, :sneak_brand, :style_code]
       name: name,
       sneak_brand: sneak_brand,
       style_code: style_code,
-      sizes: sizes,
+      available_sizes: available_sizes,
       gender: gender,
       created_at: created_at,
       lowest_price: lowest_price
