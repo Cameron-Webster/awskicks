@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :show_modal ]
 
   def home
-    @blogs = Blog.last(2)
+    # @blogs = Blog.last(2)
     @bucket = Bucket.new
     @bucket.pins.build
     @promo = Promo.last
