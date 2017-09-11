@@ -32,6 +32,7 @@
 
   h4.logo_container {
     text-align: right;
+    word-break: break-word;
   }
 }
 
@@ -277,17 +278,18 @@ a.displayNewBucket {
     left: 0;
     top: 0;
     width: 100%; /* Full width */
-    min-height: 70vh;
+    min-height: 100vh;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     border-radius: 5px;
+
 }
 
 .miniMod-content {
   background-color: #fefefe;
-    margin: 5% auto; /* 15% from the top and centered */
+    margin: 0% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 55%;
@@ -563,9 +565,14 @@ ul.middle_info {
   }
 
 .vendrow > [class*='col-'] {
-   display: flex;
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display:         flex;
    flex-direction: column;
+   -webkit-flex-direction: column;
      justify-content: center;
+     -webkit-justify-content: center;
 
   p {
     margin: 0;
@@ -575,9 +582,14 @@ ul.middle_info {
 }
 
 .vendrow-b > [class*='col-'] {
-   display: flex;
-   flex-direction: column;
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display:         flex;
+     -webkit-flex-direction: column;
+     flex-direction: column;
      justify-content: flex-end;
+     -webkit-justify-content: flex-end;
 
   p {
     margin: 0 0 0 15px;

@@ -1,0 +1,27 @@
+    <div class="notifications_bar">
+    <div class="dropdown">
+    <div class="notification_icon dropdown-toggle" id="notification_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <i class="fa fa-commenting-o" aria-hidden="true"></i>
+
+      <div class="notification_active <%= 'noDisplay' if home_badges[:count] < 1 %>"><%= home_badges[:count] %></div>
+
+      </div>
+      <ul class="dropdown-menu fifty_view newest_notifications" aria-labelledby="notification_dropdown">
+      <%= "No New Notifications" if home_badges[:count] < 1 %>
+      <% home_badges[:newest].each do |message| %>
+      <div class="row no_margin_sides margin_bottom_10">
+        <div class="col-md-2">
+          <%= cl_image_tag(message.notification.pin.sneaker.photo.thumb) %>
+        </div>
+        <div class="col-md-7">
+          <%= link_to "#{message.notification.action}", root_path %>
+        </div>
+        <div class="col-md-2">
+          <%= message.created_at.strftime("%d/%m/%y") %>
+        </div>
+      </div>
+
+        <% end %>
+      </ul>
+      </div>
+    </div>

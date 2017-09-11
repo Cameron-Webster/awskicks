@@ -6,7 +6,13 @@ class Vendor < ApplicationRecord
   def uk_available
     list = self.available_sizes.map {|size| size.size_uk}
 
-    list.empty? ? ["out of stock"] : list
+    if list.empty?
+     ["out of stock"]
+    elsif list[0] == 0.0
+      ["Check Website for Stock Availability"]
+    else
+      list
+    end
   end
 
   def update_price_and_stock
@@ -25,7 +31,9 @@ class Vendor < ApplicationRecord
 
       scraper.run
 
+      unless scraper.current_price < 1
       self.current_price = scraper.current_price if self.current_price.nil? || self.current_price != scraper.current_price
+      end
 
       unless self.available_sizes.pluck(:size_uk).to_set == scraper.sizes.to_set
 

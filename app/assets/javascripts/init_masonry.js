@@ -22,13 +22,14 @@ $(document).ready(function(){
   var $grid = $('.grid').masonry({
     itemSelector: '.grid-item',
     columnWidth: '.grid-item',
-    percentPosition: true,
+    percentPosition: false,
     gutter: 10,
     fitWidth: true
   });
 
   $grid.imagesLoaded().progress( function() {
     $grid.masonry('layout');
+
   });
 
   var msnry = $grid.data('masonry');
@@ -49,6 +50,22 @@ $(document).ready(function(){
 
 }
 
+    // safari semi fix
+
+
+
+$grid.on( 'append.infiniteScroll', function( event, response, path, items ) {
+       window.dispatchEvent(new Event('resize'));
+       console.log('infinite scroll loaded cmTest')
+
+         $grid.imagesLoaded().progress( function() {
+          $grid.masonry('layout');
+
+          });
+
+});
+
+
   $(document).on("submit", '.search_bar form', function() { //ajax enabled form
 
      // path: '/?brand=&gender=female&lowest_price=&page={{#}}&search=&utf8=%E2%9C%95'
@@ -64,6 +81,8 @@ $(document).ready(function(){
 
       $(".page-load-status").css("display", "none");
       $("#fin").css("display", "block");
+
+
 
        var max_pages = parseInt($(".pagination a:nth-last-child(2)").text());
 
@@ -94,13 +113,14 @@ $(document).ready(function(){
       var $grid2 = $('.grid').masonry({
         itemSelector: '.grid-item',
         columnWidth: '.grid-item',
-        percentPosition: true,
+        percentPosition: false,
         gutter: 10,
         fitWidth: true
       });
 
       $grid2.imagesLoaded().progress( function() {
         $grid2.masonry('layout');
+
       });
 
       var msnry = $grid2.data('masonry');
@@ -120,6 +140,12 @@ $(document).ready(function(){
       });
 
     }
+
+    // fix for safari
+
+    // $grid2.on( 'load.infiniteScroll', function( event, response, path, items ) {
+    //     msnry.layout();
+    // });
 
     // V calling twice prevents resize grid error (ajax)
 

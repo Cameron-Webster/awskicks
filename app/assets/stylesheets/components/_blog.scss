@@ -7,7 +7,11 @@
 
 .homepage_blog_articles {
   display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   justify-content: space-around;
+  -webkit-justify-content: space-around;
   padding-top: 25px;
 }
 

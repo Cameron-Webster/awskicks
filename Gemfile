@@ -31,7 +31,8 @@ gem 'typhoeus'
 gem 'jquery-ui-rails'
 
 group :development, :test do
-
+  gem "fog-aws"
+  gem 'mini_magick'
   gem "letter_opener"
   gem 'binding_of_caller'
   gem 'better_errors'

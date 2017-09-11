@@ -1,9 +1,13 @@
 module Jdsports
   def run
 
-    @current_price = @page.at('.itemPrices .pri').text.gsub(/[^0-9\.]/,'')
 
-    @sizes = @page.search(" #itemOptions .options button").map{|size| size.text.to_f}
+    @browser.driver.scroll_to(0, 500)
+
+    @current_price = @browser.first('.itemPrices .pri').text
+
+    @sizes = @browser.all(" #itemOptions .options button").map{|size| size.text.to_f}
+
 
   end
 

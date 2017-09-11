@@ -1,5 +1,5 @@
 class SneakersController < ApplicationController
-  before_action :admin?, only: [:admin, :new, :edit, :create, :update, :destroy, :admin_show]
+  before_action :admin?, only: [:admin, :new, :edit, :create, :update, :destroy, :admin_show, :sneaker_update, :sneaker_update_all]
   before_action :set_sneaker, only: [:show, :edit, :update, :destroy, :admin_show, :sneaker_update]
 
 
@@ -159,6 +159,8 @@ class SneakersController < ApplicationController
 
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_sneaker
       @sneaker = Sneaker.find(params[:id])

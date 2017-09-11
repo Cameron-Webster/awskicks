@@ -6,11 +6,9 @@
 </div></div>
 
 
-  <div class="row margin-top-3p margin-bottom-3p vendrow">
-  <div class="col-md-1">
+  <div class="row margin-top-3p margin-bottom-3p vendrow profile_box">
 
-  </div>
-    <div class="col-md-4 pos-rel">
+    <div class="col-md-4 col-md-offset-1 col-sm-8 pos-rel">
       <h1 class="center-align pos-rel"><%= current_user.first_name %>&nbsp;<%= current_user.last_name %>
         <span class="settings">
         <%= link_to edit_user_registration_path do %>
@@ -19,13 +17,14 @@
         </h1>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
      <ul class="list-inline margin-left-10 margin-top-20 profile_info">
        <li><b><%= current_user.pins.count %></b> Saved Kicks</li>
        <li><b><%= current_user.buckets.count %></b> Collections</li>
      </ul>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 col-sm-12">
+
       <div class="profile" style="background-image: url(<%= current_user.profile_pic %>)">
 
       </div>

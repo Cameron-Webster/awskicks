@@ -13,7 +13,7 @@
             <i class='fa fa-star-o' aria-hidden='true'></i> Saved </div>
             <% else %>
             <div class="bucketListButton bucketButton-<%= @sneaker.id %>" id="myBtn">
-              <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save
+              <i class="fa fa-thumb-tack" aria-hidden="true"></i> Save to your Collections
             </div>
             <% end %>
           </div>
@@ -23,7 +23,7 @@
         <div class="modal-body">
          <div class="row full_height">
            <!-- left column -->
-           <div class="col-md-6 right-border">
+           <div class="col-md-6 col-sm-12 right-border safari-half-width">
             <div class="fullCard">
               <!-- render the save button and image-->
               <div class="card">
@@ -36,10 +36,10 @@
                     <div class="modal-main-image">
                       <ul class="slides">
                         <li class="active">
-                          <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+                          <%= image_tag(@sneaker.photo, class: "image_large") %>
                         </li>
                         <li>
-                          <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+                          <%= image_tag(@sneaker.alt_photo, class: "image_large") %>
                         </li>
                       </ul>
                         <div class="social_share">
@@ -73,10 +73,10 @@
                   <div class="col-md-6">
                     <ul class="slides">
                       <li class="active">
-                        <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+                        <%= image_tag(@sneaker.photo, class: "image_large") %>
                       </li>
                       <li>
-                        <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+                        <%= image_tag(@sneaker.alt_photo, class: "image_large") %>
                       </li>
                       <li><h5><%= @sneaker.name %></h5></li>
                     </ul>
@@ -171,17 +171,17 @@
 
         <!-- right column -->
 
-        <div class="col-md-6">
+        <div class="col-md-6 safari-half-width col-sm-12">
           <div class="row">
             <div class="col-md-8">
               <div>
                 <h4 class="sneaker_title"><%= @sneaker.name %></h4>
               </div>
-              <div class="style_code">Style(sku): <%= @sneaker.style_code %></div>
+              <div class="style_code">Style - <%= sku(@sneaker.style_code) %></div>
               <hr class="details">
               <div class="shrinkwrap price_badge">From £<%= '%.2f' % @sneaker.lowest_price if @sneaker.lowest_price %></div>
             </div>
-            <div class="col-md-4"><h4 class="logo_container"><%= cl_image_tag(@sneaker.brand.logo, class: "brand_logo") %></h4></div>
+            <div class="col-md-4"><h4 class="logo_container"><%= image_tag(@sneaker.brand.logo, class: "brand_logo") %></h4></div>
           </div>
           <div class="row">
             <div class="col-md-12">
@@ -203,7 +203,7 @@
                 <% end %>
                 <% else %>
                 <div class="priceWatchSet price_watch_message-<%= @sneaker.id %>">
-                  <i class="fa fa-bell-o" aria-hidden="true"></i><span id="save_message">Save</span> <span style="color: #4d4d4d;">to add price watch</span>
+                  <i class="fa fa-bell-o" aria-hidden="true"></i><span id="save_message">&nbsp;Save</span> <span style="color: #4d4d4d;">to add price watch</span>
                 </div>
                 <% end %>
               </li>
@@ -214,7 +214,7 @@
               <div class="row vendor_card vendrow">
                <div class="col-md-3 no-right-padding">
                       <div class="row upper_vendrow">
-                        <div class="col-md-12 sty"><%= cl_image_tag(vend.logo.photo, class: "vendor_logo") %></div>
+                        <div class="col-md-12 sty"><%= image_tag(vend.logo.photo, class: "vendor_logo") %></div>
                       </div>
                     </div>
 

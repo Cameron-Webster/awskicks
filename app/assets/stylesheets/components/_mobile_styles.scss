@@ -1,0 +1,196 @@
+@media screen and (max-width: 750px) {
+
+  // Navbar
+
+    .navbar-wagon-item {
+    margin-left:0;
+    margin-right: 0;
+
+  }
+
+  .navbar-wagon {
+    padding-left: 5px;
+    padding-right: 15px;
+
+    .sign_up_button {
+      width: 100%;
+      border-radius: 0px;
+      text-align: center;
+      color: white!important;
+    }
+
+    .nav_login_button {
+      text-align: center;
+      border-radius: 0px;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
+    }
+  }
+
+// modal product view
+
+ .modal-content {
+  width: 96vw;
+ }
+
+ .miniMod {
+  width: 100vw;
+
+ }
+
+ .miniMod-content {
+  width: 100vw;
+  padding-right: 30px;
+  padding-left: 30px;
+
+  .no_entry > li {
+    padding-left:0;
+    padding-right: 0;
+
+    a.shop_link {
+      width: 100%;
+      display: block;
+    }
+
+  }
+ }
+
+ //Main modal
+
+.safari-half-width {
+  flex:  0 0 100%!important;
+ }
+
+ .modal-main-image:hover .social_share {
+  display: block;
+ }
+
+
+
+ // sign up page
+
+.sign-up-right-panel {
+  display: none;
+}
+
+
+// Home page search box
+
+  .search_bar {
+
+    padding: 20px 10px 20px 10px;
+
+
+    form div.input-group#stubby {
+      width: 90vw;
+
+     input {
+      width: 80%;
+    }
+  }
+
+  }
+
+#captioned-gallery .welcome_banner {
+  max-width:90%;
+  left: 5%;
+  top: 15%;
+}
+
+  .facet_row {
+
+    div.dropdown {
+
+    button#dLabel {
+      width: 45%;
+      margin-bottom: 7px;
+    }
+    ul.dropdown-menu {
+      margin-top:-7px;
+      position: static;
+      border: none;
+      width: 98vw!important;
+      padding-left: 20px;
+      padding-right: 20px;
+      left: 0;
+
+      input[type='button'] {
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      td > input[type='button'] {
+        margin-top: 0;
+      }
+    }
+
+    .filter_button {
+      text-align: center!important;
+    }
+  }
+}
+
+.filter_button {
+  text-align: center;
+  width: 100%;
+}
+
+.hidden-md {
+
+  .dropdown {
+
+    position: inherit;
+
+      ul.dropdown-menu {
+        left: 0;
+        width: 100vw;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@media screen and (max-width: 414px) {
+
+  // profile page
+
+  .row.margin-top-3p.margin-bottom-3p.vendrow.profile_box {
+    display: inherit;
+    text-align: center;
+
+    .profile {
+    width: 60px;
+    height: 60px;
+    }
+  }
+
+
+
+.modal-dialog {
+  height: 170vh;
+}
+
+  }
+
+  @media screen and (max-width: 320px) and (max-height: 570px) {
+
+.modal-dialog {
+  height: 200vh;
+}
+
+  }
+
+    @media screen and (max-width: 320px) and (max-height: 490px) {
+
+.modal-dialog {
+  height: 230vh;
+}
+
+  }

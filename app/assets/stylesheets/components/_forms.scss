@@ -12,13 +12,13 @@
   background-image: image-url("aj1.jpg");
   background-size: cover;
   background-position: bottom;
-  float: none;
-  display: table-cell;
+  min-height: 100vh;
+
 
 }
 
 .form_body {
-  display: table;
+  // display: table;
   width: 100vw;
   margin-bottom: -250px;
 }
@@ -26,9 +26,11 @@
 
 .left-side {
 
-    float: none;
-    display: table-cell;
     border-top: 1px solid;
+}
+
+.minus-footer-margin {
+  margin-bottom: -250px;
 }
 
 a.login_button {

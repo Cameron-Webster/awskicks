@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  layout 'blog'
+  skip_before_action :authenticate_user!
+  before_action :admin, only: [:edit, :create, :update, :destroy]
+  layout 'blog', only: [:new]
 
   # GET /blogs
   # GET /blogs.json
@@ -75,5 +77,11 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :subtitle, :content, :photo, :photo_cache, :author, :photo_two, :photo_two_cache, :photo_three, :photo_three_cache)
+    end
+
+      def admin?
+      unless current_user.admin == true
+      redirect_to root_path, alert: "Not authorized"
+      end
     end
 end

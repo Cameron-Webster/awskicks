@@ -14,9 +14,9 @@
 
  <div class="sneaker_thumb">
   <% if pin.sneaker.alt_photo.file    %>
-<%= cl_image_tag(pin.sneaker.alt_photo.thumb, class: "main") %>
+<%= image_tag(pin.sneaker.alt_photo.thumb, class: "main") %>
 <% end %>
-<%= cl_image_tag(pin.sneaker.photo) %>
+<%= image_tag(pin.sneaker.photo.thumb) %>
 
 
 </div>

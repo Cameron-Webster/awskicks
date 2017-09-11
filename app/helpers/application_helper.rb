@@ -31,6 +31,14 @@ module ApplicationHelper
 
   end
 
+  def sku(style_code)
+    if /sneak/.match(style_code)
+       return "sku: none"
+    else
+       return "sku: #{style_code}"
+    end
+  end
+
   def notifiable(sneaker)
     if (nCount = current_user.notifications.joins(:pin).where(pins: {sneaker_id: sneaker.id}).count) > 0
       on_sale(sneaker, "sale_notification")

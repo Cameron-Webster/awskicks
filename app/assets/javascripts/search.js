@@ -117,6 +117,13 @@ $(document).on('click', "ul.dropdown-menu.brand_drop_down input[type='button']",
 });
 
 
+// MEDIA QUERY for mobile devices
+
+// update paceholder searchbar
+
+if ($(window).width() < 500 ) {
+    $("input#srch").attr("placeholder","Search and compare prices");
+}
 
 
 // window.addEventListener('popstate', function(e){

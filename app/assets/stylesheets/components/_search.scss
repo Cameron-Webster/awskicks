@@ -147,7 +147,7 @@ p.header2 {
 
     .plus_logo {
       display: none;
-      padding-top: 5px;
+      padding: 0px;
     }
 
 
@@ -159,6 +159,11 @@ p.header2 {
 
       .plus_logo {
         display: inline-block;
+
+        i {
+          position: relative;
+          top: 5px;
+        }
       }
 
     }

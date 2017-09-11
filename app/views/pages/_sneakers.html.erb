@@ -1,3 +1,5 @@
+<div class="row padding-bottom-10">
+<div class="col-md-12">
 <hr class="title_breaker">
 <p class="header1"><%= @search %></p>
 <p class="header2">showing <b><%= ent = @sneakers.total_entries %></b> <%= 'Sneaker'.pluralize(ent) %></p>
@@ -7,8 +9,10 @@
   <option value="lowest_price desc" <%= selected='selected' if params[:order] == 'lowest_price desc' %> >Price Highest First</option>
   <option value="created_at desc" <%= selected='selected' if params[:order] == 'created_at desc' %> >Newest First</option>
 </select>
+</div>
+</div>
 <div class="row">
-  <div class="col-md12">
+  <div class="col-md-12">
     <div class="grid">
 
       <% @sneakers.each do |sneak| %>
@@ -19,9 +23,9 @@
          <div class="sneaker_thumb" data-rails="<%= sneak.id %>">
 
           <% if sneak.alt_photo.file    %>
-          <%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+          <%= image_tag(sneak.alt_photo.thumb, class: "main") %>
           <% else %>
-          <%= cl_image_tag(sneak.photo) %>
+          <%= image_tag(sneak.photo.thumb) %>
           <% end %>
         </div>
         <div class="sneak_info">
@@ -44,7 +48,7 @@
           <div class="stores"><%= sneak.vendors.count %> Stores</div>
           <%= on_sale(sneak) %>
 
-          <p class="center-align style_code">sku: <%= sneak.style_code %></p>
+          <p class="center-align style_code"><%= sku(sneak.style_code) %></p>
 
           <hr>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901170837) do
+ActiveRecord::Schema.define(version: 20170911141607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(version: 20170901170837) do
     t.string   "name"
     t.string   "photo"
     t.string   "home_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "scraper"
+    t.string   "display_name"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -126,6 +127,8 @@ ActiveRecord::Schema.define(version: 20170901170837) do
     t.integer  "brand_id"
     t.string   "sneak_brand"
     t.float    "previous_lowest_price"
+    t.string   "shoe_style"
+    t.string   "primary_color"
     t.index ["brand_id"], name: "index_sneakers_on_brand_id", using: :btree
     t.index ["color"], name: "index_sneakers_on_color", using: :btree
     t.index ["gender"], name: "index_sneakers_on_gender", using: :btree

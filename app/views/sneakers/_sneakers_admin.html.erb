@@ -10,9 +10,8 @@
 <div class="col-md12">
 <div class="grid">
 
-<% count = 0 %>
 <% @sneakers.each do |sneak| %>
-<% count += 1 %>
+
 <div class="grid-item">
   <div class="orange" data-rails="<%= sneak.id %>">
 
@@ -21,9 +20,9 @@
 
 
 <% if sneak.alt_photo.file    %>
-<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+<%= image_tag(sneak.alt_photo.thumb, class: "main") %>
 <% else %>
-<%= cl_image_tag(sneak.photo) %>
+<%= image_tag(sneak.photo.thumb) %>
 <% end %>
 </div>
 <div class="sneak_info">
