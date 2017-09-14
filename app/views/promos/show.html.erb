@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<%= @promo.title %>
+
+<%= image_tag(@promo.image) %>
+
 <%= link_to 'Edit', edit_promo_path(@promo) %> |
 <%= link_to 'Back', promos_path %>
