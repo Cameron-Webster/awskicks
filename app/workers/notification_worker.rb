@@ -8,19 +8,11 @@ class NotificationWorker
 
     unless sneakers.empty?
 
-      users = sneakers.map{|sn| sn.pins.map{|pin| pin.bucket.user}}.uniq.flatten
+      sneakers.each do |sneak|
 
-      users.each do |user|
+        sneak.pins.reject{|pn| pn.price_watch.nil? || pn.price_watch < sneak.lowest_price }.each do |pin|
 
-        user.pins.each do |pin|
-
-          if pin.price_watch >= pin.sneaker.lowest_price
-
-            sneak = pin.sneaker
-
-            Notification.create(pin_id: pin.id, user_id: user.id, action: "#{sneak.name} has fallen to #{sneak.lowest_price}")
-
-          end
+            Notification.create(pin_id: pin.id, user_id: pin.bucket.user.id, action: "#{sneak.name} has fallen to #{sneak.lowest_price}")
 
         end
 
@@ -30,3 +22,14 @@ class NotificationWorker
 
   end
 end
+
+
+   # users = sneakers.map{|sn| sn.pins.map{|pin| pin.bucket.user}}.uniq.flatten
+   #    users.each do |user|
+   #      user.pins.each do |pin|
+   #        if pin.price_watch >= pin.sneaker.lowest_price
+   #          sneak = pin.sneaker
+   #          Notification.create(pin_id: pin.id, user_id: user.id, action: "#{sneak.name} has fallen to #{sneak.lowest_price}")
+   #        end
+   #      end
+   #    end

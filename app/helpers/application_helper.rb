@@ -26,7 +26,7 @@ module ApplicationHelper
   def on_sale(sneaker, sale_class = 'sale')
     if (plp = sneaker.previous_lowest_price) &.> (lp = sneaker.lowest_price)
           sale_p = (lp / plp * 100 - 100).round
-      content_tag(:div, "#{sale_p}%",class: sale_class)
+      content_tag(:div, "#{sale_p}%",class: sale_class) unless sale_p > -5
     end
 
   end

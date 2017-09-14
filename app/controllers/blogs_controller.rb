@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!
-  before_action :admin, only: [:edit, :create, :update, :destroy]
+  before_action :admin?, only: [:edit, :create, :update, :destroy]
   layout 'blog', only: [:new]
 
   # GET /blogs

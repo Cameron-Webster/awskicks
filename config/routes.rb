@@ -46,10 +46,10 @@ get "/modal/:sneaker_id", to: "pages#show_modal",as: "modal"
   get "sneakers/admin/:id", to: "sneakers#admin_show", as: "sneakers_admin_show"
   get "sneakers/admin/:id/update", to: "sneakers#sneaker_update", as: "sneakers_admin_update"
   get "sneakers/admin/update/all", to: "sneakers#sneaker_update_all", as: "sneakers_admin_update_all"
+  get "vendors/:id/updatedata", to: "vendors#update_vendor_data", as: 'update_vendor_data'
 
-
-  resources :logos, only: [:new, :create, :index]
-  resources :brands, only: [:new, :create, :index]
+  resources :logos
+  resources :brands
   root to: 'pages#home'
 
 get '/contact', to: 'pages#contact'

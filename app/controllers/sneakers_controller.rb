@@ -7,7 +7,7 @@ class SneakersController < ApplicationController
 
   def index
 
-         sneak_ids = current_user.pins.map(&:sneaker_id)
+      sneak_ids = current_user.pins.map(&:sneaker_id)
 
       @search = params[:search].present? ? params[:search] : nil
       @conditions = {}
@@ -141,15 +141,19 @@ class SneakersController < ApplicationController
   end
 
   def sneaker_update
-      SpiderWorker.perform_async(@sneaker.id)
-      respond_to do |format|
+    @sneaker.vendors.each do |vend|
+      VendorWorker.perform_async(vend.id)
+    end
+    respond_to do |format|
         format.html {redirect_to sneakers_admin_show_path(@sneaker)}
       end
   end
 
   def sneaker_update_all
     Sneaker.all.each do |sneaker|
-      SpiderWorker.perform_async(sneaker.id)
+      sneaker.vendors.each do |vend|
+       VendorWorker.perform_async(vend.id)
+      end
     end
       respond_to do |format|
         format.html {redirect_to sneakers_admin_index_path}

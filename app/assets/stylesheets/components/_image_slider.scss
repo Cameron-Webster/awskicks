@@ -92,18 +92,18 @@ figure.slider figcaption {
 }
 
 
-#f0 {
+#f0,.f0 {
     background-color: #4c4c4c;
     z-index: 1;
     animation-name: fade0;
 }
-#f1 {
+#f1,.f1 {
     -webkit-animation-delay: -15s;
     background-color: #4c4c4c;
     z-index: 3;
     animation-name: fade2
 }
-.f2 {
+#f2 {
     -webkit-animation-delay: -7s;
     background-color: #4c4c4c;
     z-index: 2;

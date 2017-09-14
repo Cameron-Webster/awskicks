@@ -29,6 +29,7 @@ gem 'poltergeist'
 gem 'oj'
 gem 'typhoeus'
 gem 'jquery-ui-rails'
+gem 'sidekiq-failures' #need to rerun bundle or remove
 
 group :development, :test do
   gem "fog-aws"

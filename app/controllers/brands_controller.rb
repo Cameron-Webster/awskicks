@@ -1,7 +1,10 @@
 class BrandsController < ApplicationController
 
+  before_action :admin?
   before_action :set_brand, only: [:show]
+
   def index
+    @brands = Brand.all
   end
 
   def show
@@ -49,4 +52,10 @@ private
   def set_brand
     @brand = Brand.find(params[:id])
   end
+
+    def admin?
+      unless current_user.admin == true
+      redirect_to root_path, alert: "Not authorized"
+      end
+    end
 end

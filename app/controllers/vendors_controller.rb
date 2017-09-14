@@ -1,6 +1,8 @@
 class VendorsController < ApplicationController
 
-  before_action :set_vendor, only: [:show, :edit, :destroy]
+  before_action :set_vendor, only: [:show, :edit, :destroy, :update_vendor_data]
+  before_action :admin?
+
   def index
   end
 
@@ -43,6 +45,15 @@ class VendorsController < ApplicationController
   def update
   end
 
+  def update_vendor_data
+    previous = request.referer
+     VendorWorker.perform_async(@vendor.id)
+      respond_to do |format|
+        format.html {redirect_to previous}
+      end
+
+  end
+
   def destroy
     sneaker = @vendor.sneaker
     if @vendor.destroy
@@ -62,4 +73,10 @@ private
   def set_vendor
     @vendor = Vendor.find(params[:id])
   end
+
+    def admin?
+      unless current_user.admin == true
+      redirect_to root_path, alert: "Not authorized"
+      end
+    end
 end

@@ -19,13 +19,14 @@ CarrierWave.configure do |config|
     provider:              'AWS',                        # required
     aws_access_key_id:     'AKIAJX4SJKMYVNLPG7IA',                        # required
     aws_secret_access_key: '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',                        # required
-    region:                'us-east-1',                  # optional, defaults to 'us-east-1'
+    region:                'eu-west-2',                  # optional, defaults to 'us-east-1'
     # host:                  's3.example.com',             # optional, defaults to nil
     # endpoint:              'https://s3.example.com:8080' # optional, defaults to nil
   }
-  config.fog_directory  = 'aws-website-abmanism'                          # required
+  config.fog_directory  = 'aws-website-wishkicks'                          # required
   config.fog_public     = true                                       # optional, defaults to true
   config.fog_attributes = { cache_control: "public, max-age=#{365.day.to_i}" } # optional, defaults to {}
+
 end
 
 end

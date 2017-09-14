@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <div class="padding-left-10p margin-top-3p"><%= link_to  sneakers_admin_index_path do %>
       <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Sneaker List
       <% end %>
@@ -16,27 +16,45 @@
     </ul>
   </div>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
   <h1>Vendor management</h1>
   <div class="left-align float-left"><%= link_to "Update Pricing", sneakers_admin_update_path(@sneaker), class: "black_button padding-all-10" %></div>
   <div class="right-align"><%= link_to "+ New vendor", new_sneaker_vendor_path(@sneaker), class: "black_button padding-all-10" %></div>
   <% @sneaker.vendors.each do |vendor| %>
       <div class="row vend_man_row">
-        <div class="col-md-3 no-padding-sides break-word">
-         <%= vendor.name %>
+      <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4 no-padding-sides break-word">
+         <%= vendor.name %> (<%= vendor.id %>)
         </div>
-          <div class="col-md-1">
+          <div class="col-md-2">
          £<%= vendor.current_price %>
         </div>
-          <div class="col-md-7 no-pad-right right-align">
+          <div class="col-md-6 no-pad-right right-align">
           <%= link_to sneaker_vendor_path(@sneaker, vendor), class: "purple_button", method: :delete do %>
             <i class="fa fa-trash" aria-hidden="true"></i>
           <% end %>
            <%= link_to edit_sneaker_vendor_path(@sneaker, vendor), class: "purple_button" do %>
            <i class="fa fa-wrench" aria-hidden="true"></i>
            <% end %>
+           <%= link_to update_vendor_data_path(vendor), class: "purple_button" do %>
+           <i class="fa fa-level-up" aria-hidden="true"></i>
+          <% end %>
         </div>
       </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-12">
+        <ul class="list-inline admin_size_list">
+          <li>Sizes:</li>
+          <% vendor.available_sizes.each do |size| %>
+            <li><%= size.size_uk %></li>
+        <% end %>
+          </ul>
+        </div>
+      </div>
+       </div>
   <% end %>
 </div>
 <div class="col-md-5">

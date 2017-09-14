@@ -178,6 +178,7 @@
                 <h4 class="sneaker_title"><%= @sneaker.name %></h4>
               </div>
               <div class="style_code">Style - <%= sku(@sneaker.style_code) %></div>
+              <div class="style_code"><%= @sneaker.color %></div>
               <hr class="details">
               <div class="shrinkwrap price_badge">From £<%= '%.2f' % @sneaker.lowest_price if @sneaker.lowest_price %></div>
             </div>

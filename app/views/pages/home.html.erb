@@ -5,17 +5,17 @@
     <div id="captioned-gallery">
   <figure class="slider">
 
-    <% @blogs.each_with_index do |blog, i| %>
 
-    <div class="home_image_slider" style="background-image: url(<%= blog.photo %>)" id="f<%= i %>">
-      <figcaption><%= link_to "Article: #{blog.title}", blog_path(blog), class: "white_links cursor" %></figcaption>
+
+    <div class="home_image_slider" style="background-image: url(<%= @blog.photo %>)" id="f2">
+      <figcaption><%= link_to "Article: #{@blog.title}", blog_path(@blog), class: "white_links cursor" %></figcaption>
     </div>
-    <% end %>
 
-      <div class="home_image_slider filter f2" style="background-image: url(<%= @promo.image %>)">
+    <% @promos.each_with_index do |promo, i| %>
+      <div class="home_image_slider filter f<%= i %>" style="background-image: url(<%= promo.image %>)">
       </div>
-      <div class="f2 home_image_slider transparent"><div class="welcome_banner"><%= @promo.title %></div></div>
-
+      <div class="f<%= i %> home_image_slider transparent"><div class="welcome_banner"><%= promo.title %></div></div>
+    <% end %>
   </figure>
 </div>
   </div>

@@ -6,15 +6,16 @@ class DynamicPageScraper
 
   def initialize(url)
 
+      ip_address = Vendor::IP_ADDRESSES.sample
 
+      SpiderLog.info "Running Dynamic Spider Worker for #{url}"
+
+      SpiderLog.info "ip address: #{ip_address[0]}  | user agent: #{ip_address[1]}"
 
       Capybara.register_driver :poltergeist do |app|
-      # stop images loading
-       #  options = {
-       #    js_errors: false
-       # }
 
-      Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--load-images=no', '--proxy=45.32.231.36:31280', '--proxy-auth=' + ENV["PROXY_DYNAMIC"]], js_errors: false, debug: true)
+
+      Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--load-images=no', "--proxy=" + ip_address[0] + ":3128"], js_errors: false)
       end
 
     Capybara.default_driver = :poltergeist
@@ -23,11 +24,11 @@ class DynamicPageScraper
 
 
         Capybara.current_session.driver.headers = { 'User-Agent' =>
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X)" }
+          ip_address[1] }
 
     @browser = Capybara.current_session
     @browser.visit url
-    sleep 5
+    sleep(rand(5..7))
 
     @browser.driver.scroll_to(0, 500)
 

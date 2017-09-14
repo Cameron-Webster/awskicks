@@ -2,10 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :show_modal ]
 
   def home
-    @blogs = Blog.last(2)
+    @blog = Blog.last
     @bucket = Bucket.new
     @bucket.pins.build
-    @promo = Promo.last
+    @promos = Promo.last(2)
 
       @search = params[:search].present? ? params[:search] : nil
       @conditions = {}
@@ -31,15 +31,15 @@ class PagesController < ApplicationController
       if params[:size].present?
         sizes = params[:size].split(",").map(&:to_f)
         sizes[1] = sizes[0] + sizes[1] if sizes[1]
-      @conditions["sizes.size_uk"] = sizes
+      @conditions["available_sizes.size_uk"] = sizes
       end
 
 
       @sneakers = if @search
       if @search.strip.match(/\s/)
-        Sneaker.search @search, where: @conditions, order: @order, fields: [{style_code: :exact}, {name: :word_start}], operator: "or", misspellings: {below: 1}, page: params[:page], per_page: 24, aggs: [:sneak_brand, :gender]
+        Sneaker.search @search, where: @conditions, order: @order, fields: [{style_code: :exact}, {name: :word_start}, :sneak_brand], operator: "or", misspellings: {below: 1}, page: params[:page], per_page: 24, aggs: [:sneak_brand, :gender]
       else
-        Sneaker.search(@search, where: @conditions, order: @order, misspellings: {below: 1}, fields: [{style_code: :exact}, {name: :word_start}], page: params[:page], per_page: 24, aggs: [:sneak_brand, :gender])
+        Sneaker.search(@search, where: @conditions, order: @order, misspellings: {below: 1}, fields: [{style_code: :exact}, {name: :word_start}, :sneak_brand], page: params[:page], per_page: 24, aggs: [:sneak_brand, :gender])
       end
     else
       Sneaker.search "*", where: @conditions, order: @order, page: params[:page], per_page: 24, aggs: [:gender, :sneak_brand]

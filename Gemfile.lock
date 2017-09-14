@@ -257,6 +257,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.3, >= 3.3.3)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -329,6 +331,7 @@ DEPENDENCIES
   sass-rails
   searchkick
   sidekiq
+  sidekiq-failures
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

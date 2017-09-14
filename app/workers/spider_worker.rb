@@ -1,9 +1,13 @@
 class SpiderWorker
   include Sidekiq::Worker
-  sidekiq_options :retry => 4
+  sidekiq_options :retry => 2
+
+   sidekiq_retry_in do |count|
+    1800
+   end
 
   def perform(id)
-
+    sleep(rand(1..3))
     changed_sneakers = Array.new
     puts "starting Spider Worker"
     if id.class == Fixnum

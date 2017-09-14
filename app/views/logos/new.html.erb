@@ -1,5 +1,17 @@
 <div class="row">
 <div class="col-md-12">
+<ul class="list-inline">
+<% Logo.all.each do |logo| %>
+<li> | </li>
+<li><%= link_to logo.name, edit_logo_path(logo) %>(<%= logo.scraper %>)</li>
+
+<% end %>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
    <div class="padding-left-10p margin-top-3p"><%= link_to  sneakers_admin_index_path do %>
       <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Sneaker List
       <% end %>

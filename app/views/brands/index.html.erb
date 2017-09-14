@@ -1,6 +1,7 @@
 
-<% @brands.each do |logo| %>
-
-<%= cl_image_tag(brand.logo) %> <%= brand.name %>
+<% @brands.each do |brand| %>
+<%= link_to brand_edit_path(brand) do %>
+<%= image_tag(brand.logo) %> <%= brand.name %>
+<% end %>
 <% end %>
 <%= link_to 'new Brand', new_brand_path %>

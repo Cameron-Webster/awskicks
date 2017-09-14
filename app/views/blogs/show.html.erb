@@ -6,7 +6,7 @@
     <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to News Home
       <% end %>
     </p>
-      <%= cl_image_tag(@blog.photo, class: "blog_header") %>
+      <%= image_tag(@blog.photo, class: "blog_header") %>
       <div class="blog_title">
         <div class="row">
           <div class="col-md-12">
@@ -46,7 +46,7 @@
   </div>
   <div class="col-md-4 blog_side_content">
 
-    <%= cl_image_tag(@blog.photo_two, class: "side_photo") if @blog.photo_two %>
+    <%= image_tag(@blog.photo_two, class: "side_photo") if @blog.photo_two %>
 
   </div>
 </div>
@@ -58,7 +58,7 @@
    <p><%= link_to "View All", blogs_path %></p>
   <% @related_blogs.each do |blog| %>
     <div class="col-md-4 related_card">
-      <%= cl_image_tag(blog.photo) %>
+      <%= image_tag(blog.photo) %>
         <div class="related_card_title">
         <div class="row">
           <div class="col-md-12">
