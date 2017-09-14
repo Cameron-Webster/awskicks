@@ -22,14 +22,14 @@ gem 'searchkick'
 gem 'will_paginate'
 gem 'carrierwave', '~> 0.11.2'
 gem 'sidekiq'
-
+gem 'postmark'
 gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'
 gem 'oj'
 gem 'typhoeus'
 gem 'jquery-ui-rails'
-gem 'sidekiq-failures' #need to rerun bundle or remove
+# gem 'sidekiq-failures' #need to rerun bundle or remove
 
 group :development, :test do
   gem "fog-aws"
