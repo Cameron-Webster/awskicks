@@ -29,10 +29,11 @@ gem 'poltergeist'
 gem 'oj'
 gem 'typhoeus'
 gem 'jquery-ui-rails'
+gem "fog-aws"
 # gem 'sidekiq-failures' #need to rerun bundle or remove
 
 group :development, :test do
-  gem "fog-aws"
+
   gem 'mini_magick'
   gem "letter_opener"
   gem 'binding_of_caller'
