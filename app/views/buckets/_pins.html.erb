@@ -20,9 +20,9 @@
  <div class="sneaker_thumb_buk">
 
 <% if sneak.alt_photo.file    %>
-<%= cl_image_tag(sneak.alt_photo.thumb, class: "main") %>
+<%= image_tag(sneak.alt_photo.thumb, class: "main") %>
 <% else %>
-<%= cl_image_tag(sneak.photo) %>
+<%= image_tag(sneak.photo) %>
 <% end %>
 </div>
 <div class="sneak_info">

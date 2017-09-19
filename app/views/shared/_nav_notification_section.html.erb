@@ -11,7 +11,7 @@
       <% home_badges[:newest].each do |message| %>
       <div class="row no_margin_sides margin_bottom_10">
         <div class="col-md-2">
-          <%= cl_image_tag(message.notification.pin.sneaker.photo.thumb) %>
+          <%= image_tag(message.notification.pin.sneaker.photo.thumb) %>
         </div>
         <div class="col-md-7">
           <%= link_to "#{message.notification.action}", root_path %>

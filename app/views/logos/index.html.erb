@@ -4,6 +4,6 @@
 
 <% @logos.each do |logo| %>
 
-<%= cl_image_tag(logo.photo) %> <%= logo.name %>
+<%= image_tag(logo.photo) %> <%= logo.name %>
 <% end %>
 <%= link_to 'new Vendor Logo', new_logo_path %>

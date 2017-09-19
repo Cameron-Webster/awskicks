@@ -15,7 +15,7 @@
 
 
     </div>
-     <%= cl_image_tag(@sneaker.photo) %>
+     <%= image_tag(@sneaker.photo) %>
      <% if @current_pin %>
     <div class="addPriceWatch-<%= @current_pin.id %>">Add Price Watch (already in bucket)
         <%= render 'shared/pricewatch_form', locals: {pin: @current_pin} %>

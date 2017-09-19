@@ -36,9 +36,9 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <% if Rails.env.production? %>
-          <%= cl_image_tag current_user.profile_pic.mini_profile, default_image: 'profile_pic_30px_mzazwe', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% end %><span class="user_name" data-toggle="dropdown">&nbsp;<%= current_user.first_name %></span>
+
+          <%= image_tag 'profile_pic_30px.png', default_image: 'profile_pic_30px.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <span class="user_name" data-toggle="dropdown">&nbsp;<%= current_user.first_name %></span>
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu profile_menu">
             <li>

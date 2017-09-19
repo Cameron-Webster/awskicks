@@ -11,7 +11,7 @@ module CarrierWave
     end
   end
 end
-
+end
 
 CarrierWave.configure do |config|
   # config.fog_provider = 'fog/aws'                        # required
@@ -29,5 +29,5 @@ CarrierWave.configure do |config|
 
 end
 
-end
+
 

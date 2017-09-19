@@ -9,10 +9,10 @@
     <div class="col-md-6">
       <ul class="slides">
         <li class="active">
-          <%= cl_image_tag(@sneaker.photo, class: "image_large") %>
+          <%= image_tag(@sneaker.photo, class: "image_large") %>
         </li>
         <li>
-          <%= cl_image_tag(@sneaker.alt_photo, class: "image_large") %>
+          <%= image_tag(@sneaker.alt_photo, class: "image_large") %>
         </li>
         <li><h5><%= @sneaker.name %></h5></li>
       </ul>
